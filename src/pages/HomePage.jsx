@@ -319,30 +319,29 @@ export default function HomePage({ onOpenQuoteModal }) {
             </p>
           </div>
 
-          {/* 8 Industries Image Grid: Only Image and Industry Name */}
+          {/* 8 Industries Image Grid: Clean Image and Industry Name */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {INDUSTRIES.map((ind) => (
               <div
                 key={ind.id}
-                className="group relative h-56 sm:h-64 rounded-2xl overflow-hidden border border-[#DDE5EE] shadow-subtle hover:shadow-hover transition-all duration-300 transform hover:-translate-y-1.5 cursor-default bg-slate-900"
+                className="group bg-white rounded-2xl overflow-hidden border border-[#DDE5EE] shadow-subtle hover:shadow-hover transition-all duration-300 transform hover:-translate-y-1.5 cursor-default flex flex-col"
               >
-                {/* Full-bleed Industry Photograph */}
-                <img
-                  src={ind.image}
-                  alt={`${ind.name} industrial applications for steel`}
-                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                  loading="lazy"
-                />
-
-                {/* Gradient Overlay for Name Contrast */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent" />
+                {/* 100% Clean Industry Photograph Without Any Overlay */}
+                <div className="h-48 sm:h-52 overflow-hidden bg-slate-100 border-b border-slate-100">
+                  <img
+                    src={ind.image}
+                    alt={`${ind.name} industrial applications for steel`}
+                    className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
 
                 {/* Industry Name and Icon */}
-                <div className="absolute bottom-4 left-4 right-4 flex items-center gap-2.5">
-                  <div className="p-2 rounded-lg bg-white/95 backdrop-blur-md shadow-md text-[#123467] flex-shrink-0">
+                <div className="p-4 bg-white flex items-center gap-3">
+                  <div className="p-2 rounded-xl bg-slate-50 text-[#123467] group-hover:bg-red-50 group-hover:text-[#D71932] transition-colors flex-shrink-0">
                     {getIndustryIcon(ind.iconName)}
                   </div>
-                  <h3 className="text-base sm:text-lg font-black text-white tracking-wide uppercase drop-shadow-md">
+                  <h3 className="text-base sm:text-lg font-bold text-[#123467] group-hover:text-[#D71932] transition-colors tracking-tight">
                     {ind.name}
                   </h3>
                 </div>

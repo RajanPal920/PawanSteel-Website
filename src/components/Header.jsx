@@ -121,15 +121,15 @@ export default function Header({ onOpenQuoteModal }) {
       </div>
 
       {/* Main Navigation Bar - Balanced compact height */}
-      <div className={`transition-all duration-200 ${isScrolled ? 'py-1.5 shadow-md' : 'py-2'}`}>
+      <div className={`transition-all duration-200 ${isScrolled ? 'py-0.5 shadow-md' : 'py-1'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
 
           {/* Logo Left - Prominent, Sharp and Elegantly Proportioned */}
-          <Link to="/" className="flex items-center focus:outline-none py-0.5 group flex-shrink-0" aria-label="Pawan Steel Alloys Homepage">
+          <Link to="/" className="flex items-center focus:outline-none group flex-shrink-0" aria-label="Pawan Steel Alloys Homepage">
             <img
               src="/logo.png"
               alt="PAWAN STEEL ALLOYS - An ISO 9001:2015 Certified Company"
-              className="h-15 sm:h-18 md:h-20 lg:h-23 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]"
+              className="h-16 sm:h-20 md:h-[88px] lg:h-[92px] w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]"
               style={{ imageRendering: '-webkit-optimize-contrast' }}
             />
           </Link>

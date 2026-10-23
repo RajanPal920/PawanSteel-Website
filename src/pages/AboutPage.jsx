@@ -12,10 +12,33 @@ import {
   Layers,
   Award,
   Clock,
-  Compass
+  Compass,
+  Flame,
+  Boxes,
+  FlaskConical,
+  Zap,
+  Cog,
+  Building2,
+  Droplets,
+  Ship
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/companyData';
 import { CATEGORIES, MATERIALS, INDUSTRIES } from '../data/productsData';
+
+// Lucide icon helper for Industry Applications
+const getIndustryIcon = (iconName) => {
+  switch (iconName) {
+    case 'Flame': return <Flame className="w-4 h-4" />;
+    case 'Boxes': return <Boxes className="w-4 h-4" />;
+    case 'FlaskConical': return <FlaskConical className="w-4 h-4" />;
+    case 'Zap': return <Zap className="w-4 h-4" />;
+    case 'Cog': return <Cog className="w-4 h-4" />;
+    case 'Building2': return <Building2 className="w-4 h-4" />;
+    case 'Droplets': return <Droplets className="w-4 h-4" />;
+    case 'Ship': return <Ship className="w-4 h-4" />;
+    default: return <Cog className="w-4 h-4" />;
+  }
+};
 
 export default function AboutPage({ onOpenQuoteModal }) {
   return (
@@ -221,25 +244,59 @@ export default function AboutPage({ onOpenQuoteModal }) {
       </section>
 
       {/* Relevant Industrial Applications */}
-      <section className="py-16 bg-white border-b border-slate-200">
+      <section className="py-16 md:py-24 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-10">
+          <div className="max-w-3xl mb-12">
             <span className="text-xs font-bold uppercase tracking-wider text-[#123467] bg-slate-100 border border-slate-200 px-3 py-1 rounded-md">
               Industry Experience
             </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#123467] mt-3 mb-2">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#123467] mt-3 mb-3 tracking-tight">
               Relevant Industrial Applications
             </h2>
-            <p className="text-sm text-slate-600">
-              Our supplied materials serve essential processing and structural applications across major sectors:
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+              Our supplied raw materials and engineered metal products serve essential processing, mechanical, and structural applications across major sectors:
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {INDUSTRIES.map((ind) => (
-              <div key={ind.id} className="p-5 rounded-lg border border-slate-200 bg-slate-50">
-                <h3 className="text-base font-bold text-[#123467] mb-1.5">{ind.name}</h3>
-                <p className="text-xs text-slate-600 leading-relaxed">{ind.description}</p>
+              <div 
+                key={ind.id} 
+                className="group bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:border-slate-300 transition-all duration-300 flex flex-col transform hover:-translate-y-1.5"
+              >
+                {/* 100% Clean Image Without Any Overlay */}
+                <div className="h-48 overflow-hidden bg-slate-100 border-b border-slate-100">
+                  <img
+                    src={ind.image}
+                    alt={`${ind.name} industrial applications for steel and alloys`}
+                    className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+
+                {/* Card Content & Description */}
+                <div className="p-5 flex flex-col flex-1 justify-between bg-white">
+                  <div>
+                    <div className="flex items-center gap-2.5 mb-2.5">
+                      <div className="p-1.5 rounded-lg bg-slate-100 text-[#123467] group-hover:bg-red-50 group-hover:text-[#D71932] transition-colors">
+                        {getIndustryIcon(ind.iconName)}
+                      </div>
+                      <h3 className="text-base sm:text-lg font-bold text-[#123467] group-hover:text-[#D71932] transition-colors">
+                        {ind.name}
+                      </h3>
+                    </div>
+                    <p className="text-xs sm:text-[13px] text-slate-600 leading-relaxed">
+                      {ind.description}
+                    </p>
+                  </div>
+
+                  <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-[#123467] group-hover:text-[#D71932] transition-colors">
+                    <Link to="/products" className="inline-flex items-center gap-1.5 hover:underline">
+                      <span>Suitable Products</span>
+                      <ChevronRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
