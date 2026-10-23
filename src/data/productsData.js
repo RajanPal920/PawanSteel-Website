@@ -1,7 +1,8 @@
 export const CATEGORIES = [
   {
     id: "rods-bars",
-    slug: "rods-bars",
+    slug: "rod-bars-manufacturer-india",
+    oldSlug: "rods-bars",
     title: "Rods & Bars",
     image: "/images/cat-rods-bars.jpg",
     shortDesc: "Precision stainless steel and high-nickel alloy round bars, hex bars, square rods, and flat bars for precision machining and industrial fabrication.",
@@ -9,7 +10,8 @@ export const CATEGORIES = [
   },
   {
     id: "pipes-tubes",
-    slug: "pipes-tubes",
+    slug: "pipes-tubes-manufacturer-supplier-india",
+    oldSlug: "pipes-tubes",
     title: "Pipes & Tubes",
     image: "/images/cat-pipes-tubes.jpg",
     shortDesc: "Seamless and welded stainless steel, alloy steel, and carbon steel pipes and instrumentation tubes in standard schedules and custom lengths.",
@@ -17,7 +19,8 @@ export const CATEGORIES = [
   },
   {
     id: "sheets-plates",
-    slug: "sheets-plates",
+    slug: "sheets-plates-supplier-india",
+    oldSlug: "sheets-plates",
     title: "Sheets & Plates",
     image: "/images/cat-sheets-plates.jpg",
     shortDesc: "Cold rolled sheets, hot rolled plates, coils, strips, and chequered plates available in diverse thicknesses, widths, and surface finishes.",
@@ -25,7 +28,8 @@ export const CATEGORIES = [
   },
   {
     id: "flanges",
-    slug: "flanges",
+    slug: "industrial-flanges-manufacturer-india",
+    oldSlug: "flanges",
     title: "Flanges",
     image: "/images/cat-flanges.jpg",
     shortDesc: "Forged industrial flanges including Slip-On, Weld Neck, Blind, Socket Weld, Lap Joint, and Threaded configurations in ASME/ANSI standards.",
@@ -33,7 +37,8 @@ export const CATEGORIES = [
   },
   {
     id: "fasteners",
-    slug: "fasteners",
+    slug: "industrial-fasteners-bolts-nuts-india",
+    oldSlug: "fasteners",
     title: "Fasteners",
     image: "/images/cat-fasteners.jpg",
     shortDesc: "High-tensile and corrosion-resistant industrial fasteners including heavy hex bolts, stud bolts, nuts, washers, and threaded rods.",
@@ -41,7 +46,8 @@ export const CATEGORIES = [
   },
   {
     id: "butt-weld-fittings",
-    slug: "butt-weld-fittings",
+    slug: "butt-weld-pipe-fittings-manufacturer-india",
+    oldSlug: "butt-weld-fittings",
     title: "Butt Weld Fittings",
     image: "/images/cat-buttweld.jpg",
     shortDesc: "Seamless and welded butt weld elbows (90° and 45°), equal and reducing tees, concentric and eccentric reducers, stub ends, and pipe caps.",
@@ -49,7 +55,8 @@ export const CATEGORIES = [
   },
   {
     id: "forged-fittings",
-    slug: "forged-fittings",
+    slug: "forged-pipe-fittings-manufacturer-india",
+    oldSlug: "forged-fittings",
     title: "Forged Fittings",
     image: "/images/cat-forged.jpg",
     shortDesc: "High-pressure Class 3000, 6000, and 9000 forged socket weld and threaded (NPT/BSPT) pipe fittings, unions, couplings, and hex nipples.",
@@ -57,7 +64,8 @@ export const CATEGORIES = [
   },
   {
     id: "ferrule-fittings",
-    slug: "ferrule-fittings",
+    slug: "double-ferrule-tube-fittings-manufacturer-india",
+    oldSlug: "ferrule-fittings",
     title: "Ferrule Fittings",
     image: "/images/cat-ferrule.jpg",
     shortDesc: "Precision double-ferrule compression tube fittings for high-pressure instrumentation, chemical dosing, hydraulic, and pneumatic lines.",
@@ -202,9 +210,10 @@ export const PRODUCTS = [
   // 1. Rods & Bars
   {
     id: "ss-round-bars",
-    slug: "stainless-steel-round-bars",
+    slug: "stainless-steel-round-bars-manufactures-india",
+    oldSlug: "stainless-steel-round-bars",
     name: "Stainless Steel Round Bars",
-    categorySlug: "rods-bars",
+    categorySlug: "rod-bars-manufacturer-india",
     categoryName: "Rods & Bars",
     image: "/images/cat-rods-bars.jpg",
     shortDesc: "High-grade bright drawn and centerless ground stainless steel round bars for precision machining, pump shafts, and structural components.",
@@ -223,11 +232,12 @@ export const PRODUCTS = [
   },
   {
     id: "nickel-alloy-round-bars",
-    slug: "nickel-alloy-round-bars",
+    slug: "nickel-alloy-round-bars-supplier-india",
+    oldSlug: "nickel-alloy-round-bars",
     name: "Nickel Alloy Round Bars",
-    categorySlug: "rods-bars",
+    categorySlug: "rod-bars-manufacturer-india",
     categoryName: "Rods & Bars",
-    image: "/images/hero-4.jpg",
+    image: "/images/prod-nickel-bars.jpg",
     shortDesc: "Specialty high-nickel alloy round bars for severe high-temperature oxidation and acidic corrosion environments.",
     fullDesc: "Engineered for harsh operating conditions in aerospace, sour oil wells, and chemical synthesis, our nickel alloy round bars feature verified chemistry and mechanical strength.",
     materials: ["inconel", "monel", "hastelloy", "titanium"],
@@ -243,11 +253,12 @@ export const PRODUCTS = [
   },
   {
     id: "carbon-alloy-steel-bars",
-    slug: "carbon-and-alloy-steel-bars",
+    slug: "carbon-alloy-steel-round-hex-bars-india",
+    oldSlug: "carbon-and-alloy-steel-bars",
     name: "Carbon & Alloy Steel Round & Hex Bars",
-    categorySlug: "rods-bars",
+    categorySlug: "rod-bars-manufacturer-india",
     categoryName: "Rods & Bars",
-    image: "/images/cat-rods-bars.jpg",
+    image: "/images/prod-carbon-bars.jpg",
     shortDesc: "Solid round and hexagonal bars in carbon steel, mild steel, and chrome-moly alloy steel for general engineering and heavy tooling.",
     fullDesc: "We supply carbon and alloy steel bars designed for forging, heat treating, case hardening, and heavy industrial machinery.",
     materials: ["carbon-steel", "mild-steel", "alloy-steel"],
@@ -265,9 +276,10 @@ export const PRODUCTS = [
   // 2. Pipes & Tubes
   {
     id: "ss-pipes-tubes",
-    slug: "stainless-steel-pipes-tubes",
+    slug: "stainless-steel-pipes-tubes-manufacturer-india",
+    oldSlug: "stainless-steel-pipes-tubes",
     name: "Stainless Steel Pipes & Tubes",
-    categorySlug: "pipes-tubes",
+    categorySlug: "pipes-tubes-manufacturer-supplier-india",
     categoryName: "Pipes & Tubes",
     image: "/images/cat-pipes-tubes.jpg",
     shortDesc: "Seamless and welded stainless steel industrial pipes and instrumentation tubes in standard schedules and precise wall thicknesses.",
@@ -286,11 +298,12 @@ export const PRODUCTS = [
   },
   {
     id: "carbon-alloy-steel-pipes",
-    slug: "carbon-alloy-steel-pipes",
+    slug: "carbon-alloy-steel-seamless-pipes-india",
+    oldSlug: "carbon-alloy-steel-pipes",
     name: "Carbon & Alloy Steel High Pressure Pipes",
-    categorySlug: "pipes-tubes",
+    categorySlug: "pipes-tubes-manufacturer-supplier-india",
     categoryName: "Pipes & Tubes",
-    image: "/images/hero-1.jpg",
+    image: "/images/prod-carbon-alloy-pipes.jpg",
     shortDesc: "Heavy-wall seamless carbon steel and high-temperature alloy steel pipes for steam lines, boilers, and oil transportation.",
     fullDesc: "Engineered to withstand high operational temperatures and steam pressures in thermal power plants and oil distribution lines.",
     materials: ["carbon-steel", "mild-steel", "alloy-steel"],
@@ -306,11 +319,12 @@ export const PRODUCTS = [
   },
   {
     id: "nickel-cupro-tubes",
-    slug: "nickel-copper-nickel-tubes",
+    slug: "nickel-copper-nickel-tubes-supplier-india",
+    oldSlug: "nickel-copper-nickel-tubes",
     name: "Nickel Alloy & Copper Nickel Pipes & Tubes",
-    categorySlug: "pipes-tubes",
+    categorySlug: "pipes-tubes-manufacturer-supplier-india",
     categoryName: "Pipes & Tubes",
-    image: "/images/hero-4.jpg",
+    image: "/images/prod-cupro-tubes.jpg",
     shortDesc: "Corrosion-proof alloy tubing in Inconel, Monel, Hastelloy, and Copper Nickel 90/10 & 70/30 for marine and acidic fluid service.",
     fullDesc: "PAWAN STEEL ALLOYS provides high performance specialty alloy tubes for seawater cooling, brine evaporation, and aggressive acid lines.",
     materials: ["monel", "inconel", "hastelloy", "copper-nickel", "titanium", "brass", "aluminium"],
@@ -328,9 +342,10 @@ export const PRODUCTS = [
   // 3. Sheets & Plates
   {
     id: "ss-sheets-plates",
-    slug: "stainless-steel-sheets-plates",
+    slug: "stainless-steel-sheets-plates-supplier-india",
+    oldSlug: "stainless-steel-sheets-plates",
     name: "Stainless Steel Sheets, Plates & Coils",
-    categorySlug: "sheets-plates",
+    categorySlug: "sheets-plates-supplier-india",
     categoryName: "Sheets & Plates",
     image: "/images/cat-sheets-plates.jpg",
     shortDesc: "Hot rolled and cold rolled stainless steel sheets, industrial plates, decorative mirror sheets, and chequered floor plates.",
@@ -349,11 +364,12 @@ export const PRODUCTS = [
   },
   {
     id: "alloy-carbon-plates",
-    slug: "alloy-carbon-nickel-plates",
+    slug: "boiler-quality-alloy-carbon-steel-plates-india",
+    oldSlug: "alloy-carbon-nickel-plates",
     name: "Alloy Steel, Carbon Steel & Nickel Alloy Plates",
-    categorySlug: "sheets-plates",
+    categorySlug: "sheets-plates-supplier-india",
     categoryName: "Sheets & Plates",
-    image: "/images/hero-3.jpg",
+    image: "/images/prod-boiler-plates.jpg",
     shortDesc: "Heavy industrial boiler quality plates, structural mild steel plates, and corrosion-resistant nickel alloy sheets.",
     fullDesc: "Supplied for heavy fabrication, reactor vessels, heat exchangers, and mining equipment with complete material test certificates.",
     materials: ["carbon-steel", "mild-steel", "alloy-steel", "monel", "inconel", "hastelloy", "titanium", "aluminium", "brass"],
@@ -371,9 +387,10 @@ export const PRODUCTS = [
   // 4. Flanges
   {
     id: "industrial-flanges",
-    slug: "industrial-pipe-flanges",
+    slug: "industrial-pipe-flanges-manufacturer-india",
+    oldSlug: "industrial-pipe-flanges",
     name: "Industrial Pipe Flanges (WNRF, SORF, BLRF)",
-    categorySlug: "flanges",
+    categorySlug: "industrial-flanges-manufacturer-india",
     categoryName: "Flanges",
     image: "/images/cat-flanges.jpg",
     shortDesc: "Comprehensive line of forged Slip-On, Weld Neck, Blind, Socket Weld, Lap Joint, and Threaded flanges in ASME and DIN standards.",
@@ -394,9 +411,10 @@ export const PRODUCTS = [
   // 5. Fasteners
   {
     id: "industrial-fasteners",
-    slug: "industrial-fasteners-bolts-nuts",
+    slug: "industrial-fasteners-bolts-nuts-manufacturer-india",
+    oldSlug: "industrial-fasteners-bolts-nuts",
     name: "Industrial Fasteners (Bolts, Nuts, Studs, Washers)",
-    categorySlug: "fasteners",
+    categorySlug: "industrial-fasteners-bolts-nuts-india",
     categoryName: "Fasteners",
     image: "/images/cat-fasteners.jpg",
     shortDesc: "High-integrity stainless steel, alloy steel, and nickel alloy heavy hex bolts, full-thread stud bolts, hex nuts, and washers.",
@@ -417,9 +435,10 @@ export const PRODUCTS = [
   // 6. Butt Weld Fittings
   {
     id: "butt-weld-fittings",
-    slug: "butt-weld-pipe-fittings",
+    slug: "butt-weld-pipe-fittings-manufacturer-india",
+    oldSlug: "butt-weld-pipe-fittings",
     name: "Butt Weld Fittings (Elbows, Tees, Reducers, Caps)",
-    categorySlug: "butt-weld-fittings",
+    categorySlug: "butt-weld-pipe-fittings-manufacturer-india",
     categoryName: "Butt Weld Fittings",
     image: "/images/cat-buttweld.jpg",
     shortDesc: "High-pressure seamless and welded butt weld elbows (90° & 45°), equal and reducing tees, concentric & eccentric reducers, stub ends, and pipe caps.",
@@ -440,9 +459,10 @@ export const PRODUCTS = [
   // 7. Forged Fittings
   {
     id: "forged-fittings",
-    slug: "high-pressure-forged-fittings",
+    slug: "high-pressure-forged-fittings-manufacturer-india",
+    oldSlug: "high-pressure-forged-fittings",
     name: "High Pressure Forged Fittings (Socket Weld & Screwed)",
-    categorySlug: "forged-fittings",
+    categorySlug: "forged-pipe-fittings-manufacturer-india",
     categoryName: "Forged Fittings",
     image: "/images/cat-forged.jpg",
     shortDesc: "Heavy-duty forged steel Class 3000, 6000, and 9000 socket weld and NPT/BSPT threaded elbows, tees, unions, couplings, and hex nipples.",
@@ -463,9 +483,10 @@ export const PRODUCTS = [
   // 8. Ferrule Fittings
   {
     id: "ferrule-fittings",
-    slug: "double-ferrule-tube-fittings",
+    slug: "double-ferrule-instrumentation-fittings-india",
+    oldSlug: "double-ferrule-tube-fittings",
     name: "Double Ferrule Instrumentation Fittings",
-    categorySlug: "ferrule-fittings",
+    categorySlug: "double-ferrule-tube-fittings-manufacturer-india",
     categoryName: "Ferrule Fittings",
     image: "/images/cat-ferrule.jpg",
     shortDesc: "Precision stainless steel and specialty alloy twin-ferrule compression tube fittings for leak-tight gas and hydraulic instrumentation systems.",
@@ -607,3 +628,123 @@ export const WHY_CHOOSE_US = [
     iconName: "Users",
   },
 ];
+
+// Helper: Convert grade string to clean URL-safe slug
+export function makeGradeSlug(gradeStr) {
+  if (!gradeStr) return '';
+  return String(gradeStr)
+    .toLowerCase()
+    .replace(/[/]/g, '-')
+    .replace(/[()]/g, '')
+    .replace(/[.&]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/[^a-z0-9-]/g, '')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
+// Helper: Match a grade string from a URL grade slug
+export function matchGradeFromSlug(grades, gradeSlug) {
+  if (!grades || !gradeSlug) return null;
+  const cleanTarget = gradeSlug.toLowerCase().replace(/[^a-z0-9]/g, '');
+
+  // 1. Exact slug match
+  const exact = grades.find((g) => makeGradeSlug(g) === gradeSlug.toLowerCase());
+  if (exact) return exact;
+
+  // 2. Normalized match
+  const normalized = grades.find((g) => {
+    const cleanG = g.toLowerCase().replace(/[^a-z0-9]/g, '');
+    return cleanG === cleanTarget;
+  });
+  if (normalized) return normalized;
+
+  // 3. Substring match
+  const substring = grades.find((g) => {
+    const cleanG = g.toLowerCase().replace(/[^a-z0-9]/g, '');
+    return cleanG.includes(cleanTarget) || cleanTarget.includes(cleanG);
+  });
+  if (substring) return substring;
+
+  return null;
+}
+
+// Helper: Decompose a combined slug like "stainless-steel-round-bars-manufactures-india-grade-316l"
+export function parseProductAndGradeSlug(slug) {
+  if (!slug) return { productSlug: '', gradeSlug: null };
+  const clean = String(slug).toLowerCase().trim();
+  const marker = '-grade-';
+  const idx = clean.indexOf(marker);
+  if (idx !== -1) {
+    return {
+      productSlug: clean.substring(0, idx),
+      gradeSlug: clean.substring(idx + marker.length),
+    };
+  }
+  return { productSlug: clean, gradeSlug: null };
+}
+
+// Helper: Intelligent Product Lookup supporting SEO slugs, legacy slugs, IDs, and -grade- suffixes
+export function findProduct(identifier) {
+  if (!identifier) return null;
+  const clean = String(identifier).toLowerCase().trim();
+  const { productSlug } = parseProductAndGradeSlug(clean);
+
+  return PRODUCTS.find((p) => {
+    const pSlug = p.slug.toLowerCase();
+    const pOld = p.oldSlug ? p.oldSlug.toLowerCase() : '';
+    const pId = p.id.toLowerCase();
+    const pName = p.name.toLowerCase();
+
+    // Check direct match or base slug match
+    return (
+      pSlug === clean ||
+      pSlug === productSlug ||
+      pOld === clean ||
+      pOld === productSlug ||
+      pId === clean ||
+      pId === productSlug ||
+      pName === clean ||
+      // Support alternate spelling "manufactures" vs "manufacturer"
+      pSlug.replace('manufacturer', 'manufactures') === clean ||
+      pSlug.replace('manufacturer', 'manufactures') === productSlug ||
+      pSlug.replace('manufactures', 'manufacturer') === clean ||
+      pSlug.replace('manufactures', 'manufacturer') === productSlug
+    );
+  }) || null;
+}
+
+// Helper: Intelligent Category Lookup supporting SEO slugs, legacy slugs, and IDs
+export function findCategory(identifier) {
+  if (!identifier) return null;
+  const clean = String(identifier).toLowerCase().trim();
+  return CATEGORIES.find(
+    (c) =>
+      c.slug.toLowerCase() === clean ||
+      (c.oldSlug && c.oldSlug.toLowerCase() === clean) ||
+      c.id.toLowerCase() === clean ||
+      c.title.toLowerCase() === clean ||
+      c.slug.toLowerCase().replace('manufacturer', 'manufactures') === clean ||
+      c.slug.toLowerCase().replace('manufactures', 'manufacturer') === clean
+  ) || null;
+}
+
+// Helper: Intelligent Material Lookup supporting SEO slugs, legacy slugs, IDs, and -grade- suffixes
+export function findMaterial(identifier) {
+  if (!identifier) return null;
+  const clean = String(identifier).toLowerCase().trim();
+  const { productSlug: materialSlug } = parseProductAndGradeSlug(clean);
+
+  return MATERIALS.find(
+    (m) =>
+      m.slug.toLowerCase() === clean ||
+      m.slug.toLowerCase() === materialSlug ||
+      (m.oldSlug && (m.oldSlug.toLowerCase() === clean || m.oldSlug.toLowerCase() === materialSlug)) ||
+      m.id.toLowerCase() === clean ||
+      m.id.toLowerCase() === materialSlug ||
+      m.name.toLowerCase() === clean ||
+      m.name.toLowerCase() === materialSlug
+  ) || null;
+}
+
+

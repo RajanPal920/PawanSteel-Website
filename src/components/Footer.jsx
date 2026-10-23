@@ -200,7 +200,7 @@ export default function Footer() {
               {CATEGORIES.map((cat) => (
                 <li key={cat.id}>
                   <Link 
-                    to={`/products?category=${cat.slug}`} 
+                    to={`/products/${cat.slug}`} 
                     className="text-slate-400 hover:text-white transition-colors block truncate"
                     title={cat.title}
                   >

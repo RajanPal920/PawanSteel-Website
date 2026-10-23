@@ -150,7 +150,7 @@ export default function AboutPage({ onOpenQuoteModal }) {
                   <p className="text-xs text-slate-500 leading-relaxed mb-4">{cat.shortDesc}</p>
                 </div>
                 <Link
-                  to={`/products?category=${cat.slug}`}
+                  to={`/products/${cat.slug}`}
                   className="text-xs font-bold text-[#D71932] hover:text-[#B51226] flex items-center gap-1"
                 >
                   <span>View Specifications</span>

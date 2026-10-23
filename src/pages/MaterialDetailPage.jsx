@@ -1,37 +1,131 @@
-import React, { useMemo } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import React, { useState, useMemo, useEffect, useCallback } from 'react';
+import { useParams, Link, useSearchParams, useNavigate } from 'react-router-dom';
 import { 
   ChevronRight, 
   ArrowLeft, 
   ShieldCheck, 
   CheckCircle2, 
-  MessageCircle, 
   Phone, 
   Mail, 
   Layers, 
-  HelpCircle 
+  HelpCircle,
+  FileText,
+  Award,
+  ExternalLink,
+  Sparkles,
+  Info
 } from 'lucide-react';
-import { MATERIALS, PRODUCTS } from '../data/productsData';
+import { 
+  MATERIALS, 
+  PRODUCTS, 
+  findMaterial, 
+  makeGradeSlug, 
+  parseProductAndGradeSlug, 
+  matchGradeFromSlug 
+} from '../data/productsData';
+import { getGradeDetails } from '../data/gradesData';
 import { COMPANY_INFO } from '../data/companyData';
 import InquiryForm from '../components/InquiryForm';
+import GradeSpecModal from '../components/GradeSpecModal';
+import WhatsAppIcon from '../components/WhatsAppIcon';
 
 export default function MaterialDetailPage({ onOpenQuoteModal }) {
   const { slug } = useParams();
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const initialGradeParam = searchParams.get('grade');
 
-  const material = useMemo(() => {
-    return MATERIALS.find((m) => m.slug === slug);
+  // Deconstruct slug if it contains -grade- (e.g. stainless-steel-grade-316-316l)
+  const { productSlug: materialSlug, gradeSlug: urlGradeSlug } = useMemo(() => {
+    return parseProductAndGradeSlug(slug);
   }, [slug]);
 
-  // Dynamically filter ONLY products that belong to this material!
+  const material = useMemo(() => {
+    return findMaterial(slug);
+  }, [slug]);
+
+  // Resolve active grade based on URL slug or query param
+  const resolveActiveGrade = useCallback(() => {
+    if (!material || !material.grades || material.grades.length === 0) return null;
+
+    // 1. Grade specified in URL slug (-grade-316l)
+    if (urlGradeSlug) {
+      const matched = matchGradeFromSlug(material.grades, urlGradeSlug);
+      if (matched) return matched;
+    }
+
+    // 2. Grade specified in query parameter (?grade=316L)
+    if (initialGradeParam) {
+      const matchedParam = matchGradeFromSlug(material.grades, initialGradeParam) || initialGradeParam;
+      return matchedParam;
+    }
+
+    // 3. Fallback to first available grade
+    return material.grades[0];
+  }, [material, urlGradeSlug, initialGradeParam]);
+
+  // Selected grade state for technical inspection
+  const [selectedGrade, setSelectedGrade] = useState(() => resolveActiveGrade());
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalGrade, setModalGrade] = useState(null);
+
+  // Sync selectedGrade when slug, material, or URL grade changes
+  useEffect(() => {
+    if (material && material.grades && material.grades.length > 0) {
+      const targetGrade = resolveActiveGrade();
+      if (targetGrade && targetGrade !== selectedGrade) {
+        setSelectedGrade(targetGrade);
+      }
+    }
+  }, [slug, material, urlGradeSlug, initialGradeParam, resolveActiveGrade]);
+
+  // Dynamic SEO Document Title
+  useEffect(() => {
+    if (material) {
+      if (selectedGrade) {
+        document.title = `${material.name} (Grade ${selectedGrade}) Supplier & Stockist India | Pawan Steel Alloys`;
+      } else {
+        document.title = `${material.name} Supplier & Stockist India | Pawan Steel Alloys`;
+      }
+    }
+  }, [material, selectedGrade]);
+
+  // Active grade technical details
+  const activeGrade = selectedGrade || (material?.grades?.[0] || null);
+
+  const activeGradeData = useMemo(() => {
+    if (!activeGrade) return null;
+    return getGradeDetails(activeGrade);
+  }, [activeGrade]);
+
+  // Handle grade click: Update local state AND update browser URL slug dynamically
+  const handleGradeClick = (gradeName) => {
+    setSelectedGrade(gradeName);
+    if (material) {
+      const gSlug = makeGradeSlug(gradeName);
+      navigate(`/materials/${material.slug}-grade-${gSlug}`, { replace: false });
+    }
+  };
+
+  const handleOpenGradeModal = (gradeName) => {
+    setModalGrade(gradeName);
+    setIsModalOpen(true);
+  };
+
+  // Dynamically filter ONLY products that belong to this material
   const matchingProducts = useMemo(() => {
     if (!material) return [];
-    return PRODUCTS.filter((p) => p.materials.includes(material.slug));
+    return PRODUCTS.filter((p) => 
+      p.materials.includes(material.slug) || 
+      (material.oldSlug && p.materials.includes(material.oldSlug)) ||
+      p.materials.includes(material.id)
+    );
   }, [material]);
 
   if (!material) {
     return (
       <div className="min-h-[60vh] flex items-center justify-center bg-[#F3F7FB] px-4 py-16">
-        <div className="max-w-md w-full bg-white p-8 rounded-xl border border-slate-200 shadow-sm text-center space-y-4">
+        <div className="max-w-md w-full bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-center space-y-4">
           <HelpCircle className="w-12 h-12 text-[#D71932] mx-auto" />
           <h1 className="text-xl font-bold text-[#123467]">Material Grade Not Found</h1>
           <p className="text-sm text-slate-500">
@@ -40,7 +134,7 @@ export default function MaterialDetailPage({ onOpenQuoteModal }) {
           <div className="pt-2">
             <Link
               to="/materials"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#123467] hover:bg-[#1B478A] text-white text-xs font-bold rounded-md"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#123467] hover:bg-[#1B478A] text-white text-xs font-bold rounded-lg shadow-sm"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Back to Materials</span>
@@ -52,7 +146,16 @@ export default function MaterialDetailPage({ onOpenQuoteModal }) {
   }
 
   return (
-    <div className="w-full bg-[#F3F7FB] pb-16">
+    <div className="w-full bg-[#F3F7FB] pb-16 min-h-screen">
+      
+      {/* Grade Details Interactive Modal */}
+      <GradeSpecModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        gradeInput={modalGrade || activeGrade}
+        onOpenQuoteModal={onOpenQuoteModal}
+      />
+
       {/* Header Banner */}
       <section className="bg-[#123467] text-white py-14 relative overflow-hidden border-b-4 border-[#D71932]">
         <div className="absolute inset-0 bg-gradient-to-r from-[#0A1F3D] via-[#123467] to-[#1B478A] opacity-90" />
@@ -74,11 +177,11 @@ export default function MaterialDetailPage({ onOpenQuoteModal }) {
 
       {/* Breadcrumb Bar */}
       <div className="bg-white border-b border-slate-200 py-3">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2 text-xs text-slate-500">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2 text-xs text-slate-500 overflow-x-auto whitespace-nowrap">
           <Link to="/" className="hover:text-[#D71932] transition-colors">Home</Link>
-          <ChevronRight className="w-3 h-3 text-slate-400" />
+          <ChevronRight className="w-3 h-3 text-slate-400 flex-shrink-0" />
           <Link to="/materials" className="hover:text-[#D71932] transition-colors">Materials</Link>
-          <ChevronRight className="w-3 h-3 text-slate-400" />
+          <ChevronRight className="w-3 h-3 text-slate-400 flex-shrink-0" />
           <span className="text-slate-800 font-semibold">{material.name}</span>
         </div>
       </div>
@@ -88,71 +191,197 @@ export default function MaterialDetailPage({ onOpenQuoteModal }) {
         
         {/* Material Characteristics Overview Box */}
         <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8 mb-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
-            <div className="lg:col-span-8 space-y-4">
-              <h2 className="text-2xl font-bold text-[#123467]">
-                About {material.name} Metallurgy
-              </h2>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                {material.shortDesc}
-              </p>
+            <div className="lg:col-span-8 space-y-5">
+              <div>
+                <h2 className="text-2xl font-bold text-[#123467]">
+                  About {material.name} Metallurgy
+                </h2>
+                <p className="text-sm text-slate-600 leading-relaxed mt-2">
+                  {material.shortDesc}
+                </p>
+              </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-lg">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
                   <span className="text-xs font-bold uppercase text-slate-500 block mb-1">
                     Key Performance Attributes
                   </span>
-                  <p className="text-xs font-semibold text-slate-800">
+                  <p className="text-xs font-semibold text-slate-800 leading-relaxed">
                     {material.characteristics}
                   </p>
                 </div>
 
-                <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-lg">
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
                   <span className="text-xs font-bold uppercase text-slate-500 block mb-1">
                     Common Industrial Uses
                   </span>
-                  <p className="text-xs text-slate-700">
+                  <p className="text-xs text-slate-700 leading-relaxed">
                     {material.commonUses}
                   </p>
                 </div>
               </div>
 
-              {/* Grades Pills */}
+              {/* Clickable Grades Pills */}
               <div className="pt-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">
-                  Stocked & Sourced Grades in {material.name}:
-                </span>
-                <div className="flex flex-wrap gap-1.5">
-                  {material.grades.map((grade, idx) => (
-                    <span
-                      key={idx}
-                      className="text-xs font-mono font-medium px-3 py-1 bg-slate-100 text-[#123467] border border-slate-300 rounded-md"
-                    >
-                      {grade}
-                    </span>
-                  ))}
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
+                    <Sparkles className="w-3.5 h-3.5 text-[#D71932]" />
+                    <span>Stocked & Sourced Grades in {material.name} (Click Any Grade):</span>
+                  </span>
+                  <span className="text-[11px] text-slate-400">Click to view specs</span>
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {material.grades.map((grade, idx) => {
+                    const isSelected = activeGrade === grade;
+                    return (
+                      <button
+                        key={idx}
+                        type="button"
+                        onClick={() => handleGradeClick(grade)}
+                        className={`text-xs font-mono font-bold px-3 py-1.5 rounded-lg border transition-all duration-200 cursor-pointer flex items-center gap-1.5 ${
+                          isSelected
+                            ? 'bg-[#123467] text-white border-[#123467] shadow-sm transform scale-105 ring-2 ring-[#D71932]/30'
+                            : 'bg-slate-50 hover:bg-red-50 text-slate-700 hover:text-[#D71932] border-slate-300 hover:border-red-200'
+                        }`}
+                        title={`Click to view chemical composition and specs for ${grade}`}
+                      >
+                        <span>{grade}</span>
+                        <Info className={`w-3 h-3 ${isSelected ? 'text-red-400' : 'text-slate-400'}`} />
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             </div>
 
             {/* Inquire Card Right */}
-            <div className="lg:col-span-4 bg-[#123467] text-white p-6 rounded-xl border border-[#1B478A] shadow-sm space-y-4">
+            <div className="lg:col-span-4 bg-[#123467] text-white p-6 rounded-2xl border border-[#1B478A] shadow-md space-y-4">
               <h3 className="text-base font-bold">Inquire for {material.name}</h3>
               <p className="text-xs text-slate-300 leading-relaxed">
-                Need urgent stock check, cut pieces, or mill certificates for {material.name}? Contact our Mumbai sales desk.
+                Need urgent stock check, custom cutting, or test certificates for {material.name} {activeGrade ? `(${activeGrade})` : ''}? Contact our sales desk.
               </p>
               <button
-                onClick={() => onOpenQuoteModal && onOpenQuoteModal('', '', material.name)}
+                onClick={() => onOpenQuoteModal && onOpenQuoteModal('', '', activeGrade || material.name)}
                 type="button"
-                className="w-full py-2.5 px-4 bg-[#D71932] hover:bg-[#B51226] text-white text-xs font-bold rounded shadow transition"
+                className="w-full py-2.5 px-4 bg-[#D71932] hover:bg-[#B51226] text-white text-xs font-bold rounded-lg shadow transition transform hover:-translate-y-0.5"
               >
-                Request {material.name} Quote
+                Request {activeGrade || material.name} Quote
               </button>
+
+              <a
+                href={`https://wa.me/919833416144?text=${encodeURIComponent(`Hi Pawan Steel Alloys, I am inquiring about material: ${material.name}${activeGrade ? ` in grade ${activeGrade}` : ''}. Please confirm current price and availability.`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-2.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-lg shadow transition flex items-center justify-center gap-2 transform hover:-translate-y-0.5"
+              >
+                <WhatsAppIcon className="w-4 h-4 text-white" />
+                <span>WhatsApp Inquiry</span>
+              </a>
+
+              {activeGrade && (
+                <button
+                  onClick={() => handleOpenGradeModal(activeGrade)}
+                  type="button"
+                  className="w-full py-2 px-4 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold rounded-lg border border-white/20 transition flex items-center justify-center gap-1.5"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                  <span>Full Datasheet for {activeGrade}</span>
+                </button>
+              )}
             </div>
 
           </div>
         </div>
+
+        {/* ------------------------------------------------------------- */}
+        {/* INTERACTIVE GRADE METALLURGY SPECIFICATION SHEET              */}
+        {/* ------------------------------------------------------------- */}
+        {activeGradeData && (
+          <div className="bg-white rounded-2xl border-2 border-[#123467]/20 shadow-md p-6 sm:p-8 mb-10">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 mb-6 border-b border-slate-200">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-bold uppercase tracking-wider bg-[#123467] text-white px-2.5 py-0.5 rounded">
+                    Selected Grade Datasheet
+                  </span>
+                  <span className="text-xs font-mono font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
+                    {activeGradeData.uns}
+                  </span>
+                </div>
+                <h2 className="text-xl sm:text-2xl font-black text-[#123467]">
+                  {activeGradeData.grade} Technical Data
+                </h2>
+                <p className="text-xs sm:text-sm text-slate-600">
+                  {activeGradeData.overview}
+                </p>
+              </div>
+
+              <div className="flex-shrink-0 flex items-center gap-2">
+                <button
+                  onClick={() => handleOpenGradeModal(activeGrade)}
+                  type="button"
+                  className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-[#123467] text-xs font-bold rounded-lg border border-slate-300 transition flex items-center gap-1.5"
+                >
+                  <FileText className="w-3.5 h-3.5 text-[#D71932]" />
+                  <span>Full Datasheet</span>
+                </button>
+                <button
+                  onClick={() => onOpenQuoteModal && onOpenQuoteModal('', '', activeGradeData.grade)}
+                  type="button"
+                  className="px-4 py-2 bg-[#D71932] hover:bg-[#B51226] text-white text-xs font-bold rounded-lg shadow-sm transition"
+                >
+                  Inquire {activeGrade}
+                </button>
+              </div>
+            </div>
+
+            {/* Chemical & Mechanical Specification Tables */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              
+              {/* Chemical Analysis Table */}
+              <div className="border border-slate-200 rounded-xl overflow-hidden shadow-xs">
+                <div className="bg-slate-100 px-4 py-2.5 border-b border-slate-200 flex items-center justify-between">
+                  <span className="text-xs font-bold text-[#123467] uppercase tracking-wider flex items-center gap-1.5">
+                    <ShieldCheck className="w-4 h-4 text-[#D71932]" />
+                    Chemical Composition (% Weight)
+                  </span>
+                  <span className="text-[10px] text-slate-500 font-semibold">{activeGradeData.grade}</span>
+                </div>
+                <div className="divide-y divide-slate-100 bg-white">
+                  {activeGradeData.chemicalComposition.map((item, idx) => (
+                    <div key={idx} className="px-4 py-2 flex items-center justify-between text-xs hover:bg-slate-50">
+                      <span className="font-semibold text-slate-700">{item.element}</span>
+                      <span className="font-mono font-bold text-[#123467]">{item.value}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Mechanical Limits Table */}
+              <div className="border border-slate-200 rounded-xl overflow-hidden shadow-xs">
+                <div className="bg-slate-100 px-4 py-2.5 border-b border-slate-200 flex items-center justify-between">
+                  <span className="text-xs font-bold text-[#123467] uppercase tracking-wider flex items-center gap-1.5">
+                    <Award className="w-4 h-4 text-[#D71932]" />
+                    Mechanical Properties & Limits
+                  </span>
+                  <span className="text-[10px] text-slate-500 font-semibold">Specified Minimum</span>
+                </div>
+                <div className="divide-y divide-slate-100 bg-white">
+                  {activeGradeData.mechanicalProperties.map((item, idx) => (
+                    <div key={idx} className="px-4 py-2.5 flex items-center justify-between text-xs hover:bg-slate-50">
+                      <span className="font-semibold text-slate-700">{item.property}</span>
+                      <span className="font-mono font-bold text-[#D71932]">{item.value}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+          </div>
+        )}
 
         {/* Section: Products Available in this Material */}
         <div className="mb-12">
@@ -162,17 +391,16 @@ export default function MaterialDetailPage({ onOpenQuoteModal }) {
                 Products Supplied in {material.name}
               </h2>
               <p className="text-xs sm:text-sm text-slate-500 mt-1">
-                Showing all product configurations compatible with {material.name}.
+                Showing all product configurations manufactured and supplied in {material.name}.
               </p>
             </div>
-            <span className="text-xs font-bold px-3 py-1 bg-white border border-slate-200 rounded text-slate-700">
+            <span className="text-xs font-bold px-3 py-1 bg-white border border-slate-200 rounded-lg text-slate-700 shadow-xs">
               {matchingProducts.length} Product Formats
             </span>
           </div>
 
           {matchingProducts.length === 0 ? (
-            /* Requirement 8: If a material has no configured products yet, display a professional “Contact us for availability” message rather than unrelated products or a broken empty page. */
-            <div className="bg-white rounded-xl border border-slate-200 p-8 sm:p-12 text-center space-y-4">
+            <div className="bg-white rounded-2xl border border-slate-200 p-8 sm:p-12 text-center space-y-4">
               <div className="p-4 w-fit rounded-full bg-slate-100 text-slate-500 mx-auto">
                 <Layers className="w-8 h-8" />
               </div>
@@ -186,13 +414,13 @@ export default function MaterialDetailPage({ onOpenQuoteModal }) {
                 <button
                   onClick={() => onOpenQuoteModal && onOpenQuoteModal('', '', material.name)}
                   type="button"
-                  className="px-5 py-2.5 bg-[#D71932] hover:bg-[#B51226] text-white text-xs font-bold rounded-md shadow"
+                  className="px-5 py-2.5 bg-[#D71932] hover:bg-[#B51226] text-white text-xs font-bold rounded-lg shadow"
                 >
                   Contact Us For {material.name} Availability
                 </button>
                 <Link
                   to="/products"
-                  className="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-md"
+                  className="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg"
                 >
                   View General Catalogue
                 </Link>
@@ -203,18 +431,18 @@ export default function MaterialDetailPage({ onOpenQuoteModal }) {
               {matchingProducts.map((prod) => (
                 <div
                   key={prod.id}
-                  className="bg-white rounded-xl border border-slate-200 shadow-subtle hover:shadow-hover transition-all duration-300 overflow-hidden flex flex-col justify-between group"
+                  className="bg-white rounded-2xl border border-slate-200 shadow-subtle hover:shadow-hover transition-all duration-300 overflow-hidden flex flex-col justify-between group transform hover:-translate-y-1.5"
                 >
                   <div>
-                    <div className="relative h-48 w-full bg-slate-100 overflow-hidden">
+                    <div className="relative h-48 w-full bg-slate-100 overflow-hidden border-b border-slate-100">
                       <img
                         src={prod.image}
-                        alt={prod.name}
+                        alt={`${prod.name} in ${material.name}`}
                         className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                         loading="lazy"
                       />
                       <div className="absolute top-3 left-3">
-                        <span className="text-[11px] font-bold bg-[#123467] text-white px-2.5 py-1 rounded">
+                        <span className="text-[11px] font-bold bg-[#123467] text-white px-2.5 py-1 rounded shadow-sm">
                           {prod.categoryName}
                         </span>
                       </div>
@@ -235,30 +463,34 @@ export default function MaterialDetailPage({ onOpenQuoteModal }) {
                           Applicable Grades:
                         </span>
                         <div className="flex flex-wrap gap-1">
-                          {prod.grades.slice(0, 3).map((g, i) => (
-                            <span key={i} className="text-[10px] font-mono bg-slate-100 px-1.5 py-0.5 rounded text-slate-700">
+                          {prod.grades.slice(0, 4).map((g, i) => (
+                            <Link 
+                              key={i} 
+                              to={`/products/${prod.slug}-grade-${makeGradeSlug(g)}`}
+                              className="text-[10px] font-mono bg-slate-100 hover:bg-[#123467] hover:text-white transition-colors px-1.5 py-0.5 rounded text-slate-700 border border-slate-200"
+                            >
                               {g}
-                            </span>
+                            </Link>
                           ))}
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <div className="p-5 pt-0 flex items-center justify-between border-t border-slate-50">
+                  <div className="p-5 pt-0 flex items-center justify-between border-t border-slate-50 mt-2">
                     <Link
                       to={`/products/${prod.slug}`}
-                      className="text-xs font-bold text-[#123467] hover:text-[#D71932] flex items-center gap-1"
+                      className="text-xs font-bold text-[#123467] group-hover:text-[#D71932] transition-colors flex items-center gap-1"
                     >
                       <span>Specifications</span>
                       <ChevronRight className="w-3.5 h-3.5" />
                     </Link>
-
                     <button
                       onClick={() => onOpenQuoteModal && onOpenQuoteModal(prod.name, prod.categoryName, material.name)}
-                      className="px-3 py-1 bg-[#D71932] hover:bg-[#B51226] text-white text-xs font-bold rounded"
+                      type="button"
+                      className="px-3 py-1.5 bg-[#D71932] hover:bg-[#B51226] text-white text-xs font-bold rounded shadow-xs transition"
                     >
-                      Get Quote
+                      Inquire
                     </button>
                   </div>
                 </div>
@@ -267,24 +499,20 @@ export default function MaterialDetailPage({ onOpenQuoteModal }) {
           )}
         </div>
 
-        {/* Dedicated Inquiry Form for this Material */}
-        <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm">
+        {/* Form Requisition Section */}
+        <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm mb-12">
           <div className="mb-6 pb-4 border-b border-slate-100">
             <h2 className="text-xl font-bold text-[#123467]">
-              Submit Inquiry for {material.name}
+              Submit Bill of Materials for {material.name}
             </h2>
             <p className="text-xs text-slate-500 mt-1">
-              Specify your required form (pipes, bars, sheets, flanges, fittings), dimensions, and quantity.
+              Provide size, schedule, wall thickness, or quantity for immediate quotation response.
             </p>
           </div>
-
-          <InquiryForm
-            initialMaterial={material.name}
-          />
+          <InquiryForm initialMaterial={material.name} />
         </div>
 
       </div>
     </div>
   );
 }
-

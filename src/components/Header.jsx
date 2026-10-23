@@ -213,7 +213,7 @@ export default function Header({ onOpenQuoteModal }) {
                       {CATEGORIES.map((cat) => (
                         <Link
                           key={cat.id}
-                          to={`/products?category=${cat.slug}`}
+                          to={`/products/${cat.slug}`}
                           className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-white/10 transition-all group border border-transparent hover:border-white/15"
                         >
                           <img
@@ -538,7 +538,7 @@ export default function Header({ onOpenQuoteModal }) {
                   {CATEGORIES.map((cat) => (
                     <Link
                       key={cat.id}
-                      to={`/products?category=${cat.slug}`}
+                      to={`/products/${cat.slug}`}
                       onClick={() => setMobileMenuOpen(false)}
                       className="flex items-center justify-between px-2.5 py-1.5 text-xs font-semibold text-slate-700 hover:text-[#D71932] hover:bg-red-50/60 rounded transition-colors"
                     >

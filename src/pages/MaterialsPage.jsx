@@ -8,7 +8,7 @@ import {
   Flame, 
   Layers 
 } from 'lucide-react';
-import { MATERIALS, PRODUCTS } from '../data/productsData';
+import { MATERIALS, PRODUCTS, makeGradeSlug } from '../data/productsData';
 
 export default function MaterialsPage({ onOpenQuoteModal }) {
   return (
@@ -91,15 +91,20 @@ export default function MaterialsPage({ onOpenQuoteModal }) {
                     </div>
 
                     <div>
-                      <strong className="text-slate-700">Available Grades: </strong>
-                      <div className="flex flex-wrap gap-1 mt-1.5">
+                      <div className="flex items-center justify-between mb-1.5">
+                        <strong className="text-slate-700">Available Grades: </strong>
+                        <span className="text-[10px] text-slate-400 font-medium">Click to inspect</span>
+                      </div>
+                      <div className="flex flex-wrap gap-1">
                         {material.grades.map((grade, idx) => (
-                          <span
+                          <Link
                             key={idx}
-                            className="text-[10px] font-mono px-2 py-0.5 bg-slate-50 border border-slate-200 rounded text-slate-700"
+                            to={`/materials/${material.slug}-grade-${makeGradeSlug(grade)}`}
+                            className="text-[10px] font-mono px-2 py-0.5 bg-slate-50 hover:bg-[#123467] hover:text-white transition-all text-slate-700 rounded border border-slate-200 hover:border-[#123467] shadow-2xs hover:shadow-xs cursor-pointer inline-block"
+                            title={`Inspect ${grade} metallurgy specs for ${material.name}`}
                           >
                             {grade}
-                          </span>
+                          </Link>
                         ))}
                       </div>
                     </div>

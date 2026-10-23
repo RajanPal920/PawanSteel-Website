@@ -9,9 +9,12 @@ import {
   Layers, 
   X,
   FileCheck,
-  CheckCircle2
+  CheckCircle2,
+  Sparkles,
+  ExternalLink
 } from 'lucide-react';
-import { CATEGORIES, MATERIALS, PRODUCTS } from '../data/productsData';
+import { CATEGORIES, MATERIALS, PRODUCTS, findCategory, makeGradeSlug } from '../data/productsData';
+import WhatsAppIcon from '../components/WhatsAppIcon';
 
 export default function ProductsPage({ onOpenQuoteModal }) {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -60,29 +63,73 @@ export default function ProductsPage({ onOpenQuoteModal }) {
     setSearchParams({});
   };
 
-  // Filter products dynamically
-  const filteredProducts = useMemo(() => {
-    return PRODUCTS.filter((item) => {
-      // 1. Search filter
-      const matchesSearch = 
-        !searchTerm.trim() ||
-        item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.shortDesc.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.grades.some((g) => g.toLowerCase().includes(searchTerm.toLowerCase()));
+  // Filter the 8 categories and their nested related products dynamically
+  const filteredCategories = useMemo(() => {
+    const term = searchTerm.trim().toLowerCase();
 
-      // 2. Category filter
-      const matchesCategory = 
-        selectedCategory === 'all' || 
-        item.categorySlug === selectedCategory;
+    return CATEGORIES.map((category) => {
+      // Find all products that belong to this category
+      const allCategoryProducts = PRODUCTS.filter((p) => 
+        p.categorySlug === category.slug || 
+        p.categorySlug === category.oldSlug || 
+        p.categorySlug === category.id
+      );
 
-      // 3. Material filter
-      const matchesMaterial = 
-        selectedMaterial === 'all' || 
-        item.materials.includes(selectedMaterial);
+      // Filter products by material if selected
+      const materialFilteredProducts = allCategoryProducts.filter((p) => {
+        if (selectedMaterial === 'all') return true;
+        return p.materials.includes(selectedMaterial);
+      });
 
-      return matchesSearch && matchesCategory && matchesMaterial;
-    });
+      // Filter products by search term if typed
+      const searchMatchedProducts = materialFilteredProducts.filter((p) => {
+        if (!term) return true;
+        return (
+          p.name.toLowerCase().includes(term) ||
+          p.shortDesc.toLowerCase().includes(term) ||
+          p.grades.some((g) => g.toLowerCase().includes(term))
+        );
+      });
+
+      // Category matches if:
+      // 1. Search term matches category title, description, or highlights
+      const catMatchesSearch = !term ||
+        category.title.toLowerCase().includes(term) ||
+        category.shortDesc.toLowerCase().includes(term) ||
+        category.highlights.some((h) => h.toLowerCase().includes(term));
+
+      // 2. Category matches selectedCategory filter
+      const catObj = selectedCategory !== 'all' ? findCategory(selectedCategory) : null;
+      const catMatchesFilter = selectedCategory === 'all' ||
+        category.slug === selectedCategory ||
+        category.id === selectedCategory ||
+        (catObj && (category.slug === catObj.slug || category.id === catObj.id));
+
+      // 3. Material filter match: Category has products matching the material
+      const hasProductsForMaterial = selectedMaterial === 'all' || materialFilteredProducts.length > 0;
+
+      // Products to display:
+      // If there are search-matched products, show them.
+      // Otherwise if the category itself matched the search (or no search), show all material-filtered products.
+      const productsToDisplay = searchMatchedProducts.length > 0
+        ? searchMatchedProducts
+        : (catMatchesSearch ? materialFilteredProducts : []);
+
+      const isCategoryVisible = catMatchesFilter && hasProductsForMaterial && (catMatchesSearch || searchMatchedProducts.length > 0);
+
+      return {
+        ...category,
+        relatedProducts: productsToDisplay,
+        totalProductCount: allCategoryProducts.length,
+        isVisible: isCategoryVisible,
+      };
+    }).filter((c) => c.isVisible);
   }, [searchTerm, selectedCategory, selectedMaterial]);
+
+  // Total matching products count across visible categories
+  const totalMatchingProducts = useMemo(() => {
+    return filteredCategories.reduce((acc, cat) => acc + cat.relatedProducts.length, 0);
+  }, [filteredCategories]);
 
   return (
     <div className="w-full bg-[#F3F7FB] min-h-screen">
@@ -93,13 +140,13 @@ export default function ProductsPage({ onOpenQuoteModal }) {
           <div className="max-w-3xl space-y-3">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-red-600/90 text-white text-xs font-bold uppercase tracking-wider rounded-sm backdrop-blur-sm">
               <Layers className="w-3.5 h-3.5" />
-              <span>Complete Product Catalogue</span>
+              <span>All 8 Product Categories</span>
             </span>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
               Industrial Metals & Fittings Catalogue
             </h1>
             <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-              Explore our full stock range of stainless steel, carbon steel, and specialty alloy pipes, tubes, sheets, plates, round bars, flanges, fasteners, and precision fittings.
+              Explore our 8 primary industrial product categories. Each category contains precision-manufactured sub-products, ready stock specifications, and metallurgical grades.
             </p>
           </div>
         </div>
@@ -128,7 +175,7 @@ export default function ProductsPage({ onOpenQuoteModal }) {
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                placeholder="Search products by name, grade (e.g., 316L, Inconel, Flange)..."
+                placeholder="Search by category, product name, or grade (e.g., 316L, Flange)..."
                 className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#D71932] focus:bg-white transition"
               />
               {searchTerm && (
@@ -173,7 +220,7 @@ export default function ProductsPage({ onOpenQuoteModal }) {
               </select>
             </div>
 
-            {/* Reset Filters */}
+            {/* Reset Filters / Count Info */}
             <div className="md:col-span-1 text-center md:text-right">
               {(searchTerm || selectedCategory !== 'all' || selectedMaterial !== 'all') ? (
                 <button
@@ -184,8 +231,8 @@ export default function ProductsPage({ onOpenQuoteModal }) {
                   <span>Reset</span>
                 </button>
               ) : (
-                <span className="text-xs text-slate-400 font-medium">
-                  {filteredProducts.length} items
+                <span className="text-xs text-slate-500 font-bold whitespace-nowrap">
+                  {filteredCategories.length} Categories
                 </span>
               )}
             </div>
@@ -199,11 +246,11 @@ export default function ProductsPage({ onOpenQuoteModal }) {
               onClick={() => handleCategorySelect('all')}
               className={`text-xs px-3 py-1.5 rounded-md font-semibold transition ${
                 selectedCategory === 'all'
-                  ? 'bg-[#123467] text-white'
+                  ? 'bg-[#123467] text-white shadow-xs'
                   : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
               }`}
             >
-              All
+              All (8)
             </button>
             {CATEGORIES.map((cat) => (
               <button
@@ -221,15 +268,17 @@ export default function ProductsPage({ onOpenQuoteModal }) {
           </div>
         </div>
 
-        {/* Product Cards Grid */}
-        {filteredProducts.length === 0 ? (
+        {/* ------------------------------------------------------------- */}
+        {/* 8 PRODUCT CATEGORY CARDS WITH NESTED RELATED PRODUCTS         */}
+        {/* ------------------------------------------------------------- */}
+        {filteredCategories.length === 0 ? (
           <div className="text-center py-16 bg-white rounded-xl border border-slate-200 p-8 space-y-4">
             <div className="p-4 w-fit rounded-full bg-slate-100 text-slate-400 mx-auto">
               <Search className="w-8 h-8" />
             </div>
-            <h2 className="text-lg font-bold text-[#123467]">No Products Found</h2>
+            <h2 className="text-lg font-bold text-[#123467]">No Product Categories Found</h2>
             <p className="text-sm text-slate-500 max-w-md mx-auto">
-              We couldn't find any products matching your active filters. Pawan Steel Alloys supplies custom specifications upon request.
+              We couldn't find any products or categories matching your active filters. Pawan Steel Alloys supplies custom specifications upon request.
             </p>
             <div className="pt-2 flex flex-wrap justify-center gap-3">
               <button
@@ -247,87 +296,171 @@ export default function ProductsPage({ onOpenQuoteModal }) {
             </div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {filteredProducts.map((product) => (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {filteredCategories.map((cat, catIndex) => (
               <div
-                key={product.id}
-                className="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-subtle hover:shadow-hover transition-all duration-300 flex flex-col group transform hover:-translate-y-1"
+                key={cat.id}
+                className="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-subtle hover:shadow-hover transition-all duration-300 flex flex-col justify-between group transform hover:-translate-y-1"
               >
-                {/* Product Image */}
-                <div className="relative h-56 w-full bg-slate-100 overflow-hidden">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
-                    <span className="text-[11px] font-bold bg-[#123467]/90 text-white px-2.5 py-1 rounded backdrop-blur-sm">
-                      {product.categoryName}
-                    </span>
-                  </div>
-                  <div className="absolute bottom-3 right-3">
-                    <span className="text-[10px] font-semibold bg-white/90 text-slate-800 px-2 py-0.5 rounded shadow-sm backdrop-blur-sm">
-                      {product.inStockStatus}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Card Info */}
-                <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-                  <div>
-                    <h2 className="text-lg font-bold text-[#123467] group-hover:text-[#D71932] transition-colors leading-snug">
-                      <Link to={`/products/${product.slug}`}>
-                        {product.name}
-                      </Link>
-                    </h2>
-                    
-                    <p className="text-xs text-slate-600 line-clamp-3 leading-relaxed mt-2">
-                      {product.shortDesc}
-                    </p>
-
-                    {/* Available Grade Chips */}
-                    <div className="mt-4 pt-3 border-t border-slate-100">
-                      <span className="text-[11px] font-semibold text-slate-500 block mb-1.5">
-                        Key Available Grades:
+                <div>
+                  {/* Category Clean Image Banner */}
+                  <div className="relative h-60 w-full bg-slate-100 overflow-hidden border-b border-slate-100">
+                    <img
+                      src={cat.image}
+                      alt={`${cat.title} manufacturer India`}
+                      className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div className="absolute top-3 left-3 flex items-center gap-2">
+                      <span className="text-xs font-bold bg-[#123467]/95 text-white px-3 py-1 rounded-md shadow-sm backdrop-blur-sm">
+                        Category {catIndex + 1} of 8
                       </span>
-                      <div className="flex flex-wrap gap-1">
-                        {product.grades.slice(0, 4).map((grade, idx) => (
-                          <span
-                            key={idx}
-                            className="text-[10px] font-mono px-2 py-0.5 bg-slate-100 text-slate-700 rounded border border-slate-200"
-                          >
-                            {grade}
-                          </span>
-                        ))}
-                        {product.grades.length > 4 && (
-                          <span className="text-[10px] px-1 text-slate-400 self-center">
-                            +{product.grades.length - 4} more
-                          </span>
-                        )}
-                      </div>
+                    </div>
+                    <div className="absolute bottom-3 right-3">
+                      <span className="text-xs font-semibold bg-white/95 text-slate-800 px-2.5 py-1 rounded-md shadow-sm border border-slate-200">
+                        {cat.relatedProducts.length} Standard Configurations
+                      </span>
                     </div>
                   </div>
 
-                  {/* Action Links */}
-                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
-                    <Link
-                      to={`/products/${product.slug}`}
-                      className="inline-flex items-center text-xs font-bold text-[#123467] hover:text-[#D71932] transition-colors"
+                  {/* Category Info Header */}
+                  <div className="p-6 pb-4">
+                    <h2 className="text-2xl font-black text-[#123467] group-hover:text-[#D71932] transition-colors leading-tight">
+                      <Link to={`/products/${cat.slug}`}>
+                        {cat.title}
+                      </Link>
+                    </h2>
+
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mt-2.5">
+                      {cat.shortDesc}
+                    </p>
+
+                    {/* Category Highlights */}
+                    {cat.highlights && (
+                      <div className="flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-slate-100">
+                        {cat.highlights.map((h, i) => (
+                          <span
+                            key={i}
+                            className="text-[11px] font-medium bg-slate-100 text-slate-700 px-2.5 py-0.5 rounded-full border border-slate-200"
+                          >
+                            {h}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* ------------------------------------------------------------- */}
+                    {/* RELATED PRODUCTS SECTION UNDER THIS CATEGORY CARD             */}
+                    {/* ------------------------------------------------------------- */}
+                    <div className="mt-5 pt-4 border-t border-slate-100 bg-slate-50/80 p-4 rounded-xl space-y-3">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-bold uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
+                          <Sparkles className="w-3.5 h-3.5 text-[#D71932]" />
+                          <span>Related Products ({cat.relatedProducts.length}):</span>
+                        </span>
+                        <Link
+                          to={`/products/${cat.slug}`}
+                          className="text-xs font-bold text-[#D71932] hover:underline flex items-center gap-1"
+                        >
+                          <span>Category Showcase</span>
+                          <ChevronRight className="w-3 h-3" />
+                        </Link>
+                      </div>
+
+                      <div className="space-y-2.5">
+                        {cat.relatedProducts.map((subProd) => (
+                          <div
+                            key={subProd.id}
+                            className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-2xs hover:border-[#123467] transition-all flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between group/sub"
+                          >
+                            <div className="flex items-start sm:items-center gap-3 flex-1 min-w-0">
+                              <img
+                                src={subProd.image}
+                                alt={subProd.name}
+                                className="w-14 h-14 rounded-lg object-cover object-center border border-slate-200 flex-shrink-0 bg-slate-100"
+                                loading="lazy"
+                              />
+                              <div className="min-w-0 flex-1">
+                                <Link
+                                  to={`/products/${subProd.slug}`}
+                                  className="text-sm font-bold text-[#123467] group-hover/sub:text-[#D71932] transition leading-snug block truncate"
+                                >
+                                  {subProd.name}
+                                </Link>
+                                <p className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">
+                                  {subProd.shortDesc}
+                                </p>
+                                
+                                {/* Clickable Grade Pills */}
+                                <div className="flex flex-wrap gap-1 mt-1.5">
+                                  {subProd.grades.slice(0, 4).map((g, idx) => (
+                                    <Link
+                                      key={idx}
+                                      to={`/products/${subProd.slug}-grade-${makeGradeSlug(g)}`}
+                                      className="text-[10px] font-mono px-2 py-0.5 bg-slate-100 hover:bg-[#123467] hover:text-white text-slate-700 rounded transition border border-slate-200"
+                                      title={`Inspect ${g} grade specifications`}
+                                    >
+                                      {g}
+                                    </Link>
+                                  ))}
+                                  {subProd.grades.length > 4 && (
+                                    <Link
+                                      to={`/products/${subProd.slug}`}
+                                      className="text-[10px] text-[#D71932] hover:underline font-semibold self-center px-1"
+                                    >
+                                      +{subProd.grades.length - 4} more
+                                    </Link>
+                                  )}
+                                </div>
+                              </div>
+                            </div>
+
+                            <Link
+                              to={`/products/${subProd.slug}`}
+                              className="inline-flex items-center text-xs font-bold text-[#123467] group-hover/sub:text-[#D71932] transition whitespace-nowrap px-3 py-1.5 bg-slate-50 group-hover/sub:bg-red-50 rounded-lg border border-slate-200 group-hover/sub:border-red-200 flex-shrink-0 self-end sm:self-center"
+                            >
+                              <span>Specs</span>
+                              <ChevronRight className="w-3.5 h-3.5 ml-0.5" />
+                            </Link>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+                {/* Card Footer Actions */}
+                <div className="p-6 pt-0 mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-slate-100">
+                  <Link
+                    to={`/products/${cat.slug}`}
+                    className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[#123467] hover:bg-[#1B478A] text-white text-xs font-bold rounded-lg shadow-xs transition"
+                  >
+                    <span>Explore All {cat.title}</span>
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </Link>
+
+                  <div className="flex items-center gap-2">
+                    <a
+                      href={`https://wa.me/919833416144?text=${encodeURIComponent(`Hi Pawan Steel Alloys, I am inquiring about products in category: ${cat.title}. Please provide current stock and pricing.`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-lg shadow-xs transition"
                     >
-                      <span>Full Specifications</span>
-                      <ChevronRight className="w-3.5 h-3.5 ml-1" />
-                    </Link>
+                      <WhatsAppIcon className="w-3.5 h-3.5 text-white" />
+                      <span>WhatsApp</span>
+                    </a>
 
                     <button
-                      onClick={onOpenQuoteModal}
+                      onClick={() => onOpenQuoteModal && onOpenQuoteModal('', cat.title)}
                       type="button"
-                      className="px-3.5 py-1.5 bg-[#D71932] hover:bg-[#B51226] text-white text-xs font-bold rounded shadow-sm transition"
+                      className="px-4 py-2 bg-[#D71932] hover:bg-[#B51226] text-white text-xs font-bold rounded-lg shadow-xs transition"
                     >
-                      Enquire Now
+                      Get Quote
                     </button>
                   </div>
                 </div>
+
               </div>
             ))}
           </div>
@@ -356,4 +489,3 @@ export default function ProductsPage({ onOpenQuoteModal }) {
     </div>
   );
 }
-

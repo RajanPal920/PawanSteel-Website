@@ -4,7 +4,6 @@ import {
   Phone, 
   Mail, 
   MapPin, 
-  MessageCircle, 
   Clock, 
   ShieldCheck, 
   ChevronRight,
@@ -12,6 +11,7 @@ import {
   Send,
   Share2
 } from 'lucide-react';
+import WhatsAppIcon from '../components/WhatsAppIcon';
 import InquiryForm from '../components/InquiryForm';
 import SocialLinksGroup from '../components/SocialIcons';
 import { COMPANY_INFO } from '../data/companyData';
@@ -86,7 +86,7 @@ export default function ContactPage() {
             {/* Mobile & WhatsApp Card */}
             <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-start gap-4">
               <div className="p-3 rounded-lg bg-emerald-50 text-emerald-600 flex-shrink-0">
-                <MessageCircle className="w-6 h-6" />
+                <WhatsAppIcon className="w-6 h-6 text-emerald-600" />
               </div>
               <div className="flex-1">
                 <p className="text-xs font-semibold text-slate-400 uppercase">Mobile & WhatsApp</p>
@@ -103,7 +103,7 @@ export default function ContactPage() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded shadow-sm transition"
                   >
-                    <MessageCircle className="w-3.5 h-3.5" />
+                    <WhatsAppIcon className="w-3.5 h-3.5 text-white" />
                     <span>Instant WhatsApp Chat</span>
                   </a>
                 </div>
