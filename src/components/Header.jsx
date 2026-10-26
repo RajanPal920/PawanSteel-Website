@@ -68,57 +68,65 @@ export default function Header({ onOpenQuoteModal }) {
   return (
     <header className="w-full z-50 sticky top-0 bg-white/95 backdrop-blur-md transition-all duration-300 font-sans border-b border-[#DDE5EE]">
       {/* Desktop Topbar: Visible on desktop, completely removed on mobile */}
-      <div className="hidden lg:block bg-[#0A1F3D] text-slate-200 border-b border-[#123467] text-xs">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-between">
-          <div className="flex items-center space-x-6">
+      <div className="hidden lg:block bg-[#0A1F3D] text-slate-200 border-b border-[#123467] text-[11px] xl:text-xs">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1.5 flex items-center justify-between gap-3">
+          {/* Left: Contact Numbers & WhatsApp */}
+          <div className="flex items-center gap-2.5 xl:gap-4 flex-shrink-0">
             <a
-              href="tel:02266394854"
-              className="flex items-center gap-1.5 hover:text-white transition-colors"
+              href="tel:+912266394854"
+              className="flex items-center gap-1 hover:text-white transition-colors whitespace-nowrap"
+              title="Office Landline"
             >
-              <Phone className="w-3.5 h-3.5 text-[#D71932]" />
-              <span className="font-semibold">022-66394854</span>
+              <Phone className="w-3.5 h-3.5 text-[#D71932] flex-shrink-0" />
+              <span><span className="text-slate-400 font-normal">Office:</span> <strong className="font-semibold text-white">+91 (022) 6639 4854</strong></span>
             </a>
+            <span className="text-slate-600">|</span>
             <a
-              href="tel:09950789923"
-              className="flex items-center gap-1.5 hover:text-white transition-colors"
+              href="tel:+919950789923"
+              className="flex items-center gap-1 hover:text-white transition-colors whitespace-nowrap"
+              title="Domestic Sales"
             >
-              <Phone className="w-3.5 h-3.5 text-emerald-400" />
-              <span className="font-semibold">09950789923</span>
+              <Phone className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
+              <span><span className="text-slate-400 font-normal">Domestic:</span> <strong className="font-semibold text-emerald-300">+91 99507 89923</strong></span>
             </a>
+            <span className="text-slate-600 hidden xl:inline">|</span>
             <a
-              href="tel:09833416144"
-              className="hidden xl:flex items-center gap-1.5 hover:text-white transition-colors"
-              title="Additional Contact"
+              href="tel:+919833416144"
+              className="hidden xl:flex items-center gap-1 hover:text-white transition-colors whitespace-nowrap"
+              title="International Sales"
             >
-              <Phone className="w-3.5 h-3.5 text-blue-400" />
-              <span className="font-semibold text-slate-300">09833416144</span>
+              <Phone className="w-3.5 h-3.5 text-blue-400 flex-shrink-0" />
+              <span><span className="text-slate-400 font-normal">Exports:</span> <strong className="font-semibold text-slate-200">+91 98334 16144</strong></span>
             </a>
+            <span className="text-slate-600">|</span>
             <a
               href="https://wa.me/919833416144?text=Hello%20Pawan%20Steel%20Alloys%2C%20I%20would%20like%20to%20enquire%20about%20your%20industrial%20raw%20materials."
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-white text-emerald-400 transition-colors"
+              className="flex items-center gap-1 hover:text-white text-emerald-400 transition-colors whitespace-nowrap"
             >
-              <WhatsAppIcon className="w-3.5 h-3.5 text-emerald-400" />
-              <span className="font-semibold">WhatsApp</span>
+              <WhatsAppIcon className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
+              <span className="font-bold">WhatsApp</span>
             </a>
-            <span className="flex items-center gap-1.5 text-slate-300">
-              <MapPin className="w-3.5 h-3.5 text-[#D71932]" />
-              <span>Mumbai, Maharashtra, India</span>
-            </span>
           </div>
 
-          <div className="flex items-center space-x-3 xl:space-x-4">
-            <span className="text-[11px] text-slate-300 font-medium flex items-center gap-1.5">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#D71932]" />
-              <span>ISO 9001:2015 Stockist</span>
+          {/* Right: Certification, Email & Social Media */}
+          <div className="flex items-center gap-2.5 xl:gap-3 flex-shrink-0">
+            <span className="text-slate-300 font-medium hidden 2xl:flex items-center gap-1 whitespace-nowrap">
+              <MapPin className="w-3.5 h-3.5 text-[#D71932] flex-shrink-0" />
+              <span>Mumbai, India</span>
+            </span>
+            <span className="text-slate-600 hidden 2xl:inline">|</span>
+            <span className="text-slate-300 font-medium flex items-center gap-1 whitespace-nowrap">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#D71932] flex-shrink-0" />
+              <span>ISO 9001:2015 Certified</span>
             </span>
             <span className="text-slate-600">|</span>
             <a
               href={`mailto:${COMPANY_INFO.email}`}
-              className="hover:text-white transition-colors flex items-center gap-1"
+              className="hover:text-white transition-colors flex items-center gap-1 text-slate-300 whitespace-nowrap"
             >
-              <Mail className="w-3.5 h-3.5 text-blue-400" />
+              <Mail className="w-3.5 h-3.5 text-blue-400 flex-shrink-0" />
               <span>{COMPANY_INFO.email}</span>
             </a>
             <span className="text-slate-600">|</span>
@@ -245,14 +253,15 @@ export default function Header({ onOpenQuoteModal }) {
                     {/* Quick Popular Product Direct Links */}
                     <div className="mt-3.5 pt-2.5 border-t border-white/20 flex flex-wrap items-center gap-1.5 text-[11px]">
                       <span className="text-white/80 font-bold mr-1">Direct Stock:</span>
-                      <Link to="/products/round-bars" className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/25 text-white transition font-medium">Round Bars</Link>
-                      <Link to="/products/pipes-tubes" className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/25 text-white transition font-medium">Seamless Pipes</Link>
-                      <Link to="/products/flanges" className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/25 text-white transition font-medium">Flanges</Link>
-                      <Link to="/products/sheets-plates" className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/25 text-white transition font-medium">Plates</Link>
-                      <Link to="/products/fasteners" className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/25 text-white transition font-medium">Fasteners</Link>
-                      <Link to="/products/butt-weld-fittings" className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/25 text-white transition font-medium">Butt Weld</Link>
-                      <Link to="/products/forged-pipe-fittings-manufacturer-india" className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/25 text-white transition font-medium">Forged Fittings</Link>
-                      <Link to="/products/double-ferrule-tube-fittings-manufacturer-india" className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/25 text-white transition font-medium">Ferrule Fittings</Link>
+                      {CATEGORIES.map((cat) => (
+                        <Link
+                          key={cat.id}
+                          to={`/products/${cat.slug}`}
+                          className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/25 text-white transition font-medium"
+                        >
+                          {cat.title}
+                        </Link>
+                      ))}
                     </div>
 
                     {/* Bottom Strip */}

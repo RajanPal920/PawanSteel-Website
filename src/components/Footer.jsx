@@ -10,7 +10,8 @@ import {
   ShieldCheck,
   Send,
   Sparkles,
-  ExternalLink
+  ExternalLink,
+  User
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/companyData';
 import { CATEGORIES, MATERIALS } from '../data/productsData';
@@ -72,11 +73,11 @@ export default function Footer() {
             </a>
 
             <a
-              href="tel:02266394854"
+              href="tel:+912266394854"
               className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-[#D71932] hover:bg-[#B51226] text-white text-xs sm:text-sm font-bold shadow-lg transition-transform transform hover:-translate-y-0.5"
             >
               <Phone className="w-4 h-4" />
-              <span>022-66394854</span>
+              <span>+91 (022) 6639 4854</span>
             </a>
           </div>
         </div>
@@ -129,11 +130,11 @@ export default function Footer() {
                 <span>WhatsApp Instant</span>
               </a>
               <a 
-                href="tel:09950789923" 
+                href="tel:+919950789923" 
                 className="inline-flex items-center gap-2 px-3.5 py-2 bg-[#D71932] hover:bg-[#B51226] text-white text-xs font-bold rounded-md shadow transition-colors"
               >
                 <Phone className="w-3.5 h-3.5" />
-                <span>Call Us Now</span>
+                <span>Call: +91 99507 89923</span>
               </a>
             </div>
 
@@ -217,6 +218,13 @@ export default function Footer() {
               Registered Office
             </h3>
             <ul className="space-y-3 text-sm">
+              <li className="flex items-center gap-2.5 pb-1.5 border-b border-slate-800/80">
+                <User className="w-4 h-4 text-[#D71932] flex-shrink-0" />
+                <div className="flex flex-col">
+                  <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Contact Person</span>
+                  <span className="text-white text-xs font-bold">{COMPANY_INFO.contactPerson || 'Mr. Babulal Dewasi'}</span>
+                </div>
+              </li>
               <li className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#D71932] flex-shrink-0 mt-1" />
                 <span className="text-slate-300 text-xs leading-relaxed font-normal">
@@ -225,20 +233,20 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-[#D71932] flex-shrink-0" />
-                <a href="tel:02266394854" className="text-slate-300 hover:text-white text-xs font-semibold">
-                  {COMPANY_INFO.phone} (Office)
+                <a href="tel:+912266394854" className="text-slate-300 hover:text-white text-xs font-semibold">
+                  {COMPANY_INFO.phone} (Office Landline)
                 </a>
               </li>
               <li className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                <a href="tel:09950789923" className="text-slate-300 hover:text-white text-xs font-semibold">
-                  {COMPANY_INFO.mobile} (Mobile)
+                <a href="tel:+919950789923" className="text-slate-300 hover:text-white text-xs font-semibold">
+                  {COMPANY_INFO.mobile} (Domestic Sales)
                 </a>
               </li>
               <li className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-blue-400 flex-shrink-0" />
-                <a href="tel:09833416144" className="text-slate-300 hover:text-white text-xs font-semibold">
-                  {COMPANY_INFO.additionalMobile} (Alt. Contact)
+                <a href="tel:+919833416144" className="text-slate-300 hover:text-white text-xs font-semibold">
+                  {COMPANY_INFO.additionalMobile} (International Sales)
                 </a>
               </li>
               <li className="flex items-center gap-2.5">

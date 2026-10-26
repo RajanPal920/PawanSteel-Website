@@ -183,14 +183,15 @@ Inquiry sent via Pawan Steel Alloys Web Portal (pawansteelalloys1986@gmail.com)`
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-              Full Name <span className="text-[#D71932]">*</span>
+              Your Name <span className="text-[#D71932]">*</span>
             </label>
             <input
               type="text"
               name="fullName"
               value={formData.fullName}
               onChange={handleChange}
-              placeholder="e.g. Ramesh Patel"
+              autoComplete="off"
+              placeholder="Enter your name"
               className={`w-full px-3.5 py-2.5 bg-white border rounded-lg text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#D71932] transition ${
                 errors.fullName ? 'border-red-500 bg-red-50/30' : 'border-slate-300'
               }`}
@@ -200,14 +201,15 @@ Inquiry sent via Pawan Steel Alloys Web Portal (pawansteelalloys1986@gmail.com)`
 
           <div>
             <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-              Company Name
+              Company Name <span className="text-slate-400 text-[10px] font-normal lowercase">(optional)</span>
             </label>
             <input
               type="text"
               name="companyName"
               value={formData.companyName}
               onChange={handleChange}
-              placeholder="e.g. Reliance / L&T / Fabricators Ltd"
+              autoComplete="off"
+              placeholder="Enter your company name"
               className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-lg text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#D71932] transition"
             />
           </div>
@@ -224,7 +226,8 @@ Inquiry sent via Pawan Steel Alloys Web Portal (pawansteelalloys1986@gmail.com)`
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="e.g. ramesh@company.com"
+              autoComplete="off"
+              placeholder="Enter your email address"
               className={`w-full px-3.5 py-2.5 bg-white border rounded-lg text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#D71932] transition ${
                 errors.email ? 'border-red-500 bg-red-50/30' : 'border-slate-300'
               }`}
@@ -241,7 +244,8 @@ Inquiry sent via Pawan Steel Alloys Web Portal (pawansteelalloys1986@gmail.com)`
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              placeholder="e.g. 9833416144"
+              autoComplete="off"
+              placeholder="Enter your phone number"
               className={`w-full px-3.5 py-2.5 bg-white border rounded-lg text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#D71932] transition ${
                 errors.phone ? 'border-red-500 bg-red-50/30' : 'border-slate-300'
               }`}
@@ -284,7 +288,8 @@ Inquiry sent via Pawan Steel Alloys Web Portal (pawansteelalloys1986@gmail.com)`
               name="materialGrade"
               value={formData.materialGrade}
               onChange={handleChange}
-              placeholder="e.g. SS 316L, Inconel 625, Monel 400"
+              autoComplete="off"
+              placeholder="Enter material or grade (e.g. SS 316L)"
               className={`w-full px-3.5 py-2.5 bg-white border rounded-lg text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#D71932] transition ${
                 errors.materialGrade ? 'border-red-500 bg-red-50/30' : 'border-slate-300'
               }`}
@@ -297,28 +302,30 @@ Inquiry sent via Pawan Steel Alloys Web Portal (pawansteelalloys1986@gmail.com)`
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-              Required Size / Dimensions / Schedule
+              Size / Dimensions <span className="text-slate-400 text-[10px] font-normal lowercase">(optional)</span>
             </label>
             <input
               type="text"
               name="sizeDimensions"
               value={formData.sizeDimensions}
               onChange={handleChange}
-              placeholder="e.g. 2 inch NB SCH 40, or 25mm Dia Bar"
+              autoComplete="off"
+              placeholder="Enter size / dimensions / schedule"
               className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-lg text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#D71932] transition"
             />
           </div>
 
           <div>
             <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-              Quantity / Weight / Pieces
+              Quantity / Weight <span className="text-slate-400 text-[10px] font-normal lowercase">(optional)</span>
             </label>
             <input
               type="text"
               name="quantity"
               value={formData.quantity}
               onChange={handleChange}
-              placeholder="e.g. 500 Meters, 250 Pcs, or 2.5 Tons"
+              autoComplete="off"
+              placeholder="Enter required quantity or weight"
               className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-lg text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#D71932] transition"
             />
           </div>
@@ -327,14 +334,14 @@ Inquiry sent via Pawan Steel Alloys Web Portal (pawansteelalloys1986@gmail.com)`
         {/* Message */}
         <div>
           <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-            Specific Requirements / Notes
+            Requirements / Notes <span className="text-slate-400 text-[10px] font-normal lowercase">(optional)</span>
           </label>
           <textarea
             name="message"
             rows={3}
             value={formData.message}
             onChange={handleChange}
-            placeholder="Specify test certificates (e.g., MTR / EN 10204 3.1), third-party inspection, cut lengths, or delivery timelines needed."
+            placeholder="Enter your requirement details, specific test certificate needs, or delivery schedule..."
             className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-lg text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#D71932] transition"
           />
         </div>

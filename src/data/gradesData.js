@@ -292,6 +292,355 @@ export const GRADES_DATA = {
     formsSupplied: ["Pipes", "Tubes", "Round Bars", "Flanges", "Plates", "Fittings"],
   },
 
+  "347": {
+    grade: "Stainless Steel 347 / 347H",
+    slug: "347",
+    materialSlug: "stainless-steel",
+    materialName: "Stainless Steel",
+    uns: "UNS S34700 / S34709",
+    din: "1.4550 / X6CrNiNb18-10",
+    astm: "ASTM A276, A312, A240, A182 F347, A403 WP347",
+    overview: "Grade 347 is a columbium/niobium-stabilized austenitic chromium-nickel stainless steel. The addition of columbium suppresses chromium carbide precipitation in the critical 427°C to 816°C sensitizing zone. It delivers excellent intergranular corrosion resistance in elevated-temperature environments and higher creep and stress rupture capabilities than grades 304 and 321.",
+    chemicalComposition: [
+      { element: "Carbon (C)", value: "≤ 0.08% (347) / 0.04 - 0.10% (347H)" },
+      { element: "Chromium (Cr)", value: "17.00 - 19.00%" },
+      { element: "Nickel (Ni)", value: "9.00 - 13.00%" },
+      { element: "Niobium + Tantalum (Nb+Ta)", value: "10 x %C min up to 1.00%" },
+      { element: "Manganese (Mn)", value: "≤ 2.00%" },
+      { element: "Silicon (Si)", value: "≤ 0.75%" },
+      { element: "Phosphorus (P)", value: "≤ 0.045%" },
+      { element: "Sulfur (S)", value: "≤ 0.030%" },
+    ],
+    mechanicalProperties: [
+      { property: "Tensile Strength (min)", value: "515 MPa (75 ksi)" },
+      { property: "Yield Strength 0.2% Proof (min)", value: "205 MPa (30 ksi)" },
+      { property: "Elongation in 50mm (min)", value: "40%" },
+      { property: "Hardness (Rockwell B max)", value: "92 HRB / 201 HB" },
+      { property: "Max Operating Temperature", value: "850°C" },
+    ],
+    astmSpecs: {
+      "Round & Hex Bars": "ASTM A276 / A479",
+      "Pipes & Tubes": "ASTM A312 / A213",
+      "Flanges": "ASTM A182 F347 / F347H",
+      "Butt Weld Fittings": "ASTM A403 WP347 / WP347H",
+      "Sheets & Plates": "ASTM A240",
+    },
+    keyFeatures: [
+      "Columbium-stabilized against intergranular chromium carbide sensitization",
+      "Superior creep strength and stress-rupture resistance up to 850°C",
+      "Immunity to weld decay in heavy-wall fabricated piping",
+      "Excellent resistance to polythionic acid stress corrosion cracking",
+    ],
+    applications: [
+      "Oil refinery fluid catalytic cracking (FCC) piping and hydrocracker reactors",
+      "High temperature steam boiler superheaters and radiant tubes",
+      "Aircraft engine exhaust stacks and rocket motor casings",
+      "Heavy chemical processing vessels operating at elevated temperatures",
+    ],
+    formsSupplied: ["Round Bars", "Seamless Pipes", "Boiler Tubes", "Flanges", "Butt Weld Fittings", "Plates"],
+  },
+
+  "410": {
+    grade: "Stainless Steel 410",
+    slug: "410",
+    materialSlug: "stainless-steel",
+    materialName: "Stainless Steel",
+    uns: "UNS S41000",
+    din: "1.4006 / X12Cr13",
+    astm: "ASTM A276, A479, A240, A182 F6a",
+    overview: "Grade 410 is the foundational general-purpose martensitic stainless steel containing 11.5% to 13.5% chromium. It can be heat-treated (quenched and tempered) to develop a broad range of high mechanical strengths and hardness. It delivers reliable resistance to atmospheric corrosion, steam, fresh water, and mild industrial chemicals in the hardened and tempered state.",
+    chemicalComposition: [
+      { element: "Carbon (C)", value: "0.08 - 0.15%" },
+      { element: "Chromium (Cr)", value: "11.50 - 13.50%" },
+      { element: "Manganese (Mn)", value: "≤ 1.00%" },
+      { element: "Silicon (Si)", value: "≤ 1.00%" },
+      { element: "Nickel (Ni)", value: "≤ 0.75%" },
+      { element: "Phosphorus (P)", value: "≤ 0.040%" },
+      { element: "Sulfur (S)", value: "≤ 0.030%" },
+    ],
+    mechanicalProperties: [
+      { property: "Tensile Strength (min)", value: "480 MPa (Annealed) / up to 1050 MPa (Hardened)" },
+      { property: "Yield Strength (min)", value: "275 MPa (Annealed) / up to 850 MPa (Hardened)" },
+      { property: "Elongation in 50mm (min)", value: "15% - 25%" },
+      { property: "Hardness", value: "96 HRB (Annealed) / up to 45 HRC (Hardened)" },
+    ],
+    astmSpecs: {
+      "Round & Hex Bars": "ASTM A276 / A479",
+      "Sheets & Plates": "ASTM A240",
+      "Forgings & Valve Parts": "ASTM A182 F6a / ASTM A336",
+    },
+    keyFeatures: [
+      "Hardenable by oil quench and tempering for customized tensile strengths",
+      "Good wear resistance and resistance to scaling up to 650°C",
+      "Magnetic in all conditions (annealed and heat-treated)",
+      "Economical high-strength stainless steel alternative",
+    ],
+    applications: [
+      "Steam turbines, gas compressor blades, and pump shafts",
+      "Petrochemical valve trim, gate valves, and valve stems",
+      "Fasteners, mining machinery, and knife blades",
+      "Petroleum fractionation towers and tray hardware",
+    ],
+    formsSupplied: ["Bright Round Bars", "Forged Rounds", "Hex Bars", "Plates", "Valve Stems"],
+  },
+
+  "416": {
+    grade: "Stainless Steel 416 (Free Machining)",
+    slug: "416",
+    materialSlug: "stainless-steel",
+    materialName: "Stainless Steel",
+    uns: "UNS S41600",
+    din: "1.4005 / X12CrS13",
+    astm: "ASTM A582, ASTM A276",
+    overview: "Grade 416 is a free-machining martensitic chromium stainless steel formulated with controlled sulfur additions (0.15% to 0.35%). It possesses the highest machinability (approx. 85% of standard free-machining carbon steel) of all stainless steel grades. It can be heat-treated to attain high tensile strength and hardness up to 40 HRC.",
+    chemicalComposition: [
+      { element: "Carbon (C)", value: "≤ 0.15%" },
+      { element: "Chromium (Cr)", value: "12.00 - 14.00%" },
+      { element: "Sulfur (S)", value: "0.15 - 0.35% (Free-Machining)" },
+      { element: "Manganese (Mn)", value: "≤ 1.25%" },
+      { element: "Silicon (Si)", value: "≤ 1.00%" },
+      { element: "Phosphorus (P)", value: "≤ 0.060%" },
+      { element: "Molybdenum (Mo)", value: "≤ 0.60% (Optional)" },
+    ],
+    mechanicalProperties: [
+      { property: "Tensile Strength (min)", value: "515 - 750 MPa" },
+      { property: "Yield Strength (min)", value: "275 - 550 MPa" },
+      { property: "Machinability Rating", value: "85% (Standard Reference AISI B1112)" },
+      { property: "Hardness", value: "95 HRB (Annealed) / 35 - 40 HRC (Heat Treated)" },
+    ],
+    astmSpecs: {
+      "Free-Machining Bars": "ASTM A582 (Grade 416)",
+      "Standard Bars": "ASTM A276",
+    },
+    keyFeatures: [
+      "Supreme high-speed automatic lathe machinability with excellent chip breaking",
+      "Heat-treatable for customized mechanical strength and hardness",
+      "Resistant to fresh water, steam, gasoline, lubricating oils, and atmospheric corrosion",
+      "Eliminates tool galling and extends machine tool life",
+    ],
+    applications: [
+      "High-speed automatic screw machine turned components",
+      "Electric motor shafts, washing machine pump shafts, and studs",
+      "Precision gears, pinions, and lead screws",
+      "Valve trims, actuator pins, and hydraulic fittings",
+    ],
+    formsSupplied: ["Cold Drawn Round Bars", "Centerless Ground Bars", "Hex Bars", "Square Bars"],
+  },
+
+  "420": {
+    grade: "Stainless Steel 420",
+    slug: "420",
+    materialSlug: "stainless-steel",
+    materialName: "Stainless Steel",
+    uns: "UNS S42000",
+    din: "1.4021 / 1.4028 (X20Cr13 / X30Cr13)",
+    astm: "ASTM A276, ASTM A479, ASTM A240",
+    overview: "Grade 420 is a high-carbon modification of grade 410 martensitic steel (0.15% to 0.40% C). It develops high hardness (up to 50-52 HRC) and exceptional wear resistance after quenching and tempering. It offers reliable corrosion resistance in hardened and polished condition against freshwater, food acids, steam, and mild alkalis.",
+    chemicalComposition: [
+      { element: "Carbon (C)", value: "0.15 - 0.40%" },
+      { element: "Chromium (Cr)", value: "12.00 - 14.00%" },
+      { element: "Manganese (Mn)", value: "≤ 1.00%" },
+      { element: "Silicon (Si)", value: "≤ 1.00%" },
+      { element: "Nickel (Ni)", value: "≤ 0.50%" },
+      { element: "Phosphorus (P)", value: "≤ 0.040%" },
+      { element: "Sulfur (S)", value: "≤ 0.030%" },
+    ],
+    mechanicalProperties: [
+      { property: "Tensile Strength (min)", value: "655 MPa (Annealed) / up to 1600 MPa (Hardened)" },
+      { property: "Yield Strength (min)", value: "345 MPa (Annealed) / up to 1350 MPa (Hardened)" },
+      { property: "Hardness (Quenched & Tempered)", value: "50 - 52 HRC" },
+      { property: "Density", value: "7.75 g/cm³" },
+    ],
+    astmSpecs: {
+      "Round & Hex Bars": "ASTM A276 / A479",
+      "Sheets & Plates": "ASTM A240",
+    },
+    keyFeatures: [
+      "Attains high hardness (50-52 HRC) and sharp edge retention",
+      "Outstanding abrasion and adhesive wear resistance",
+      "Corrosion resistant to freshwater, alcohol, mild industrial acids, and petroleum",
+      "Fully magnetic in all conditions",
+    ],
+    applications: [
+      "Industrial cutlery, shear blades, and food cutting knives",
+      "Surgical instruments, dental scalpels, and medical tweezers",
+      "Pump shafts, plungers, and needle valve stems",
+      "Plastic injection molds and wear plates",
+    ],
+    formsSupplied: ["Centerless Ground Bars", "Peeled Round Bars", "Hex Bars", "Plates & Strips"],
+  },
+
+  "431": {
+    grade: "Stainless Steel 431",
+    slug: "431",
+    materialSlug: "stainless-steel",
+    materialName: "Stainless Steel",
+    uns: "UNS S43100",
+    din: "1.4057 / X17CrNi16-2",
+    astm: "ASTM A276, ASTM A479",
+    overview: "Grade 431 is a premium high-chromium (15-17%), nickel-bearing (1.25-2.50%) martensitic stainless steel. The combination of high chromium with nickel gives 431 the highest corrosion resistance among all martensitic stainless steels, accompanied by superior tensile strength (850-1000 MPa) and high impact toughness at sub-zero temperatures.",
+    chemicalComposition: [
+      { element: "Carbon (C)", value: "0.12 - 0.20%" },
+      { element: "Chromium (Cr)", value: "15.00 - 17.00%" },
+      { element: "Nickel (Ni)", value: "1.25 - 2.50%" },
+      { element: "Manganese (Mn)", value: "≤ 1.00%" },
+      { element: "Silicon (Si)", value: "≤ 1.00%" },
+      { element: "Phosphorus (P)", value: "≤ 0.040%" },
+      { element: "Sulfur (S)", value: "≤ 0.030%" },
+    ],
+    mechanicalProperties: [
+      { property: "Tensile Strength (min)", value: "850 - 1000 MPa (125 - 145 ksi)" },
+      { property: "Yield Strength 0.2% Proof (min)", value: "650 MPa (95 ksi)" },
+      { property: "Elongation in 50mm (min)", value: "16%" },
+      { property: "Hardness (Tempered)", value: "28 - 34 HRC (280 - 320 HB)" },
+      { property: "Impact Strength (Charpy V-Notch)", value: "≥ 25 J at -20°C" },
+    ],
+    astmSpecs: {
+      "Round & Hex Bars": "ASTM A276 / A479 (Grade 431)",
+      "Forgings": "ASTM A473 / BS 970 431S29",
+    },
+    keyFeatures: [
+      "Highest corrosion resistance of all martensitic stainless grades",
+      "Superior yield and tensile strength combined with high impact toughness",
+      "Resistant to marine atmospheric corrosion, seawater splash, and alkalis",
+      "Excellent resistance to stress corrosion cracking and pitting",
+    ],
+    applications: [
+      "Marine boat propeller shafts, pump shafts, and drive axles",
+      "Aerospace aircraft fasteners, landing gear components, and bomb racks",
+      "High-pressure hydraulic cylinder rods and valve spindles",
+      "Industrial centrifuges, mixer shafts, and chemical agitators",
+    ],
+    formsSupplied: ["Bright Drawn Round Bars", "Centerless Ground Bars", "Forged Shafts", "Hex Bars"],
+  },
+
+  "430f": {
+    grade: "Stainless Steel 430F (Free Machining Ferritic)",
+    slug: "430f",
+    materialSlug: "stainless-steel",
+    materialName: "Stainless Steel",
+    uns: "UNS S43020",
+    din: "1.4104 / X14CrMoS17",
+    astm: "ASTM A582",
+    overview: "Grade 430F is the free-machining variant of ferritic stainless steel 430. Formulated with controlled sulfur additions (0.15% to 0.35%) and molybdenum up to 0.60%, it provides remarkable high-speed lathe machinability and high magnetic permeability while preserving resistance to nitric acid, sulfur gases, and atmospheric oxidation.",
+    chemicalComposition: [
+      { element: "Carbon (C)", value: "≤ 0.12%" },
+      { element: "Chromium (Cr)", value: "16.00 - 18.00%" },
+      { element: "Sulfur (S)", value: "0.15 - 0.35% (Free Machining)" },
+      { element: "Molybdenum (Mo)", value: "≤ 0.60%" },
+      { element: "Manganese (Mn)", value: "≤ 1.25%" },
+      { element: "Silicon (Si)", value: "≤ 1.00%" },
+      { element: "Phosphorus (P)", value: "≤ 0.060%" },
+    ],
+    mechanicalProperties: [
+      { property: "Tensile Strength (min)", value: "485 MPa (70 ksi)" },
+      { property: "Yield Strength (min)", value: "275 MPa (40 ksi)" },
+      { property: "Elongation (min)", value: "20%" },
+      { property: "Hardness (max)", value: "88 HRB / 180 HB" },
+      { property: "Magnetic Behavior", value: "Ferromagnetic (High Permeability)" },
+    ],
+    astmSpecs: {
+      "Free-Machining Bars": "ASTM A582 (Grade 430F)",
+    },
+    keyFeatures: [
+      "High-speed free-machining performance for high-volume precision turning",
+      "High magnetic permeability ideal for solenoid valves and magnetic actuators",
+      "Good resistance to nitric acid, mild organic acids, and atmospheric oxidation",
+      "Economical nickel-free ferritic alloy",
+    ],
+    applications: [
+      "Solenoid valve plungers, cores, and magnetic actuator bodies",
+      "Automatic screw machine fasteners, nuts, and bolts",
+      "Automotive fuel injection system components and sensor bodies",
+      "Industrial kitchen equipment hardware and appliance shafts",
+    ],
+    formsSupplied: ["Cold Drawn Bars", "Centerless Ground Round Bars", "Hexagonal Bars"],
+  },
+
+  "440b": {
+    grade: "Stainless Steel 440B",
+    slug: "440b",
+    materialSlug: "stainless-steel",
+    materialName: "Stainless Steel",
+    uns: "UNS S44003",
+    din: "1.4112 / X90CrMoV18",
+    astm: "ASTM A276, ASTM A580",
+    overview: "Grade 440B is a high-carbon martensitic stainless steel with 0.75% to 0.95% carbon and 16% to 18% chromium. It provides higher fracture toughness than 440C while attaining remarkable hardness up to 57-59 HRC. When fully hardened and mirror-polished, it resists fresh water, steam, crude oil, and mild organic acids.",
+    chemicalComposition: [
+      { element: "Carbon (C)", value: "0.75 - 0.95%" },
+      { element: "Chromium (Cr)", value: "16.00 - 18.00%" },
+      { element: "Molybdenum (Mo)", value: "≤ 0.75%" },
+      { element: "Manganese (Mn)", value: "≤ 1.00%" },
+      { element: "Silicon (Si)", value: "≤ 1.00%" },
+      { element: "Phosphorus (P)", value: "≤ 0.040%" },
+      { element: "Sulfur (S)", value: "≤ 0.030%" },
+    ],
+    mechanicalProperties: [
+      { property: "Hardness (Heat Treated)", value: "56 - 59 HRC" },
+      { property: "Tensile Strength (typical)", value: "1050 MPa" },
+      { property: "Yield Strength (typical)", value: "900 MPa" },
+      { property: "Density", value: "7.70 g/cm³" },
+    ],
+    astmSpecs: {
+      "Round Bars": "ASTM A276 / A479",
+      "Wire & Springs": "ASTM A580",
+    },
+    keyFeatures: [
+      "Attains high hardness (57-59 HRC) with superior fracture toughness than 440C",
+      "Exceptional edge retention and abrasive wear resistance",
+      "Corrosion resistant to freshwater, steam, food acids, and chemical solutions",
+    ],
+    applications: [
+      "Precision cutting blades, industrial chisels, and shear knives",
+      "Valve seats, wear rings, and pump plungers",
+      "High-stress surgical instruments and dental burrs",
+    ],
+    formsSupplied: ["Round Bars", "Centerless Ground Rods", "Forged Flats"],
+  },
+
+  "440c": {
+    grade: "Stainless Steel 440C",
+    slug: "440c",
+    materialSlug: "stainless-steel",
+    materialName: "Stainless Steel",
+    uns: "UNS S44004",
+    din: "1.4125 / X105CrMo17",
+    astm: "ASTM A276, ASTM A479, ASTM A580",
+    overview: "Grade 440C is a high-carbon martensitic stainless steel containing 0.95% to 1.20% carbon. It achieves the highest hardness (up to 60-62 HRC) and wear resistance of all standard stainless steels after quenching and stress-relieving. Widely considered the gold standard for ball bearings, valve components, and heavy-duty wear surfaces.",
+    chemicalComposition: [
+      { element: "Carbon (C)", value: "0.95 - 1.20%" },
+      { element: "Chromium (Cr)", value: "16.00 - 18.00%" },
+      { element: "Molybdenum (Mo)", value: "≤ 0.75%" },
+      { element: "Manganese (Mn)", value: "≤ 1.00%" },
+      { element: "Silicon (Si)", value: "≤ 1.00%" },
+      { element: "Phosphorus (P)", value: "≤ 0.040%" },
+      { element: "Sulfur (S)", value: "≤ 0.030%" },
+    ],
+    mechanicalProperties: [
+      { property: "Hardness (Quenched & Tempered)", value: "58 - 62 HRC (Highest of all SS)" },
+      { property: "Tensile Strength (approx)", value: "1900 MPa (275 ksi)" },
+      { property: "Yield Strength (approx)", value: "1800 MPa (260 ksi)" },
+      { property: "Wear Resistance", value: "Supreme abrasive and adhesive wear resistance" },
+    ],
+    astmSpecs: {
+      "Round Bars": "ASTM A276 / A479",
+      "Bearing Components": "ASTM A756",
+    },
+    keyFeatures: [
+      "Maximum hardness (60-62 HRC) among all commercial stainless steel grades",
+      "Supreme abrasion and erosion wear resistance under intense mechanical friction",
+      "High dimensional stability in precision bearing assemblies",
+      "Resistant to freshwater, steam, crude oil, and organic acids when mirror polished",
+    ],
+    applications: [
+      "Precision ball bearings, roller bearings, and races",
+      "High-pressure valve trim, seats, and needle valves",
+      "Industrial nozzles, spray orifices, and pump pistons",
+      "Surgical cutting tools, high-end knife blades, and dental instruments",
+    ],
+    formsSupplied: ["Precision Ground Round Bars", "Drawn Rods", "Bearing Forged Rounds", "Plates"],
+  },
+
   "2205": {
     grade: "Duplex Stainless Steel 2205 / F51",
     slug: "2205",
@@ -797,8 +1146,16 @@ export function getGradeDetails(gradeStr) {
   if (s.includes('316ti') || s.includes('14571')) return GRADES_DATA['316ti'];
   if (s.includes('316') || s.includes('b8m') || s.includes('8m')) return GRADES_DATA['316'];
   if (s.includes('321')) return GRADES_DATA['321'];
+  if (s.includes('347')) return GRADES_DATA['347'];
   if (s.includes('310')) return GRADES_DATA['310s'];
   if (s.includes('904')) return GRADES_DATA['904l'];
+  if (s.includes('416')) return GRADES_DATA['416'];
+  if (s.includes('431')) return GRADES_DATA['431'];
+  if (s.includes('430f') || s.includes('430')) return GRADES_DATA['430f'];
+  if (s.includes('440c')) return GRADES_DATA['440c'];
+  if (s.includes('440b') || s.includes('440')) return GRADES_DATA['440b'];
+  if (s.includes('420')) return GRADES_DATA['420'];
+  if (s.includes('410')) return GRADES_DATA['410'];
   if (s.includes('2205') || s.includes('f51') || s.includes('31803') || s.includes('32205')) return GRADES_DATA['2205'];
   if (s.includes('2507') || s.includes('f53') || s.includes('32750')) return GRADES_DATA['2507'];
   if (s.includes('718')) return GRADES_DATA['inconel-718'];

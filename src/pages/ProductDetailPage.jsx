@@ -213,88 +213,272 @@ export default function ProductDetailPage({ onOpenQuoteModal }) {
             </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            {categoryProducts.map((prod) => (
-              <div
-                key={prod.id}
-                className="bg-white rounded-2xl border border-slate-200 shadow-subtle hover:shadow-hover transition-all duration-300 overflow-hidden flex flex-col justify-between group transform hover:-translate-y-1.5"
-              >
-                <div>
-                  {/* Clean Product Photograph */}
-                  <div className="relative h-56 w-full bg-slate-100 overflow-hidden border-b border-slate-100">
-                    <img
-                      src={prod.image}
-                      alt={`${prod.name} manufacturer India`}
-                      className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                    <div className="absolute top-3 left-3">
-                      <span className="text-[11px] font-bold bg-[#123467]/90 text-white px-2.5 py-1 rounded backdrop-blur-sm shadow-sm">
-                        {prod.categoryName}
-                      </span>
-                    </div>
-                    <div className="absolute bottom-3 right-3">
-                      <span className="text-[10px] font-semibold bg-white/95 text-slate-800 px-2 py-0.5 rounded shadow-sm border border-slate-200">
-                        {prod.inStockStatus}
-                      </span>
-                    </div>
+          {/* Adaptive Category Products Layout based on configuration count */}
+          {categoryProducts.length === 1 ? (
+            /* 1 Product: Executive Horizontal Showcase Card (Flanges, Fasteners, Butt Weld, Forged, Ferrule) */
+            <div className="max-w-5xl mx-auto mb-16">
+              <div className="bg-white rounded-2xl border border-slate-200 shadow-subtle hover:shadow-hover transition-all duration-300 overflow-hidden flex flex-col md:flex-row group">
+                {/* Product Image Column */}
+                <div className="relative md:w-5/12 bg-slate-100 overflow-hidden border-b md:border-b-0 md:border-r border-slate-100 min-h-[280px] md:min-h-full">
+                  <img
+                    src={categoryProducts[0].image}
+                    alt={`${categoryProducts[0].name} manufacturer India`}
+                    className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute top-3 left-3 flex flex-col gap-1.5">
+                    <span className="text-[11px] font-bold bg-[#123467]/90 text-white px-2.5 py-1 rounded backdrop-blur-sm shadow-sm w-fit">
+                      {categoryProducts[0].categoryName}
+                    </span>
+                    <span className="text-[10px] font-bold bg-[#D71932] text-white px-2 py-0.5 rounded shadow-sm w-fit">
+                      Primary Specification
+                    </span>
                   </div>
+                  <div className="absolute bottom-3 right-3">
+                    <span className="text-[11px] font-semibold bg-white/95 text-slate-800 px-2.5 py-1 rounded shadow-sm border border-slate-200">
+                      {categoryProducts[0].inStockStatus}
+                    </span>
+                  </div>
+                </div>
 
-                  <div className="p-6">
-                    <h3 className="text-lg font-bold text-[#123467] group-hover:text-[#D71932] transition-colors leading-snug">
-                      <Link to={`/products/${prod.slug}`}>
-                        {prod.name}
+                {/* Product Content Column */}
+                <div className="p-6 sm:p-8 md:w-7/12 flex flex-col justify-between space-y-4">
+                  <div>
+                    <h3 className="text-xl sm:text-2xl font-black text-[#123467] group-hover:text-[#D71932] transition-colors leading-snug">
+                      <Link to={`/products/${categoryProducts[0].slug}`}>
+                        {categoryProducts[0].name}
                       </Link>
                     </h3>
-                    <p className="text-xs text-slate-600 line-clamp-3 mt-2 leading-relaxed">
-                      {prod.shortDesc}
+                    <p className="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed font-normal">
+                      {categoryProducts[0].fullDesc || categoryProducts[0].shortDesc}
                     </p>
 
-                    {/* Clickable Grade Pills on the Card */}
-                    <div className="mt-4 pt-3 border-t border-slate-100">
-                      <span className="text-[10px] uppercase font-bold text-slate-400 block mb-1.5">
-                        Available Material Grades:
+                    {/* Quick Specifications Highlights Grid */}
+                    {categoryProducts[0].specifications && (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-4 p-3 bg-slate-50/90 rounded-xl border border-slate-200/80 text-xs">
+                        {Object.entries(categoryProducts[0].specifications).slice(0, 4).map(([key, value], idx) => (
+                          <div key={idx} className="space-y-0.5">
+                            <span className="font-bold text-slate-500 text-[10px] uppercase tracking-wider block">{key}:</span>
+                            <span className="font-medium text-slate-800 line-clamp-1">{value}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Available Material Grades */}
+                    <div className="mt-4 pt-3.5 border-t border-slate-100">
+                      <span className="text-[10px] uppercase font-bold text-slate-400 block mb-1.5 tracking-wider">
+                        Available Material Grades (Click to inspect ASTM specs):
                       </span>
-                      <div className="flex flex-wrap gap-1">
-                        {prod.grades.slice(0, 4).map((g, idx) => (
+                      <div className="flex flex-wrap gap-1.5">
+                        {categoryProducts[0].grades.slice(0, 6).map((g, idx) => (
                           <Link
                             key={idx}
-                            to={`/products/${prod.slug}-grade-${makeGradeSlug(g)}`}
-                            className="text-[10px] font-mono px-2 py-0.5 bg-slate-100 hover:bg-[#123467] hover:text-white transition-colors text-slate-700 rounded border border-slate-200"
+                            to={`/products/${categoryProducts[0].slug}-grade-${makeGradeSlug(g)}`}
+                            className="text-[11px] font-mono px-2.5 py-0.5 bg-slate-100 hover:bg-[#123467] hover:text-white transition-colors text-slate-700 rounded-md border border-slate-200"
                             title={`Inspect ${g} grade details`}
                           >
                             {g}
                           </Link>
                         ))}
-                        {prod.grades.length > 4 && (
-                          <span className="text-[10px] text-slate-400 self-center px-1">
-                            +{prod.grades.length - 4} more
+                        {categoryProducts[0].grades.length > 6 && (
+                          <span className="text-[11px] text-slate-400 self-center px-1">
+                            +{categoryProducts[0].grades.length - 6} more
                           </span>
                         )}
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="p-6 pt-0 flex items-center justify-between border-t border-slate-50 mt-4">
-                  <Link
-                    to={`/products/${prod.slug}`}
-                    className="inline-flex items-center text-xs font-bold text-[#123467] group-hover:text-[#D71932] transition-colors"
-                  >
-                    <span>View Technical Specs</span>
-                    <ChevronRight className="w-3.5 h-3.5 ml-1" />
-                  </Link>
-                  <button
-                    onClick={() => onOpenQuoteModal && onOpenQuoteModal(prod.name, prod.categoryName)}
-                    type="button"
-                    className="px-3.5 py-1.5 bg-[#D71932] hover:bg-[#B51226] text-white text-xs font-bold rounded shadow-xs transition"
-                  >
-                    Get Quote
-                  </button>
+                  {/* Action Buttons */}
+                  <div className="pt-4 border-t border-slate-100 flex flex-wrap items-center gap-3">
+                    <Link
+                      to={`/products/${categoryProducts[0].slug}`}
+                      className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#123467] hover:bg-[#1B478A] text-white text-xs sm:text-sm font-bold rounded-lg shadow-sm transition"
+                    >
+                      <span>View Full Technical Specifications</span>
+                      <ChevronRight className="w-4 h-4" />
+                    </Link>
+                    <button
+                      onClick={() => onOpenQuoteModal && onOpenQuoteModal(categoryProducts[0].name, categoryProducts[0].categoryName)}
+                      type="button"
+                      className="px-5 py-2.5 bg-[#D71932] hover:bg-[#B51226] text-white text-xs sm:text-sm font-bold rounded-lg shadow-sm transition flex-shrink-0"
+                    >
+                      Request Fast Quote
+                    </button>
+                  </div>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ) : categoryProducts.length === 2 ? (
+            /* 2 Products: Balanced 2-Column Grid Centered in max-w-5xl (Sheets & Plates) */
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 max-w-5xl mx-auto">
+              {categoryProducts.map((prod) => (
+                <div
+                  key={prod.id}
+                  className="bg-white rounded-2xl border border-slate-200 shadow-subtle hover:shadow-hover transition-all duration-300 overflow-hidden flex flex-col justify-between group transform hover:-translate-y-1.5"
+                >
+                  <div>
+                    {/* Clean Product Photograph */}
+                    <div className="relative h-56 w-full bg-slate-100 overflow-hidden border-b border-slate-100">
+                      <img
+                        src={prod.image}
+                        alt={`${prod.name} manufacturer India`}
+                        className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                      <div className="absolute top-3 left-3">
+                        <span className="text-[11px] font-bold bg-[#123467]/90 text-white px-2.5 py-1 rounded backdrop-blur-sm shadow-sm">
+                          {prod.categoryName}
+                        </span>
+                      </div>
+                      <div className="absolute bottom-3 right-3">
+                        <span className="text-[10px] font-semibold bg-white/95 text-slate-800 px-2 py-0.5 rounded shadow-sm border border-slate-200">
+                          {prod.inStockStatus}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="p-6">
+                      <h3 className="text-lg font-bold text-[#123467] group-hover:text-[#D71932] transition-colors leading-snug">
+                        <Link to={`/products/${prod.slug}`}>
+                          {prod.name}
+                        </Link>
+                      </h3>
+                      <p className="text-xs text-slate-600 line-clamp-3 mt-2 leading-relaxed">
+                        {prod.shortDesc}
+                      </p>
+
+                      {/* Clickable Grade Pills */}
+                      <div className="mt-4 pt-3 border-t border-slate-100">
+                        <span className="text-[10px] uppercase font-bold text-slate-400 block mb-1.5">
+                          Available Material Grades:
+                        </span>
+                        <div className="flex flex-wrap gap-1">
+                          {prod.grades.slice(0, 4).map((g, idx) => (
+                            <Link
+                              key={idx}
+                              to={`/products/${prod.slug}-grade-${makeGradeSlug(g)}`}
+                              className="text-[10px] font-mono px-2 py-0.5 bg-slate-100 hover:bg-[#123467] hover:text-white transition-colors text-slate-700 rounded border border-slate-200"
+                              title={`Inspect ${g} grade details`}
+                            >
+                              {g}
+                            </Link>
+                          ))}
+                          {prod.grades.length > 4 && (
+                            <span className="text-[10px] text-slate-400 self-center px-1">
+                              +{prod.grades.length - 4} more
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-6 pt-0 flex items-center justify-between border-t border-slate-50 mt-4">
+                    <Link
+                      to={`/products/${prod.slug}`}
+                      className="inline-flex items-center text-xs font-bold text-[#123467] group-hover:text-[#D71932] transition-colors"
+                    >
+                      <span>View Technical Specs</span>
+                      <ChevronRight className="w-3.5 h-3.5 ml-1" />
+                    </Link>
+                    <button
+                      onClick={() => onOpenQuoteModal && onOpenQuoteModal(prod.name, prod.categoryName)}
+                      type="button"
+                      className="px-3.5 py-1.5 bg-[#D71932] hover:bg-[#B51226] text-white text-xs font-bold rounded shadow-xs transition"
+                    >
+                      Get Quote
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            /* 3+ Products: Balanced 3-Column Grid in max-w-7xl (Rods & Bars, Pipes & Tubes) */
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+              {categoryProducts.map((prod) => (
+                <div
+                  key={prod.id}
+                  className="bg-white rounded-2xl border border-slate-200 shadow-subtle hover:shadow-hover transition-all duration-300 overflow-hidden flex flex-col justify-between group transform hover:-translate-y-1.5"
+                >
+                  <div>
+                    {/* Clean Product Photograph */}
+                    <div className="relative h-56 w-full bg-slate-100 overflow-hidden border-b border-slate-100">
+                      <img
+                        src={prod.image}
+                        alt={`${prod.name} manufacturer India`}
+                        className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                      <div className="absolute top-3 left-3">
+                        <span className="text-[11px] font-bold bg-[#123467]/90 text-white px-2.5 py-1 rounded backdrop-blur-sm shadow-sm">
+                          {prod.categoryName}
+                        </span>
+                      </div>
+                      <div className="absolute bottom-3 right-3">
+                        <span className="text-[10px] font-semibold bg-white/95 text-slate-800 px-2 py-0.5 rounded shadow-sm border border-slate-200">
+                          {prod.inStockStatus}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="p-6">
+                      <h3 className="text-lg font-bold text-[#123467] group-hover:text-[#D71932] transition-colors leading-snug">
+                        <Link to={`/products/${prod.slug}`}>
+                          {prod.name}
+                        </Link>
+                      </h3>
+                      <p className="text-xs text-slate-600 line-clamp-3 mt-2 leading-relaxed">
+                        {prod.shortDesc}
+                      </p>
+
+                      {/* Clickable Grade Pills */}
+                      <div className="mt-4 pt-3 border-t border-slate-100">
+                        <span className="text-[10px] uppercase font-bold text-slate-400 block mb-1.5">
+                          Available Material Grades:
+                        </span>
+                        <div className="flex flex-wrap gap-1">
+                          {prod.grades.slice(0, 4).map((g, idx) => (
+                            <Link
+                              key={idx}
+                              to={`/products/${prod.slug}-grade-${makeGradeSlug(g)}`}
+                              className="text-[10px] font-mono px-2 py-0.5 bg-slate-100 hover:bg-[#123467] hover:text-white transition-colors text-slate-700 rounded border border-slate-200"
+                              title={`Inspect ${g} grade details`}
+                            >
+                              {g}
+                            </Link>
+                          ))}
+                          {prod.grades.length > 4 && (
+                            <span className="text-[10px] text-slate-400 self-center px-1">
+                              +{prod.grades.length - 4} more
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-6 pt-0 flex items-center justify-between border-t border-slate-50 mt-4">
+                    <Link
+                      to={`/products/${prod.slug}`}
+                      className="inline-flex items-center text-xs font-bold text-[#123467] group-hover:text-[#D71932] transition-colors"
+                    >
+                      <span>View Technical Specs</span>
+                      <ChevronRight className="w-3.5 h-3.5 ml-1" />
+                    </Link>
+                    <button
+                      onClick={() => onOpenQuoteModal && onOpenQuoteModal(prod.name, prod.categoryName)}
+                      type="button"
+                      className="px-3.5 py-1.5 bg-[#D71932] hover:bg-[#B51226] text-white text-xs font-bold rounded shadow-xs transition"
+                    >
+                      Get Quote
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
 
           {/* Inquiry Section for Category */}
           <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm mb-12">
@@ -719,16 +903,20 @@ export default function ProductDetailPage({ onOpenQuoteModal }) {
               <div className="space-y-2 text-xs">
                 <p className="flex items-center gap-2 text-slate-200">
                   <span className="text-red-400 font-bold">Landline:</span>
-                  <a href="tel:02266394854" className="hover:underline">{COMPANY_INFO.phone}</a>
+                  <a href="tel:+912266394854" className="hover:underline">{COMPANY_INFO.phone}</a>
                 </p>
                 <p className="flex items-center gap-2 text-slate-200">
                   <span className="text-emerald-400 font-bold flex items-center gap-1.5">
                     <WhatsAppIcon className="w-3.5 h-3.5 text-emerald-400" />
-                    Mobile:
+                    Domestic:
                   </span>
-                  <a href="tel:09950789923" className="hover:underline">{COMPANY_INFO.mobile}</a>
+                  <a href="tel:+919950789923" className="hover:underline">{COMPANY_INFO.mobile}</a>
                   <span className="text-slate-400">|</span>
                   <a href="https://wa.me/919833416144" target="_blank" rel="noopener noreferrer" className="hover:underline text-emerald-300">WhatsApp</a>
+                </p>
+                <p className="flex items-center gap-2 text-slate-200">
+                  <span className="text-blue-300 font-bold">Exports:</span>
+                  <a href="tel:+919833416144" className="hover:underline">{COMPANY_INFO.additionalMobile}</a>
                 </p>
                 <p className="flex items-center gap-2 text-slate-200">
                   <span className="text-blue-400 font-bold">Email:</span>

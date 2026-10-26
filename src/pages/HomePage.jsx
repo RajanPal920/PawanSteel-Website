@@ -1,19 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  ArrowRight, 
-  ChevronRight, 
-  ShieldCheck, 
-  Layers, 
-  Headphones, 
-  FileCheck, 
-  CheckCircle2, 
-  Users, 
-  Flame, 
-  Boxes, 
-  FlaskConical, 
-  Zap, 
-  Cog, 
+import {
+  ArrowRight,
+  ChevronRight,
+  ShieldCheck,
+  Layers,
+  Headphones,
+  FileCheck,
+  CheckCircle2,
+  Users,
+  User,
+  Flame,
+  Boxes,
+  FlaskConical,
+  Zap,
+  Cog,
   Building2,
   Droplets,
   Ship,
@@ -38,7 +39,7 @@ import { CATEGORIES, MATERIALS, INDUSTRIES, WHY_CHOOSE_US, GLOBAL_MARKETS } from
 function WhatsAppIcon({ className = "w-4 h-4 text-emerald-600" }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12.031 2C6.496 2 2 6.494 2 12.029c0 1.93.551 3.731 1.508 5.257L2 22l4.872-1.464a9.983 9.983 0 005.159 1.493h.004c5.535 0 10.031-4.495 10.031-10.029C22.066 6.494 17.569 2 12.031 2zm0 18.286h-.003a8.273 8.273 0 01-4.223-1.157l-.303-.18-2.89.868.883-2.818-.198-.314A8.252 8.252 0 013.76 12.03c0-4.561 3.712-8.273 8.274-8.273 4.561 0 8.273 3.712 8.273 8.273 0 4.561-3.712 8.256-8.276 8.256zm4.536-6.19c-.248-.124-1.47-.725-1.698-.808-.228-.083-.394-.124-.56.124-.166.248-.643.808-.788.974-.145.166-.29.186-.539.062-.248-.124-1.047-.386-1.996-1.231-.739-.658-1.238-1.472-1.383-1.72-.145-.248-.016-.383.109-.506.111-.111.248-.29.373-.435.124-.145.166-.248.248-.415.083-.166.041-.31-.02-.435-.062-.124-.56-1.348-.767-1.846-.202-.486-.407-.42-.56-.428l-.477-.008c-.166 0-.435.062-.663.31-.228.248-.871.85-.871 2.073s.892 2.404 1.016 2.57c.124.166 1.755 2.68 4.252 3.757.594.256 1.058.41 1.42.525.597.189 1.141.162 1.57.098.479-.071 1.47-.601 1.678-1.182.207-.58.207-1.077.145-1.182-.062-.104-.228-.166-.477-.29z"/>
+      <path d="M12.031 2C6.496 2 2 6.494 2 12.029c0 1.93.551 3.731 1.508 5.257L2 22l4.872-1.464a9.983 9.983 0 005.159 1.493h.004c5.535 0 10.031-4.495 10.031-10.029C22.066 6.494 17.569 2 12.031 2zm0 18.286h-.003a8.273 8.273 0 01-4.223-1.157l-.303-.18-2.89.868.883-2.818-.198-.314A8.252 8.252 0 013.76 12.03c0-4.561 3.712-8.273 8.274-8.273 4.561 0 8.273 3.712 8.273 8.273 0 4.561-3.712 8.256-8.276 8.256zm4.536-6.19c-.248-.124-1.47-.725-1.698-.808-.228-.083-.394-.124-.56.124-.166.248-.643.808-.788.974-.145.166-.29.186-.539.062-.248-.124-1.047-.386-1.996-1.231-.739-.658-1.238-1.472-1.383-1.72-.145-.248-.016-.383.109-.506.111-.111.248-.29.373-.435.124-.145.166-.248.248-.415.083-.166.041-.31-.02-.435-.062-.124-.56-1.348-.767-1.846-.202-.486-.407-.42-.56-.428l-.477-.008c-.166 0-.435.062-.663.31-.228.248-.871.85-.871 2.073s.892 2.404 1.016 2.57c.124.166 1.755 2.68 4.252 3.757.594.256 1.058.41 1.42.525.597.189 1.141.162 1.57.098.479-.071 1.47-.601 1.678-1.182.207-.58.207-1.077.145-1.182-.062-.104-.228-.166-.477-.29z" />
     </svg>
   );
 }
@@ -74,7 +75,7 @@ const getIndustryIcon = (iconName) => {
 export default function HomePage({ onOpenQuoteModal }) {
   return (
     <div className="w-full bg-[#F3F7FB]">
-      
+
       {/* SECTION 4: Hero Slider (Split-Composition Matching Logistics Reference) */}
       <HeroSlider onOpenQuoteModal={onOpenQuoteModal} />
 
@@ -85,7 +86,7 @@ export default function HomePage({ onOpenQuoteModal }) {
       <section className="py-16 md:py-24 bg-white border-b border-[#DDE5EE]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
+
             {/* Content Left */}
             <div className="lg:col-span-7 space-y-6">
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-red-50 text-[#D71932] text-xs font-bold uppercase tracking-wider rounded-md border border-red-100">
@@ -110,7 +111,7 @@ export default function HomePage({ onOpenQuoteModal }) {
                 <div className="p-4 bg-[#F3F7FB] border border-[#DDE5EE] rounded-xl">
                   <div className="flex items-center gap-2.5 font-bold text-sm text-[#123467]">
                     <ShieldCheck className="w-4 h-4 text-[#D71932]" />
-                    <span>ISO 9001:2015 Quality Systems</span>
+                    <span>ISO 9001:2015 Certified Company</span>
                   </div>
                   <p className="text-xs text-slate-500 mt-1">
                     Audited by Audittech Certification (IAF / EGAC accredited) for industrial metal trading.
@@ -158,7 +159,7 @@ export default function HomePage({ onOpenQuoteModal }) {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0A1F3D]/80 via-transparent to-transparent" />
-                
+
                 {/* Floating Information Overlay on Image */}
                 <div className="absolute bottom-5 left-5 right-5 p-4 rounded-xl bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-float">
                   <div className="flex items-center justify-between">
@@ -219,7 +220,7 @@ export default function HomePage({ onOpenQuoteModal }) {
       {/* SECTION 6: Our Products Section */}
       <section className="py-16 md:py-24 bg-[#F3F7FB]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="text-center max-w-3xl mx-auto mb-14">
             <span className="text-xs font-bold uppercase tracking-wider text-[#D71932] bg-red-50 border border-red-100 px-3 py-1 rounded-md">
               Complete Stock Range
@@ -308,7 +309,7 @@ export default function HomePage({ onOpenQuoteModal }) {
       {/* SECTION 8: Industries We Serve — Image-Led Section with 8 Real Photos */}
       <section className="py-16 md:py-24 bg-[#F3F7FB]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="text-center max-w-3xl mx-auto mb-14">
             <span className="text-xs font-bold uppercase tracking-wider text-[#D71932] bg-red-50 border border-red-100 px-3 py-1 rounded-md">
               Application Environments
@@ -362,7 +363,7 @@ export default function HomePage({ onOpenQuoteModal }) {
       <section className="py-16 md:py-20 bg-slate-900 text-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            
+
             <div className="lg:col-span-8 space-y-4">
               <span className="text-xs font-bold text-red-400 uppercase tracking-widest bg-red-950/70 border border-red-800/60 px-3 py-1 rounded">
                 Product Specification Guide
@@ -424,9 +425,9 @@ export default function HomePage({ onOpenQuoteModal }) {
       {/* SECTION 11: Prominent Homepage Inquiry Form */}
       <section className="py-16 md:py-24 bg-white border-b border-[#DDE5EE]" id="inquiry-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            
+
             {/* Left Column Information */}
             <div className="lg:col-span-5 space-y-6">
               <span className="text-xs font-bold uppercase tracking-wider text-[#D71932] bg-red-50 border border-red-100 px-3 py-1 rounded-md">
@@ -442,13 +443,25 @@ export default function HomePage({ onOpenQuoteModal }) {
               {/* Fast Direct Contacts */}
               <div className="space-y-3.5 pt-2">
                 <div className="flex items-center gap-3 p-3.5 bg-[#F3F7FB] rounded-xl border border-slate-200">
+                  <div className="p-2.5 rounded-lg bg-blue-50 text-[#123467]">
+                    <User className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <p className="text-[11px] font-bold text-slate-400 uppercase">Contact Person</p>
+                    <p className="text-sm font-bold text-[#123467]">
+                      {COMPANY_INFO.contactPerson || 'Mr. Babulal Dewasi'}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3 p-3.5 bg-[#F3F7FB] rounded-xl border border-slate-200">
                   <div className="p-2.5 rounded-lg bg-red-50 text-[#D71932]">
                     <Phone className="w-4 h-4" />
                   </div>
                   <div>
-                    <p className="text-[11px] font-bold text-slate-400 uppercase">Telephone (Office)</p>
-                    <a href="tel:02266394854" className="text-sm font-bold text-[#123467] hover:text-[#D71932]">
-                      022-66394854
+                    <p className="text-[11px] font-bold text-slate-400 uppercase">Office Landline (Mumbai STD)</p>
+                    <a href="tel:+912266394854" className="text-sm font-bold text-[#123467] hover:text-[#D71932]">
+                      +91 (022) 6639 4854
                     </a>
                   </div>
                 </div>
@@ -458,12 +471,12 @@ export default function HomePage({ onOpenQuoteModal }) {
                     <WhatsAppIcon className="w-4 h-4 text-emerald-600" />
                   </div>
                   <div>
-                    <p className="text-[11px] font-bold text-slate-400 uppercase">Mobile / WhatsApp</p>
-                    <a href="tel:09950789923" className="text-sm font-bold text-[#123467] hover:text-emerald-600 block">
-                      09950789923
+                    <p className="text-[11px] font-bold text-slate-400 uppercase">Mobile & WhatsApp</p>
+                    <a href="tel:+919950789923" className="text-sm font-bold text-[#123467] hover:text-emerald-600 block">
+                      +91 99507 89923
                     </a>
-                    <a href="tel:09833416144" className="text-xs font-medium text-slate-500 hover:text-emerald-600 block mt-0.5">
-                      Alt: 09833416144
+                    <a href="tel:+919833416144" className="text-xs font-medium text-slate-500 hover:text-emerald-600 block mt-0.5">
+                      Intl / Alt: +91 98334 16144
                     </a>
                   </div>
                 </div>

@@ -85,12 +85,27 @@ export const MATERIALS = [
   {
     id: "stainless-steel",
     slug: "stainless-steel",
-    aliases: ["stainless-steel", "ss", "stainless", "304", "316", "316l", "304l", "904l", "stainless-steel-alloys"],
+    aliases: ["stainless-steel", "ss", "stainless", "304", "316", "316l", "304l", "310", "321", "347", "410", "416", "420", "431", "430f", "440b", "440c", "904l", "stainless-steel-alloys"],
     name: "Stainless Steel",
-    shortDesc: "Widely used austenitic and martensitic alloys offering excellent corrosion resistance, high tensile strength, and easy sanitization.",
-    grades: ["304 / 304L", "316 / 316L", "316Ti", "321 / 321H", "310 / 310S", "347 / 347H", "410", "420", "904L"],
-    characteristics: "Corrosion resistance, hygienic finish, weldability, thermal resistance",
-    commonUses: "Food processing, pharmaceutical, architectural, chemical, dairy, marine environments",
+    shortDesc: "Widely used austenitic, martensitic, and ferritic alloys offering excellent corrosion resistance, high tensile strength, and easy sanitization.",
+    grades: [
+      "304 / 304L",
+      "316 / 316L",
+      "310 / 310S",
+      "321 / 321H",
+      "347 / 347H",
+      "410",
+      "416",
+      "420",
+      "431",
+      "430F",
+      "440B",
+      "440C",
+      "316Ti",
+      "904L"
+    ],
+    characteristics: "Corrosion resistance, high machinability, hardenability, hygienic finish, thermal resistance",
+    commonUses: "Food processing, pharmaceutical, precision machining, shafts, valves, architectural, chemical, dairy, marine environments",
     badgeColor: "bg-slate-100 text-slate-800 border-slate-300",
   },
   {
@@ -256,7 +271,7 @@ export const PRODUCTS = [
     shortDesc: "High-grade bright drawn and centerless ground stainless steel round bars for precision machining, pump shafts, and structural components.",
     fullDesc: "PAWAN STEEL ALLOYS stocks a vast inventory of stainless steel round bars manufactured to stringent dimensional tolerances. Offered in cold drawn, peeled, turned, and smooth centerless ground conditions, these bars exhibit exceptional surface finish and uniform metallurgical integrity.",
     materials: ["stainless-steel", "duplex", "super-duplex"],
-    grades: ["304", "304L", "316", "316L", "310S", "321", "410", "420", "904L", "F51 (2205)", "F53 (2507)"],
+    grades: ["304", "304L", "316", "316L", "310S", "321", "347", "410", "416", "420", "431", "430F", "440B", "440C", "904L", "F51 (2205)", "F53 (2507)"],
     specifications: {
       "Standard Specifications": "ASTM A276, ASTM A479, ASME SA276, ASME SA479, DIN 17440",
       "Diameter Range": "3.0 mm to 350 mm (1/8\" to 14\")",
@@ -458,7 +473,7 @@ export const PRODUCTS = [
     shortDesc: "Hot rolled and cold rolled stainless steel sheets, industrial plates, decorative mirror sheets, and chequered floor plates.",
     fullDesc: "Available from thin precision foils to heavy pressure vessel plates. We offer custom plasma, laser, and waterjet cut-to-size service based on exact engineering drawings.",
     materials: ["stainless-steel", "duplex", "super-duplex"],
-    grades: ["304", "304L", "316", "316L", "310S", "321", "904L", "2205", "2507"],
+    grades: ["304", "304L", "316", "316L", "310S", "321", "347", "410", "420", "430", "904L", "2205", "2507"],
     specifications: {
       "Standard Specifications": "ASTM A240, ASME SA240, EN 10088-2, IS 6911",
       "Thickness Range": "0.5 mm to 100 mm",
@@ -576,9 +591,10 @@ export const PRODUCTS = [
   // 6. Butt Weld Fittings
   {
     id: "butt-weld-fittings",
-    slug: "butt-weld-pipe-fittings-manufacturer-india",
+    slug: "butt-weld-fittings-manufacturer-india",
     oldSlug: "butt-weld-pipe-fittings",
     aliases: [
+      "butt-weld-pipe-fittings-manufacturer-india",
       "buttweld", 
       "butt-weld", 
       "butt-weld-fittings", 
@@ -881,42 +897,42 @@ export function findProduct(identifier) {
   const normClean = normalizeSlug(clean);
   const normBase = normalizeSlug(productSlug);
 
-  // Single-product categories where category slug directly maps to the sole product
-  const singleProductCategorySlugs = [
-    'forged-pipe-fittings-manufacturer-india',
-    'double-ferrule-tube-fittings-manufacturer-india',
-    'industrial-flanges-manufacturer-india',
-    'industrial-fasteners-bolts-nuts-india',
-    'butt-weld-pipe-fittings-manufacturer-india'
-  ];
-
-  // Multi-product categories that should display Category Showcase (not single product)
-  const multiProductCategorySlugs = [
+  // All 8 official product category slugs and IDs should display Category Showcase
+  const allCategorySlugs = [
     'rod-bars-manufacturer-india',
     'rods-bars',
+    'round-bars',
     'pipes-tubes-manufacturer-supplier-india',
     'pipes-tubes',
     'sheets-plates-supplier-india',
-    'sheets-plates'
+    'sheets-plates',
+    'industrial-flanges-manufacturer-india',
+    'flanges',
+    'industrial-fasteners-bolts-nuts-india',
+    'fasteners',
+    'butt-weld-pipe-fittings-manufacturer-india',
+    'butt-weld-fittings',
+    'forged-pipe-fittings-manufacturer-india',
+    'forged-fittings',
+    'double-ferrule-tube-fittings-manufacturer-india',
+    'ferrule-fittings'
   ];
   if (
-    multiProductCategorySlugs.includes(clean) ||
-    multiProductCategorySlugs.includes(productSlug) ||
-    multiProductCategorySlugs.map(normalizeSlug).includes(normClean) ||
-    multiProductCategorySlugs.map(normalizeSlug).includes(normBase)
+    allCategorySlugs.includes(clean) ||
+    allCategorySlugs.includes(productSlug) ||
+    allCategorySlugs.map(normalizeSlug).includes(normClean) ||
+    allCategorySlugs.map(normalizeSlug).includes(normBase)
   ) {
     return null;
   }
 
-  // 1. Direct exact match on slug, oldSlug, id, name, aliases, or 1-product categorySlug
+  // 1. Direct exact match on slug, oldSlug, id, name, or aliases
   const directMatch = PRODUCTS.find((p) => {
     const pSlug = p.slug.toLowerCase();
     const pOld = p.oldSlug ? p.oldSlug.toLowerCase() : '';
     const pId = p.id.toLowerCase();
     const pName = p.name.toLowerCase();
-    const pCatSlug = p.categorySlug ? p.categorySlug.toLowerCase() : '';
     const pAliases = p.aliases ? p.aliases.map((a) => a.toLowerCase()) : [];
-    const isSingleProdCategory = singleProductCategorySlugs.includes(pCatSlug);
 
     return (
       pSlug === clean ||
@@ -932,8 +948,7 @@ export function findProduct(identifier) {
       pSlug.replace('manufacturer', 'manufactures') === clean ||
       pSlug.replace('manufacturer', 'manufactures') === productSlug ||
       pSlug.replace('manufactures', 'manufacturer') === clean ||
-      pSlug.replace('manufactures', 'manufacturer') === productSlug ||
-      (isSingleProdCategory && (pCatSlug === clean || pCatSlug === productSlug))
+      pSlug.replace('manufactures', 'manufacturer') === productSlug
     );
   });
   if (directMatch) return directMatch;
@@ -944,9 +959,7 @@ export function findProduct(identifier) {
     const normOld = normalizeSlug(p.oldSlug);
     const normId = normalizeSlug(p.id);
     const normName = normalizeSlug(p.name);
-    const normCat = normalizeSlug(p.categorySlug);
-    const normAliases = p.aliases ? p.aliases.map((a) => normalizeSlug(a)) : [];
-    const isSingleProdCategory = singleProductCategorySlugs.includes(p.categorySlug?.toLowerCase());
+    const normAliases = p.aliases ? p.aliases.map((a) => a.toLowerCase()) : [];
 
     return (
       normSlug === normClean ||
@@ -958,8 +971,7 @@ export function findProduct(identifier) {
       normName === normClean ||
       normName === normBase ||
       normAliases.includes(normClean) ||
-      normAliases.includes(normBase) ||
-      (isSingleProdCategory && (normCat === normClean || normCat === normBase))
+      normAliases.includes(normBase)
     );
   });
   if (normMatch) return normMatch;
