@@ -79,11 +79,11 @@ export default function Header({ onOpenQuoteModal }) {
               <span className="font-semibold">022-66394854</span>
             </a>
             <a
-              href="tel:09850789923"
+              href="tel:09950789923"
               className="flex items-center gap-1.5 hover:text-white transition-colors"
             >
               <Phone className="w-3.5 h-3.5 text-emerald-400" />
-              <span className="font-semibold">09850789923</span>
+              <span className="font-semibold">09950789923</span>
             </a>
             <a
               href="tel:09833416144"
@@ -339,8 +339,8 @@ export default function Header({ onOpenQuoteModal }) {
 
                       <div className="mt-4 pt-3.5 border-t border-white/20 text-xs text-white flex items-center justify-between">
                         <span className="font-medium text-red-100">Includes Austenitic, Martensitic, Duplex, Inconel, Monel & Titanium.</span>
-                        <button 
-                          onClick={onOpenQuoteModal} 
+                        <button
+                          onClick={onOpenQuoteModal}
                           className="font-black text-white underline hover:text-amber-200 transition-colors"
                         >
                           Inquire Custom Grade →

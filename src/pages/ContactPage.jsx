@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  Clock, 
-  ShieldCheck, 
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  ShieldCheck,
   ChevronRight,
   ExternalLink,
   Send,
@@ -49,9 +49,9 @@ export default function ContactPage() {
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-          
+
           {/* Left Column: Contact Cards & Office Details */}
           <div className="lg:col-span-5 space-y-6">
             <div>
@@ -91,7 +91,7 @@ export default function ContactPage() {
               <div className="flex-1">
                 <p className="text-xs font-semibold text-slate-400 uppercase">Mobile & WhatsApp</p>
                 <a
-                  href="tel:09850789923"
+                  href="tel:09950789923"
                   className="text-lg font-bold text-[#123467] hover:text-emerald-600 transition-colors block mt-0.5"
                 >
                   {COMPANY_INFO.mobile}
