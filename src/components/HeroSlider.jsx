@@ -83,7 +83,7 @@ export default function HeroSlider() {
 
   return (
     <section
-      className="relative w-full h-[520px] sm:h-[600px] md:h-[660px] lg:h-[700px] bg-slate-950 overflow-hidden select-none"
+      className="relative w-full h-[542px] sm:h-[600px] md:h-[660px] lg:h-[610px] bg-slate-950 overflow-hidden select-none"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       aria-label="Pawan Steel Alloys Hero Slider"
