@@ -6,50 +6,50 @@ const HERO_SLIDES = [
   {
     id: 1,
     eyebrow: "WE ARE A PREMIER",
-    headlinePart1: "STEEL TRADER",
-    headlinePart2: "",
-    headline: "STEEL TRADER",
-    description: "we have grown to become a leading steel trading organization in Asia, with strong ties with many steel producers in the region.",
-    btnText: "LEARN MORE",
-    btnLink: "/about",
-    image: "/images/hero-1.jpg",
-    imageAlt: "Industrial steel pipes and trader warehouse"
+    headlinePart1: "ROUND BARS",
+    headlinePart2: "MANUFACTURER & STOCKIST",
+    headline: "ROUND BARS MANUFACTURER & STOCKIST",
+    description: "Vast inventory of prime stainless steel, carbon steel, and specialty nickel alloy round bars. Cold drawn, centerless ground, and peeled finish adhering to ASTM A276 & A479 standards.",
+    btnText: "EXPLORE ROUND BARS",
+    btnLink: "/products/stainless-steel-round-bars-manufactures-india",
+    image: "/images/hero-round-bars.jpg",
+    imageAlt: "Stainless steel and alloy solid round bars inventory"
   },
   {
     id: 2,
     eyebrow: "WE ARE A PREMIER",
-    headlinePart1: "PIPES & TUBES",
-    headlinePart2: "STOCKIST",
-    headline: "PIPES & TUBES STOCKIST",
-    description: "Complete inventory of seamless & welded stainless steel, carbon steel, and alloy steel pipes in ASTM A312, A358, A106, across all standard schedules.",
-    btnText: "LEARN MORE",
-    btnLink: "/products/pipes-tubes",
-    image: "/images/hero-2.jpg",
-    imageAlt: "Industrial flanges and machined pipe fittings"
+    headlinePart1: "HEX BARS",
+    headlinePart2: "STOCKIST & SUPPLIER",
+    headline: "HEX BARS STOCKIST & SUPPLIER",
+    description: "High-precision hexagonal bars in stainless steel, alloy steel, and carbon steel. Engineered for precision machining, hex fasteners, valves, bolts, and turned engineering parts.",
+    btnText: "EXPLORE HEX BARS",
+    btnLink: "/products/carbon-alloy-steel-round-hex-bars-india",
+    image: "/images/hero-hex-bars.jpg",
+    imageAlt: "Precision stainless steel hexagonal bars in industrial warehouse"
   },
   {
     id: 3,
     eyebrow: "WE ARE A PREMIER",
-    headlinePart1: "FLANGES & FITTINGS",
-    headlinePart2: "SUPPLIER",
-    headline: "FLANGES & FITTINGS SUPPLIER",
-    description: "Precision-engineered weld neck, slip-on, blind, socket weld flanges (Class 150# to 2500#), butt weld elbows, and forged fittings compliant with ASME B16.5.",
-    btnText: "LEARN MORE",
-    btnLink: "/products/flanges",
-    image: "/images/hero-3.jpg",
-    imageAlt: "Stainless steel sheets, heavy plates and round bars"
+    headlinePart1: "FLANGES & FERRULE FITTINGS",
+    headlinePart2: "PRECISION SUPPLIER",
+    headline: "FLANGES & FERRULE FITTINGS",
+    description: "Precision-engineered ASME B16.5 weld neck, slip-on & blind flanges alongside leak-tight double ferrule tube fittings tested for high-pressure chemical and instrumentation lines.",
+    btnText: "EXPLORE FLANGES & FITTINGS",
+    btnLink: "/products/industrial-flanges-manufacturer-india",
+    image: "/images/hero-flanges.jpg",
+    imageAlt: "Industrial flanges and double ferrule compression tube fittings"
   },
   {
     id: 4,
     eyebrow: "WE ARE A PREMIER",
-    headlinePart1: "NICKEL ALLOYS",
-    headlinePart2: "SPECIALIST",
-    headline: "NICKEL ALLOYS SPECIALIST",
-    description: "Extensive stock of Inconel, Monel, Hastelloy, Titanium, Duplex & Super Duplex engineered for high pressure, thermal, and severe corrosive environments.",
-    btnText: "LEARN MORE",
-    btnLink: "/materials",
-    image: "/images/hero-4.jpg",
-    imageAlt: "Specialty nickel alloys, Inconel, Monel and Hastelloy materials"
+    headlinePart1: "PLATES & SHEETS",
+    headlinePart2: "STOCKIST & DISTRIBUTOR",
+    headline: "PLATES & SHEETS STOCKIST & DISTRIBUTOR",
+    description: "Comprehensive stock of hot rolled plates, cold rolled sheets, mirror coils, and chequered plates in stainless steel, alloy steel, and carbon steel with cut-to-size service.",
+    btnText: "EXPLORE PLATES & SHEETS",
+    btnLink: "/products/sheets-plates-supplier-india",
+    image: "/images/hero-sheets-plates.jpg",
+    imageAlt: "Stainless steel sheets, heavy plates and cold rolled coils warehouse"
   }
 ];
 
@@ -120,16 +120,16 @@ export default function HeroSlider() {
 
                 {/* Huge Bold Main Headline: With vibrant red text border */}
                 <h1
-                  className="animate-hero-headline text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight uppercase leading-[1.08] mb-4 sm:mb-5"
+                  className="animate-hero-headline text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight uppercase leading-[1.12] mb-4 sm:mb-5 max-w-4xl"
                   style={{
-                    WebkitTextStroke: '2.5px #D71932',
+                    WebkitTextStroke: '2px #D71932',
                     paintOrder: 'stroke fill',
                     textShadow: '0 4px 16px rgba(215, 25, 50, 0.5)'
                   }}
                 >
-                  <span className="block sm:whitespace-nowrap">{slide.headlinePart1 || slide.headline}</span>
+                  <span className="block">{slide.headlinePart1 || slide.headline}</span>
                   {slide.headlinePart2 && (
-                    <span className="block mt-0.5 sm:mt-1">{slide.headlinePart2}</span>
+                    <span className="block mt-1 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-white/95">{slide.headlinePart2}</span>
                   )}
                 </h1>
 
