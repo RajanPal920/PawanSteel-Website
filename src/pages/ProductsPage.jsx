@@ -1,12 +1,12 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { 
-  Search, 
-  Filter, 
-  ChevronRight, 
-  ArrowRight, 
-  ShieldCheck, 
-  Layers, 
+import {
+  Search,
+  Filter,
+  ChevronRight,
+  ArrowRight,
+  ShieldCheck,
+  Layers,
   X,
   FileCheck,
   CheckCircle2,
@@ -20,7 +20,7 @@ export default function ProductsPage({ onOpenQuoteModal }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const categoryParam = searchParams.get('category') || 'all';
   const materialParam = searchParams.get('material') || 'all';
-  
+
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState(categoryParam);
   const [selectedMaterial, setSelectedMaterial] = useState(materialParam);
@@ -90,9 +90,9 @@ export default function ProductsPage({ onOpenQuoteModal }) {
 
     return CATEGORIES.map((category) => {
       // Find all products that belong to this category
-      const allCategoryProducts = PRODUCTS.filter((p) => 
-        p.categorySlug === category.slug || 
-        p.categorySlug === category.oldSlug || 
+      const allCategoryProducts = PRODUCTS.filter((p) =>
+        p.categorySlug === category.slug ||
+        p.categorySlug === category.oldSlug ||
         p.categorySlug === category.id
       );
 
@@ -172,27 +172,27 @@ export default function ProductsPage({ onOpenQuoteModal }) {
             <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#D71932] text-white text-xs font-bold uppercase tracking-wider rounded shadow-sm">
               <Layers className="w-3.5 h-3.5" />
               <span>
-                {activeCategoryObj 
-                  ? activeCategoryObj.title 
+                {activeCategoryObj
+                  ? activeCategoryObj.title
                   : (activeMaterialObj ? activeMaterialObj.name : "All 8 Product Categories")}
               </span>
             </span>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
-              {activeCategoryObj 
-                ? activeCategoryObj.title 
-                : (activeMaterialObj ? `${activeMaterialObj.name} Products` : "Industrial Metals & Fittings Catalogue")}
+              {activeCategoryObj
+                ? activeCategoryObj.title
+                : (activeMaterialObj ? `${activeMaterialObj.name} Products` : "All Products")}
             </h1>
 
             <p className="text-base sm:text-lg text-slate-200 font-medium">
-              {activeCategoryObj 
-                ? "Manufacturer, Stockist & Supplier in India" 
+              {activeCategoryObj
+                ? "Manufacturer, Stockist & Supplier in India"
                 : (activeMaterialObj ? "Precision Metallurgy & Ready Stock Supply" : "Complete Stockist Portfolio & Ready Mill Specifications")}
             </p>
 
             <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-3xl">
-              {activeCategoryObj 
-                ? activeCategoryObj.shortDesc 
+              {activeCategoryObj
+                ? activeCategoryObj.shortDesc
                 : (activeMaterialObj ? activeMaterialObj.shortDesc : "Explore our 8 primary industrial product categories. Each category contains precision-manufactured sub-products, ready stock specifications, and metallurgical grades.")}
             </p>
           </div>
@@ -210,11 +210,11 @@ export default function ProductsPage({ onOpenQuoteModal }) {
 
       {/* Main Container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        
+
         {/* Search & Filter Bar */}
         <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm mb-8 space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
-            
+
             {/* Search Input */}
             <div className="md:col-span-5 relative">
               <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
@@ -291,11 +291,10 @@ export default function ProductsPage({ onOpenQuoteModal }) {
             <span className="text-xs font-semibold text-slate-500 mr-1">Categories:</span>
             <button
               onClick={() => handleCategorySelect('all')}
-              className={`text-xs px-3 py-1.5 rounded-md font-semibold transition ${
-                selectedCategory === 'all'
-                  ? 'bg-[#123467] text-white shadow-xs'
-                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-              }`}
+              className={`text-xs px-3 py-1.5 rounded-md font-semibold transition ${selectedCategory === 'all'
+                ? 'bg-[#123467] text-white shadow-xs'
+                : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                }`}
             >
               All (8)
             </button>
@@ -303,11 +302,10 @@ export default function ProductsPage({ onOpenQuoteModal }) {
               <button
                 key={cat.id}
                 onClick={() => handleCategorySelect(cat.slug)}
-                className={`text-xs px-3 py-1.5 rounded-md font-semibold transition ${
-                  selectedCategory === cat.slug
-                    ? 'bg-[#D71932] text-white shadow-sm'
-                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-                }`}
+                className={`text-xs px-3 py-1.5 rounded-md font-semibold transition ${selectedCategory === cat.slug
+                  ? 'bg-[#D71932] text-white shadow-sm'
+                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                  }`}
               >
                 {cat.title}
               </button>
@@ -437,7 +435,7 @@ export default function ProductsPage({ onOpenQuoteModal }) {
                                 <p className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">
                                   {subProd.shortDesc}
                                 </p>
-                                
+
                                 {/* Clickable Grade Pills */}
                                 <div className="flex flex-wrap gap-1 mt-1.5">
                                   {subProd.grades.slice(0, 4).map((g, idx) => (

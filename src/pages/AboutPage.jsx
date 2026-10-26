@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  ShieldCheck, 
-  FileCheck, 
-  CheckCircle2, 
-  MapPin, 
-  Phone, 
-  Mail, 
-  ArrowRight, 
+import {
+  ShieldCheck,
+  FileCheck,
+  CheckCircle2,
+  MapPin,
+  Phone,
+  Mail,
+  ArrowRight,
   ChevronRight,
   Layers,
   Award,
@@ -53,7 +53,7 @@ export default function AboutPage({ onOpenQuoteModal }) {
               <span>About Pawan Steel Alloys</span>
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
-              Industrial Metal Stockist & Supplier in Mumbai
+              About Pawan Steel Alloys
             </h1>
             <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
               Supplying stainless steel, carbon steel, alloy steel, and specialty nickel alloys with verified specifications, prompt communication, and dependable service.
@@ -75,7 +75,7 @@ export default function AboutPage({ onOpenQuoteModal }) {
       <section className="py-16 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
+
             <div className="lg:col-span-7 space-y-5">
               <span className="text-xs font-bold uppercase tracking-wider text-[#D71932] bg-red-50 border border-red-100 px-3 py-1 rounded-md">
                 Business Overview
@@ -115,9 +115,9 @@ export default function AboutPage({ onOpenQuoteModal }) {
 
             <div className="lg:col-span-5">
               <div className="rounded-2xl overflow-hidden shadow-xl border-4 border-slate-100">
-                <img 
-                  src="/images/about-intro.jpg" 
-                  alt="Pawan Steel Alloys stock inspection" 
+                <img
+                  src="/images/about-intro.jpg"
+                  alt="Pawan Steel Alloys stock inspection"
                   className="w-full h-96 object-cover"
                 />
               </div>
@@ -264,8 +264,8 @@ export default function AboutPage({ onOpenQuoteModal }) {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {INDUSTRIES.map((ind) => (
-              <div 
-                key={ind.id} 
+              <div
+                key={ind.id}
                 className="group bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:border-slate-300 transition-all duration-300 flex flex-col transform hover:-translate-y-1.5"
               >
                 {/* 100% Clean Image Without Any Overlay */}

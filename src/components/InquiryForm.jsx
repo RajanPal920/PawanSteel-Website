@@ -28,6 +28,7 @@ export default function InquiryForm({ initialProduct = '', initialCategory = '',
 
   const [errors, setErrors] = useState({});
   const [submittedStatus, setSubmittedStatus] = useState(null);
+  const [lastLinks, setLastLinks] = useState({ gmail: '', mailto: '' });
 
   const validate = () => {
     const errs = {};
@@ -74,7 +75,7 @@ Additional Message:
 ${formData.message || 'Please provide quotation with current availability, delivery lead time and test certificates.'}
 
 --------------------------------------------------
-Inquiry sent via Pawan Steel Alloys Web Portal.`;
+Inquiry sent via Pawan Steel Alloys Web Portal (pawansteelalloys1986@gmail.com)`;
   };
 
   const handleEmailSubmit = (e) => {
@@ -85,17 +86,25 @@ Inquiry sent via Pawan Steel Alloys Web Portal.`;
       return;
     }
 
-    const subject = encodeURIComponent(`Material Quotation Request: ${formData.productCategory} - ${formData.materialGrade} [${formData.companyName || formData.fullName}]`);
-    const body = encodeURIComponent(buildEmailBody());
-    const mailtoUrl = `mailto:${COMPANY_INFO.email}?subject=${subject}&body=${body}`;
+    const targetEmail = COMPANY_INFO.email || 'pawansteelalloys1986@gmail.com';
+    const subject = `Material Quotation Request: ${formData.productCategory} - ${formData.materialGrade} [${formData.companyName || formData.fullName}]`;
+    const body = buildEmailBody();
 
+    // Direct Gmail Web Compose URL with full prefilled parameters
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(targetEmail)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const mailtoUrl = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    setLastLinks({ gmail: gmailUrl, mailto: mailtoUrl });
     setSubmittedStatus('email_opened');
     
-    // Open default mail client
-    window.location.href = mailtoUrl;
+    // Direct navigate to Gmail in a new tab (or fallback to same window)
+    const newTab = window.open(gmailUrl, '_blank');
+    if (!newTab || newTab.closed || typeof newTab.closed === 'undefined') {
+      window.location.href = gmailUrl;
+    }
 
     if (onSuccess) {
-      setTimeout(() => onSuccess(), 2000);
+      setTimeout(() => onSuccess(), 2500);
     }
   };
 
@@ -131,18 +140,39 @@ Inquiry sent via Pawan Steel Alloys Web Portal.`;
   return (
     <div className="w-full">
       {submittedStatus && (
-        <div className="mb-6 p-4 rounded-lg bg-blue-50 border border-blue-200 text-blue-900 text-sm">
+        <div className="mb-6 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-sm shadow-sm animate-in fade-in duration-200">
           <div className="flex items-start gap-3">
-            <CheckCircle2 className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-            <div>
-              <p className="font-semibold">
+            <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+            <div className="space-y-2 flex-1">
+              <p className="font-bold text-emerald-950">
                 {submittedStatus === 'email_opened' 
-                  ? 'Email Client Triggered!' 
+                  ? 'Gmail Compose Window Opened!' 
                   : 'WhatsApp Chat Initiated!'}
               </p>
-              <p className="text-xs text-blue-700 mt-1">
-                Your inquiry has been compiled with all required specifications. Please verify and hit send in your email client or WhatsApp application. Our sales team replies promptly.
+              <p className="text-xs text-emerald-800 leading-relaxed">
+                {submittedStatus === 'email_opened'
+                  ? `Your complete quotation details have been prepared for ${COMPANY_INFO.email}. Please review and click "Send" in Gmail.`
+                  : 'Your inquiry has been compiled with all required specifications. Please verify and send in WhatsApp.'}
               </p>
+              {submittedStatus === 'email_opened' && lastLinks.gmail && (
+                <div className="pt-1 flex flex-wrap gap-2 text-xs">
+                  <a
+                    href={lastLinks.gmail}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#D71932] hover:bg-[#B51226] text-white font-bold rounded shadow-xs transition"
+                  >
+                    <Mail className="w-3.5 h-3.5" />
+                    <span>Open Gmail Again</span>
+                  </a>
+                  <a
+                    href={lastLinks.mailto}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white text-slate-700 font-bold rounded border border-slate-300 hover:bg-slate-50 transition"
+                  >
+                    <span>Use Default Email Client</span>
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         </div>
