@@ -56,6 +56,9 @@ export default function App() {
           <Route path="/materials" element={<MaterialsPage onOpenQuoteModal={handleOpenQuoteModal} />} />
           <Route path="/materials/:slug" element={<MaterialDetailPage onOpenQuoteModal={handleOpenQuoteModal} />} />
           <Route path="/certificate" element={<CertificatePage />} />
+          <Route path="/certificates" element={<CertificatePage />} />
+          <Route path="/certification" element={<CertificatePage />} />
+          <Route path="/certifications" element={<CertificatePage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

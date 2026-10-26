@@ -352,111 +352,19 @@ export default function Header({ onOpenQuoteModal }) {
               )}
             </div>
 
-            {/* 5. Certificate with Dropdown - Positioned DIRECTLY under Certificate trigger */}
-            <div
-              className="relative"
-              onMouseEnter={() => handleMouseEnter('certificates')}
-              onMouseLeave={handleMouseLeave}
+            {/* 5. Certificate - Direct instant navigation */}
+            <NavLink
+              to="/certificate"
+              onClick={() => setActiveMega(null)}
+              className={({ isActive }) =>
+                `h-10 px-4 xl:px-4.5 rounded-xl text-[14px] xl:text-[15px] font-bold tracking-tight inline-flex items-center justify-center transition-all duration-200 select-none ${isActive
+                  ? 'bg-[#D71932] text-white shadow-sm font-black'
+                  : 'text-[#123467] hover:text-[#D71932] hover:bg-white/90'
+                }`
+              }
             >
-              <NavLink
-                to="/certificate"
-                className={({ isActive }) =>
-                  `h-10 px-4 xl:px-4.5 rounded-xl text-[14px] xl:text-[15px] font-bold tracking-tight inline-flex items-center justify-center gap-1.5 transition-all duration-200 select-none ${isActive || activeMega === 'certificates'
-                    ? 'bg-[#D71932] text-white shadow-sm font-black'
-                    : 'text-[#123467] hover:text-[#D71932] hover:bg-white/90'
-                  }`
-                }
-              >
-                <span>Certificate</span>
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeMega === 'certificates' ? 'rotate-180 text-white' : ''}`} />
-              </NavLink>
-
-              {/* Dropdown: Certificates - Solid Red Background */}
-              {activeMega === 'certificates' && (
-                <div
-                  className="absolute left-0 top-full pt-2 w-80 sm:w-96 z-50 animate-in fade-in slide-in-from-top-1 duration-150"
-                  onMouseEnter={() => handleMouseEnter('certificates')}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <div className="bg-[#D71932] rounded-2xl shadow-2xl border-2 border-[#B51226] overflow-hidden text-white">
-                    {/* Header Strip */}
-                    <div className="bg-[#930E1E]/60 px-5 py-3.5 border-b border-white/20">
-                      <h4 className="text-xs font-black text-white uppercase tracking-wider">
-                        Verified Business Documents
-                      </h4>
-                      <p className="text-[11px] text-red-100 mt-0.5 font-medium">Official registrations of Pawan Steel Alloys</p>
-                    </div>
-
-                    <div className="p-5 space-y-3">
-                      {/* ISO Certificate White Card */}
-                      <div className="p-3.5 rounded-xl bg-white text-[#123467] shadow-md hover:shadow-xl transition-all group">
-                        <div className="flex items-center gap-2 mb-1">
-                          <ShieldCheck className="w-4 h-4 text-[#D71932]" />
-                          <span className="text-xs font-black text-[#123467] group-hover:text-[#D71932]">
-                            ISO 9001:2015 Certificate
-                          </span>
-                        </div>
-                        <p className="text-[11px] text-slate-500 leading-snug font-normal">
-                          Quality Management Systems issued by Audittech Certification (IAF / EGAC accredited).
-                        </p>
-                        <div className="mt-2.5 flex items-center gap-3 text-[11px]">
-                          <Link to="/certificate" className="font-bold text-[#123467] hover:underline flex items-center gap-1">
-                            <span>View Details</span>
-                            <ChevronRight className="w-3 h-3" />
-                          </Link>
-                          <a
-                            href="/pawan-steel-alloys-iso-9001-certificate.pdf"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="font-bold text-[#D71932] hover:underline flex items-center gap-1"
-                          >
-                            <ExternalLink className="w-3 h-3" />
-                            <span>PDF</span>
-                          </a>
-                        </div>
-                      </div>
-
-                      {/* Udyam Certificate White Card */}
-                      <div className="p-3.5 rounded-xl bg-white text-[#123467] shadow-md hover:shadow-xl transition-all group">
-                        <div className="flex items-center gap-2 mb-1">
-                          <FileCheck className="w-4 h-4 text-blue-600" />
-                          <span className="text-xs font-black text-[#123467]">
-                            MSME Udyam Registration
-                          </span>
-                        </div>
-                        <p className="text-[11px] text-slate-500 leading-snug font-normal">
-                          Govt. of India Ministry of MSME registration No. UDYAM-MH-19-0449426.
-                        </p>
-                        <div className="mt-2.5 flex items-center gap-3 text-[11px]">
-                          <Link to="/certificate" className="font-bold text-[#123467] hover:underline flex items-center gap-1">
-                            <span>View Details</span>
-                            <ChevronRight className="w-3 h-3" />
-                          </Link>
-                          <a
-                            href="/pawan-steel-alloys-udyam-registration-certificate.pdf"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="font-bold text-[#123467] hover:underline flex items-center gap-1"
-                          >
-                            <ExternalLink className="w-3 h-3" />
-                            <span>PDF</span>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="p-3 bg-[#930E1E]/60 border-t border-white/20 text-center">
-                      <Link
-                        to="/certificate"
-                        className="text-xs font-black text-white hover:underline block"
-                      >
-                        Visit Certificates Page →
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
+              Certificate
+            </NavLink>
 
             {/* 6. Contact */}
             <NavLink
@@ -602,35 +510,20 @@ export default function Header({ onOpenQuoteModal }) {
               )}
             </div>
 
-            {/* Certificates Accordion */}
-            <div className="border rounded-xl border-red-100/80 overflow-hidden bg-red-50/30">
-              <button
-                type="button"
-                onClick={() => toggleMobileAccordion('certificates')}
-                className="w-full px-4 py-2.5 text-sm font-bold text-[#123467] flex items-center justify-between bg-red-50/70 hover:bg-red-100/80 transition-colors"
-              >
-                <span>Certificates & Verification</span>
-                <ChevronDown className={`w-4 h-4 transition-transform ${mobileAccordion.certificates ? 'rotate-180 text-[#D71932]' : ''}`} />
-              </button>
-              {mobileAccordion.certificates && (
-                <div className="p-3 bg-white space-y-2 border-t border-red-100 text-xs">
-                  <Link
-                    to="/certificate"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="block font-bold text-[#123467] hover:text-[#D71932]"
-                  >
-                    ISO 9001:2015 Certificate Details →
-                  </Link>
-                  <Link
-                    to="/certificate"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="block font-bold text-[#123467] hover:text-[#D71932]"
-                  >
-                    MSME Udyam Registration Certificate →
-                  </Link>
-                </div>
-              )}
-            </div>
+            {/* 5. Certificate - Direct Link */}
+            <NavLink
+              to="/certificate"
+              onClick={() => setMobileMenuOpen(false)}
+              className={({ isActive }) =>
+                `px-4 py-2.5 rounded-xl text-sm font-bold flex items-center justify-between border transition-all ${isActive
+                  ? 'bg-[#D71932] text-white border-[#D71932] shadow-sm font-black'
+                  : 'bg-red-50/60 text-[#123467] border-red-100/80 hover:bg-red-100/80'
+                }`
+              }
+            >
+              <span>Certificate</span>
+              <ChevronRight className="w-4 h-4 opacity-60" />
+            </NavLink>
 
             {/* Contact */}
             <NavLink
