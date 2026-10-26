@@ -621,7 +621,9 @@ export const PRODUCTS = [
       "socket-weld-fittings", 
       "threaded-fittings", 
       "forged-pipe-fittings", 
+      "forged-pipe-fittings-manufacturer-india",
       "high-pressure-fittings", 
+      "high-pressure-forged-fittings-manufacturer-india",
       "hex-nipples", 
       "unions"
     ],
@@ -657,6 +659,9 @@ export const PRODUCTS = [
       "twin-ferrule", 
       "compression-fittings", 
       "tube-fittings", 
+      "double-ferrule-tube-fittings",
+      "double-ferrule-tube-fittings-manufacturer-india",
+      "double-ferrule-instrumentation-fittings-india",
       "instrumentation-fittings", 
       "tube-elbows", 
       "bulkhead-unions"
@@ -876,13 +881,42 @@ export function findProduct(identifier) {
   const normClean = normalizeSlug(clean);
   const normBase = normalizeSlug(productSlug);
 
-  // 1. Direct exact match on slug, oldSlug, id, name, or aliases
+  // Single-product categories where category slug directly maps to the sole product
+  const singleProductCategorySlugs = [
+    'forged-pipe-fittings-manufacturer-india',
+    'double-ferrule-tube-fittings-manufacturer-india',
+    'industrial-flanges-manufacturer-india',
+    'industrial-fasteners-bolts-nuts-india',
+    'butt-weld-pipe-fittings-manufacturer-india'
+  ];
+
+  // Multi-product categories that should display Category Showcase (not single product)
+  const multiProductCategorySlugs = [
+    'rod-bars-manufacturer-india',
+    'rods-bars',
+    'pipes-tubes-manufacturer-supplier-india',
+    'pipes-tubes',
+    'sheets-plates-supplier-india',
+    'sheets-plates'
+  ];
+  if (
+    multiProductCategorySlugs.includes(clean) ||
+    multiProductCategorySlugs.includes(productSlug) ||
+    multiProductCategorySlugs.map(normalizeSlug).includes(normClean) ||
+    multiProductCategorySlugs.map(normalizeSlug).includes(normBase)
+  ) {
+    return null;
+  }
+
+  // 1. Direct exact match on slug, oldSlug, id, name, aliases, or 1-product categorySlug
   const directMatch = PRODUCTS.find((p) => {
     const pSlug = p.slug.toLowerCase();
     const pOld = p.oldSlug ? p.oldSlug.toLowerCase() : '';
     const pId = p.id.toLowerCase();
     const pName = p.name.toLowerCase();
+    const pCatSlug = p.categorySlug ? p.categorySlug.toLowerCase() : '';
     const pAliases = p.aliases ? p.aliases.map((a) => a.toLowerCase()) : [];
+    const isSingleProdCategory = singleProductCategorySlugs.includes(pCatSlug);
 
     return (
       pSlug === clean ||
@@ -898,7 +932,8 @@ export function findProduct(identifier) {
       pSlug.replace('manufacturer', 'manufactures') === clean ||
       pSlug.replace('manufacturer', 'manufactures') === productSlug ||
       pSlug.replace('manufactures', 'manufacturer') === clean ||
-      pSlug.replace('manufactures', 'manufacturer') === productSlug
+      pSlug.replace('manufactures', 'manufacturer') === productSlug ||
+      (isSingleProdCategory && (pCatSlug === clean || pCatSlug === productSlug))
     );
   });
   if (directMatch) return directMatch;
@@ -909,7 +944,9 @@ export function findProduct(identifier) {
     const normOld = normalizeSlug(p.oldSlug);
     const normId = normalizeSlug(p.id);
     const normName = normalizeSlug(p.name);
+    const normCat = normalizeSlug(p.categorySlug);
     const normAliases = p.aliases ? p.aliases.map((a) => normalizeSlug(a)) : [];
+    const isSingleProdCategory = singleProductCategorySlugs.includes(p.categorySlug?.toLowerCase());
 
     return (
       normSlug === normClean ||
@@ -921,7 +958,8 @@ export function findProduct(identifier) {
       normName === normClean ||
       normName === normBase ||
       normAliases.includes(normClean) ||
-      normAliases.includes(normBase)
+      normAliases.includes(normBase) ||
+      (isSingleProdCategory && (normCat === normClean || normCat === normBase))
     );
   });
   if (normMatch) return normMatch;
@@ -942,33 +980,33 @@ export function findProduct(identifier) {
   });
   if (isMaterialIdentifier) return null;
 
-  // 3. Smart semantic keyword mapping
-  if (normBase.includes('roundbar') || normBase === 'round' || normBase === 'roundbars' || normBase === 'roundrod') {
-    return PRODUCTS.find((p) => p.id === 'ss-round-bars') || null;
+  // 3. Smart semantic keyword mapping (Prioritize specific fittings and components BEFORE generic pipe/tube)
+  // A. Ferrule & Instrumentation Fittings (High priority - must precede "tube")
+  if (
+    normBase.includes('ferrule') ||
+    normBase.includes('ferrules') ||
+    normBase.includes('doubleferrule') ||
+    normBase.includes('twinferrule') ||
+    normBase.includes('compression')
+  ) {
+    return PRODUCTS.find((p) => p.id === 'ferrule-fittings') || null;
   }
-  if (normBase.includes('pipe') || normBase.includes('tube')) {
-    if (normBase.includes('carbon') || normBase.includes('alloy')) {
-      return PRODUCTS.find((p) => p.id === 'carbon-alloy-steel-pipes') || null;
-    }
-    if (normBase.includes('cupro') || normBase.includes('copper')) {
-      return PRODUCTS.find((p) => p.id === 'nickel-cupro-tubes') || null;
-    }
-    return PRODUCTS.find((p) => p.id === 'ss-pipes-tubes') || null;
+
+  // B. Forged Fittings (High priority - must precede "pipe")
+  if (
+    normBase.includes('forged') ||
+    normBase.includes('socketweld') ||
+    normBase.includes('socketwelded') ||
+    normBase.includes('hexnipple') ||
+    normBase.includes('swagennipple')
+  ) {
+    return PRODUCTS.find((p) => p.id === 'forged-fittings') || null;
   }
-  if (normBase.includes('flange')) {
-    return PRODUCTS.find((p) => p.id === 'industrial-flanges') || null;
-  }
-  if (normBase.includes('fastener') || normBase.includes('bolt') || normBase.includes('nut') || normBase.includes('stud')) {
-    return PRODUCTS.find((p) => p.id === 'industrial-fasteners') || null;
-  }
-  if (normBase.includes('sheet') || normBase.includes('plate') || normBase.includes('coil')) {
-    if (normBase.includes('boiler') || normBase.includes('carbon')) {
-      return PRODUCTS.find((p) => p.id === 'alloy-carbon-plates') || null;
-    }
-    return PRODUCTS.find((p) => p.id === 'ss-sheets-plates') || null;
-  }
+
+  // C. Butt Weld Pipe Fittings (Must precede generic "pipe")
   if (
     normBase.includes('buttweld') ||
+    normBase.includes('buttwelded') ||
     normBase.includes('elbow') ||
     normBase.includes('stubend') ||
     normBase.includes('pipecap') ||
@@ -976,16 +1014,73 @@ export function findProduct(identifier) {
     normBase.includes('reducingtee') ||
     normBase === 'tee' ||
     normBase === 'tees' ||
-    normBase === 'fitting' ||
-    normBase === 'fittings'
+    (normBase.includes('pipe') && normBase.includes('fitting'))
   ) {
     return PRODUCTS.find((p) => p.id === 'butt-weld-fittings') || null;
   }
-  if (normBase.includes('forged') || normBase.includes('socketweld')) {
-    return PRODUCTS.find((p) => p.id === 'forged-fittings') || null;
+
+  // D. Flanges
+  if (
+    normBase.includes('flange') ||
+    normBase.includes('flanges') ||
+    normBase.includes('wnrf') ||
+    normBase.includes('sorf') ||
+    normBase.includes('blrf')
+  ) {
+    return PRODUCTS.find((p) => p.id === 'industrial-flanges') || null;
   }
-  if (normBase.includes('ferrule') || normBase.includes('compression')) {
-    return PRODUCTS.find((p) => p.id === 'ferrule-fittings') || null;
+
+  // E. Fasteners
+  if (
+    normBase.includes('fastener') ||
+    normBase.includes('bolt') ||
+    normBase.includes('nut') ||
+    normBase.includes('stud') ||
+    normBase.includes('washer')
+  ) {
+    return PRODUCTS.find((p) => p.id === 'industrial-fasteners') || null;
+  }
+
+  // F. Rods & Bars
+  if (
+    normBase.includes('roundbar') ||
+    normBase === 'round' ||
+    normBase === 'roundbars' ||
+    normBase === 'roundrod' ||
+    normBase.includes('brightbar')
+  ) {
+    if (normBase.includes('nickel') || normBase.includes('inconel') || normBase.includes('monel') || normBase.includes('hastelloy')) {
+      return PRODUCTS.find((p) => p.id === 'nickel-alloy-round-bars') || null;
+    }
+    if (normBase.includes('carbon') || normBase.includes('alloy') || normBase.includes('hex') || normBase.includes('square')) {
+      return PRODUCTS.find((p) => p.id === 'carbon-alloy-steel-bars') || null;
+    }
+    return PRODUCTS.find((p) => p.id === 'ss-round-bars') || null;
+  }
+
+  // G. Sheets & Plates
+  if (
+    normBase.includes('sheet') ||
+    normBase.includes('plate') ||
+    normBase.includes('coil') ||
+    normBase.includes('strip') ||
+    normBase.includes('chequered')
+  ) {
+    if (normBase.includes('boiler') || normBase.includes('carbon') || normBase.includes('bq')) {
+      return PRODUCTS.find((p) => p.id === 'alloy-carbon-plates') || null;
+    }
+    return PRODUCTS.find((p) => p.id === 'ss-sheets-plates') || null;
+  }
+
+  // H. Generic Pipes & Tubes (Checked LAST so fittings with "pipe" or "tube" in name aren't hijacked!)
+  if (normBase.includes('pipe') || normBase.includes('tube') || normBase.includes('piping')) {
+    if (normBase.includes('carbon') || normBase.includes('alloy') || normBase.includes('seamless')) {
+      return PRODUCTS.find((p) => p.id === 'carbon-alloy-steel-pipes') || null;
+    }
+    if (normBase.includes('cupro') || normBase.includes('copper') || normBase.includes('nickel')) {
+      return PRODUCTS.find((p) => p.id === 'nickel-cupro-tubes') || null;
+    }
+    return PRODUCTS.find((p) => p.id === 'ss-pipes-tubes') || null;
   }
 
   return null;
@@ -1049,30 +1144,34 @@ export function findCategory(identifier) {
   });
   if (normMatch) return normMatch;
 
-  // 3. Keyword fallback
+  // 3. Keyword fallback (Order specific fittings before generic pipe/tube)
+  if (normBase.includes('forged') || normBase.includes('socketweld')) {
+    return CATEGORIES.find((c) => c.id === 'forged-fittings') || null;
+  }
+  if (normBase.includes('ferrule') || normBase.includes('compression')) {
+    return CATEGORIES.find((c) => c.id === 'ferrule-fittings') || null;
+  }
+  if (
+    normBase.includes('buttweld') ||
+    normBase.includes('butt') ||
+    (normBase.includes('pipe') && normBase.includes('fitting'))
+  ) {
+    return CATEGORIES.find((c) => c.id === 'butt-weld-fittings') || null;
+  }
+  if (normBase.includes('flange') || normBase.includes('flanges')) {
+    return CATEGORIES.find((c) => c.id === 'flanges') || null;
+  }
+  if (normBase.includes('fastener') || normBase.includes('bolt') || normBase.includes('nut') || normBase.includes('stud')) {
+    return CATEGORIES.find((c) => c.id === 'fasteners') || null;
+  }
   if (normBase.includes('rod') || normBase.includes('bar')) {
     return CATEGORIES.find((c) => c.id === 'rods-bars') || null;
   }
-  if (normBase.includes('pipe') || normBase.includes('tube')) {
-    return CATEGORIES.find((c) => c.id === 'pipes-tubes') || null;
-  }
-  if (normBase.includes('sheet') || normBase.includes('plate')) {
+  if (normBase.includes('sheet') || normBase.includes('plate') || normBase.includes('coil')) {
     return CATEGORIES.find((c) => c.id === 'sheets-plates') || null;
   }
-  if (normBase.includes('flange')) {
-    return CATEGORIES.find((c) => c.id === 'flanges') || null;
-  }
-  if (normBase.includes('fastener') || normBase.includes('bolt') || normBase.includes('nut')) {
-    return CATEGORIES.find((c) => c.id === 'fasteners') || null;
-  }
-  if (normBase.includes('buttweld') || normBase.includes('butt')) {
-    return CATEGORIES.find((c) => c.id === 'butt-weld-fittings') || null;
-  }
-  if (normBase.includes('forged')) {
-    return CATEGORIES.find((c) => c.id === 'forged-fittings') || null;
-  }
-  if (normBase.includes('ferrule')) {
-    return CATEGORIES.find((c) => c.id === 'ferrule-fittings') || null;
+  if (normBase.includes('pipe') || normBase.includes('tube') || normBase.includes('piping')) {
+    return CATEGORIES.find((c) => c.id === 'pipes-tubes') || null;
   }
 
   return null;

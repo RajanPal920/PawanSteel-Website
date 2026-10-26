@@ -247,10 +247,12 @@ export default function Header({ onOpenQuoteModal }) {
                       <span className="text-white/80 font-bold mr-1">Direct Stock:</span>
                       <Link to="/products/round-bars" className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/25 text-white transition font-medium">Round Bars</Link>
                       <Link to="/products/pipes-tubes" className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/25 text-white transition font-medium">Seamless Pipes</Link>
-                      <Link to="/products/flanges" className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/25 text-white transition font-medium">Industrial Flanges</Link>
-                      <Link to="/products/sheets-plates" className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/25 text-white transition font-medium">Steel Plates</Link>
+                      <Link to="/products/flanges" className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/25 text-white transition font-medium">Flanges</Link>
+                      <Link to="/products/sheets-plates" className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/25 text-white transition font-medium">Plates</Link>
                       <Link to="/products/fasteners" className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/25 text-white transition font-medium">Fasteners</Link>
                       <Link to="/products/butt-weld-fittings" className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/25 text-white transition font-medium">Butt Weld</Link>
+                      <Link to="/products/forged-pipe-fittings-manufacturer-india" className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/25 text-white transition font-medium">Forged Fittings</Link>
+                      <Link to="/products/double-ferrule-tube-fittings-manufacturer-india" className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/25 text-white transition font-medium">Ferrule Fittings</Link>
                     </div>
 
                     {/* Bottom Strip */}
