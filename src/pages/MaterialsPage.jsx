@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   ShieldCheck, 
@@ -11,21 +11,38 @@ import {
 import { MATERIALS, PRODUCTS, makeGradeSlug } from '../data/productsData';
 
 export default function MaterialsPage({ onOpenQuoteModal }) {
+  useEffect(() => {
+    document.title = "Industrial Metal Materials & Specialty Alloys Guide | Pawan Steel Alloys";
+  }, []);
+
   return (
     <div className="w-full bg-[#F3F7FB] min-h-screen pb-16">
-      {/* Header Banner */}
-      <section className="bg-[#123467] text-white py-14 relative overflow-hidden border-b-4 border-[#D71932]">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0A1F3D] via-[#123467] to-[#1B478A] opacity-90" />
+      {/* Header Banner with Photographic Hero Image */}
+      <section className="relative text-white py-16 md:py-20 overflow-hidden border-b-4 border-[#D71932] bg-[#0A1F3D]">
+        {/* Photographic Hero Image with Dark Metallic Gradient Overlay */}
+        <div className="absolute inset-0">
+          <img
+            src="/images/hero-4.jpg"
+            alt="Pawan Steel Alloys Specialty Materials"
+            className="w-full h-full object-cover object-center filter brightness-[0.25] contrast-125 transform scale-105 transition-transform duration-1000"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0A1F3D] via-[#123467]/90 to-[#0A1F3D]/80" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/30 via-transparent to-black/60" />
+        </div>
+
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl space-y-3">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-red-600/90 text-white text-xs font-bold uppercase tracking-wider rounded-sm backdrop-blur-sm">
+          <div className="max-w-4xl space-y-3">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#D71932] text-white text-xs font-bold uppercase tracking-wider rounded shadow-sm">
               <ShieldCheck className="w-3.5 h-3.5" />
               <span>Material Metallurgy Guide</span>
             </span>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
               Materials & Specialty Alloys
             </h1>
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-200 font-medium">
+              13 Core Metallurgy Classifications & High Performance Alloys
+            </p>
+            <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-3xl">
               Explore our 13 core material categories. From standard austenitic stainless steels to high-temperature superalloys, select a material to view matching product forms and technical properties.
             </p>
           </div>

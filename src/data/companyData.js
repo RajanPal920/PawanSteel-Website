@@ -3,14 +3,18 @@ export const COMPANY_INFO = {
   legalName: "PAWAN STEEL ALLOYS",
   tagline: "Your Trusted Partner in Industrial Metals",
   supportingText: "Quality Metal Products. Reliable Supply. Industrial Excellence.",
-  phone: "022-66324854",
-  phoneFormatted: "+91-22-66324854",
-  mobile: "9833416144",
-  mobileFormatted: "+91 98334 16144",
+  phone: "022-66394854",
+  phoneRaw: "02266394854",
+  phoneFormatted: "+91-22-66394854",
+  mobile: "09850789923",
+  mobileRaw: "09850789923",
+  mobileFormatted: "+91 98507 89923",
+  additionalMobile: "09833416144",
+  additionalMobileRaw: "09833416144",
+  additionalMobileFormatted: "+91 98334 16144",
   whatsapp: "9833416144",
   whatsappLink: "https://wa.me/919833416144",
   email: "pawansteelalloys1986@gmail.com",
-  secondaryEmail: "babudewasi12257@gmail.com",
   socialLinks: {
     linkedin: "https://www.linkedin.com/company/pawan-steel-alloys",
     facebook: "https://www.facebook.com/pawansteelalloys",
@@ -18,14 +22,14 @@ export const COMPANY_INFO = {
   },
   address: {
     office: "Office No. 107, 1st Floor",
-    building: "13/21, Seth Virchand Umarsi Building",
-    street: "Panjarapole 3rd Lane, Gulalwadi",
-    locality: "Girgaon",
+    building: "13/21 Seth Virchand Umarsi Building",
+    street: "3rd Panjrapole, Gulalwadi",
+    locality: "Gulalwadi",
     city: "Mumbai",
     state: "Maharashtra",
     pincode: "400004",
     country: "India",
-    full: "1st Floor, Office No. 107, 13/21, Seth Virchand Umarsi Building, Panjarapole 3rd Lane, Gulalwadi, Girgaon, Mumbai, Maharashtra - 400004, INDIA."
+    full: "Office No. 107, 1st Floor, 13/21 Seth Virchand Umarsi Building, 3rd Panjrapole, Gulalwadi, Mumbai – 400004, Maharashtra, India."
   },
   certifications: [
     {

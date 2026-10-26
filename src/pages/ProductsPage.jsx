@@ -13,7 +13,7 @@ import {
   Sparkles,
   ExternalLink
 } from 'lucide-react';
-import { CATEGORIES, MATERIALS, PRODUCTS, findCategory, makeGradeSlug } from '../data/productsData';
+import { CATEGORIES, MATERIALS, PRODUCTS, findCategory, findMaterial, makeGradeSlug } from '../data/productsData';
 import WhatsAppIcon from '../components/WhatsAppIcon';
 
 export default function ProductsPage({ onOpenQuoteModal }) {
@@ -33,6 +33,27 @@ export default function ProductsPage({ onOpenQuoteModal }) {
   useEffect(() => {
     setSelectedMaterial(materialParam);
   }, [materialParam]);
+
+  const activeCategoryObj = useMemo(() => {
+    if (selectedCategory === 'all') return null;
+    return findCategory(selectedCategory);
+  }, [selectedCategory]);
+
+  const activeMaterialObj = useMemo(() => {
+    if (selectedMaterial === 'all') return null;
+    return findMaterial(selectedMaterial);
+  }, [selectedMaterial]);
+
+  // Dynamic SEO Document Title
+  useEffect(() => {
+    if (activeCategoryObj) {
+      document.title = `${activeCategoryObj.title} Manufacturer & Stockist in India | Pawan Steel Alloys`;
+    } else if (activeMaterialObj) {
+      document.title = `${activeMaterialObj.name} Products Supplier & Stockist | Pawan Steel Alloys`;
+    } else {
+      document.title = "Industrial Steel Products & Piping Materials Catalogue | Pawan Steel Alloys";
+    }
+  }, [activeCategoryObj, activeMaterialObj]);
 
   const handleCategorySelect = (slug) => {
     setSelectedCategory(slug);
@@ -133,20 +154,46 @@ export default function ProductsPage({ onOpenQuoteModal }) {
 
   return (
     <div className="w-full bg-[#F3F7FB] min-h-screen">
-      {/* Header Banner */}
-      <section className="bg-[#123467] text-white py-14 relative overflow-hidden border-b-4 border-[#D71932]">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0A1F3D] via-[#123467] to-[#1B478A] opacity-90" />
+      {/* Header Banner with Photographic Hero Image */}
+      <section className="relative text-white py-16 md:py-20 overflow-hidden border-b-4 border-[#D71932] bg-[#0A1F3D]">
+        {/* Photographic Hero Image with Dark Metallic Gradient Overlay */}
+        <div className="absolute inset-0">
+          <img
+            src={activeCategoryObj ? activeCategoryObj.image : (activeMaterialObj ? '/images/hero-4.jpg' : '/images/hero-3.jpg')}
+            alt="Pawan Steel Alloys Industrial Products"
+            className="w-full h-full object-cover object-center filter brightness-[0.25] contrast-125 transform scale-105 transition-transform duration-1000"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0A1F3D] via-[#123467]/90 to-[#0A1F3D]/80" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/30 via-transparent to-black/60" />
+        </div>
+
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl space-y-3">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-red-600/90 text-white text-xs font-bold uppercase tracking-wider rounded-sm backdrop-blur-sm">
+          <div className="max-w-4xl space-y-3">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#D71932] text-white text-xs font-bold uppercase tracking-wider rounded shadow-sm">
               <Layers className="w-3.5 h-3.5" />
-              <span>All 8 Product Categories</span>
+              <span>
+                {activeCategoryObj 
+                  ? activeCategoryObj.title 
+                  : (activeMaterialObj ? activeMaterialObj.name : "All 8 Product Categories")}
+              </span>
             </span>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
-              Industrial Metals & Fittings Catalogue
+
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
+              {activeCategoryObj 
+                ? activeCategoryObj.title 
+                : (activeMaterialObj ? `${activeMaterialObj.name} Products` : "Industrial Metals & Fittings Catalogue")}
             </h1>
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-              Explore our 8 primary industrial product categories. Each category contains precision-manufactured sub-products, ready stock specifications, and metallurgical grades.
+
+            <p className="text-base sm:text-lg text-slate-200 font-medium">
+              {activeCategoryObj 
+                ? "Manufacturer, Stockist & Supplier in India" 
+                : (activeMaterialObj ? "Precision Metallurgy & Ready Stock Supply" : "Complete Stockist Portfolio & Ready Mill Specifications")}
+            </p>
+
+            <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-3xl">
+              {activeCategoryObj 
+                ? activeCategoryObj.shortDesc 
+                : (activeMaterialObj ? activeMaterialObj.shortDesc : "Explore our 8 primary industrial product categories. Each category contains precision-manufactured sub-products, ready stock specifications, and metallurgical grades.")}
             </p>
           </div>
         </div>

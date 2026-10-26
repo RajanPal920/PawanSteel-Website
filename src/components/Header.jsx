@@ -72,18 +72,26 @@ export default function Header({ onOpenQuoteModal }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-between">
           <div className="flex items-center space-x-6">
             <a
-              href="tel:02266324854"
+              href="tel:02266394854"
               className="flex items-center gap-1.5 hover:text-white transition-colors"
             >
               <Phone className="w-3.5 h-3.5 text-[#D71932]" />
-              <span className="font-semibold">022-66324854</span>
+              <span className="font-semibold">022-66394854</span>
             </a>
             <a
-              href="tel:9833416144"
+              href="tel:09850789923"
               className="flex items-center gap-1.5 hover:text-white transition-colors"
             >
               <Phone className="w-3.5 h-3.5 text-emerald-400" />
-              <span className="font-semibold">+91 9833416144</span>
+              <span className="font-semibold">09850789923</span>
+            </a>
+            <a
+              href="tel:09833416144"
+              className="hidden xl:flex items-center gap-1.5 hover:text-white transition-colors"
+              title="Additional Contact"
+            >
+              <Phone className="w-3.5 h-3.5 text-blue-400" />
+              <span className="font-semibold text-slate-300">09833416144</span>
             </a>
             <a
               href="https://wa.me/919833416144?text=Hello%20Pawan%20Steel%20Alloys%2C%20I%20would%20like%20to%20enquire%20about%20your%20industrial%20raw%20materials."
@@ -234,8 +242,19 @@ export default function Header({ onOpenQuoteModal }) {
                       ))}
                     </div>
 
+                    {/* Quick Popular Product Direct Links */}
+                    <div className="mt-3.5 pt-2.5 border-t border-white/20 flex flex-wrap items-center gap-1.5 text-[11px]">
+                      <span className="text-white/80 font-bold mr-1">Direct Stock:</span>
+                      <Link to="/products/round-bars" className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/25 text-white transition font-medium">Round Bars</Link>
+                      <Link to="/products/pipes-tubes" className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/25 text-white transition font-medium">Seamless Pipes</Link>
+                      <Link to="/products/flanges" className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/25 text-white transition font-medium">Industrial Flanges</Link>
+                      <Link to="/products/sheets-plates" className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/25 text-white transition font-medium">Steel Plates</Link>
+                      <Link to="/products/fasteners" className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/25 text-white transition font-medium">Fasteners</Link>
+                      <Link to="/products/butt-weld-fittings" className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/25 text-white transition font-medium">Butt Weld</Link>
+                    </div>
+
                     {/* Bottom Strip */}
-                    <div className="mt-4 pt-3 border-t border-white/20 flex items-center justify-between text-xs text-white/90">
+                    <div className="mt-3 pt-2.5 border-t border-white/20 flex items-center justify-between text-xs text-white/90">
                       <span className="flex items-center gap-1.5 font-medium">
                         <ShieldCheck className="w-4 h-4 text-emerald-300" />
                         <span>Ready Stock & Direct Mill Sourcing Available</span>

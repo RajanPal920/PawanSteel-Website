@@ -23,7 +23,7 @@ const HERO_SLIDES = [
     headline: "PIPES & TUBES STOCKIST",
     description: "Complete inventory of seamless & welded stainless steel, carbon steel, and alloy steel pipes in ASTM A312, A358, A106, across all standard schedules.",
     btnText: "LEARN MORE",
-    btnLink: "/products?category=pipes-tubes",
+    btnLink: "/products/pipes-tubes",
     image: "/images/hero-2.jpg",
     imageAlt: "Industrial flanges and machined pipe fittings"
   },
@@ -35,7 +35,7 @@ const HERO_SLIDES = [
     headline: "FLANGES & FITTINGS SUPPLIER",
     description: "Precision-engineered weld neck, slip-on, blind, socket weld flanges (Class 150# to 2500#), butt weld elbows, and forged fittings compliant with ASME B16.5.",
     btnText: "LEARN MORE",
-    btnLink: "/products?category=flanges",
+    btnLink: "/products/flanges",
     image: "/images/hero-3.jpg",
     imageAlt: "Stainless steel sheets, heavy plates and round bars"
   },

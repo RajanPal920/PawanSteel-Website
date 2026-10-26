@@ -239,8 +239,8 @@ export default function HomePage({ onOpenQuoteModal }) {
                 key={category.id}
                 className="bg-white rounded-2xl overflow-hidden border border-[#DDE5EE] shadow-subtle hover:shadow-hover hover:border-[#D71932] transition-all duration-300 flex flex-col group transform hover:-translate-y-1.5"
               >
-                {/* Product Image with Zoom on Hover */}
-                <div className="relative h-48 w-full bg-slate-100 overflow-hidden">
+                {/* Product Image with Zoom on Hover - Clickable */}
+                <Link to={`/products/${category.slug}`} className="block relative h-48 w-full bg-slate-100 overflow-hidden">
                   <img
                     src={category.image}
                     alt={category.title}
@@ -252,13 +252,15 @@ export default function HomePage({ onOpenQuoteModal }) {
                       {category.title}
                     </span>
                   </div>
-                </div>
+                </Link>
 
                 {/* Card Content */}
                 <div className="p-5 flex-1 flex flex-col justify-between">
                   <div>
                     <h3 className="text-base font-bold text-[#123467] group-hover:text-[#D71932] transition-colors mb-2">
-                      {category.title}
+                      <Link to={`/products/${category.slug}`}>
+                        {category.title}
+                      </Link>
                     </h3>
                     <p className="text-xs text-slate-500 line-clamp-3 leading-relaxed mb-4">
                       {category.shortDesc}
@@ -267,10 +269,10 @@ export default function HomePage({ onOpenQuoteModal }) {
 
                   <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
                     <Link
-                      to={`/products?category=${category.slug}`}
+                      to={`/products/${category.slug}`}
                       className="inline-flex items-center text-xs font-bold text-[#D71932] group-hover:text-[#B51226] transition-colors"
                     >
-                      <span>Explore Products</span>
+                      <span>Explore {category.title}</span>
                       <ChevronRight className="w-3.5 h-3.5 ml-1 transition-transform group-hover:translate-x-1" />
                     </Link>
 
@@ -445,8 +447,8 @@ export default function HomePage({ onOpenQuoteModal }) {
                   </div>
                   <div>
                     <p className="text-[11px] font-bold text-slate-400 uppercase">Telephone (Office)</p>
-                    <a href="tel:02266324854" className="text-sm font-bold text-[#123467] hover:text-[#D71932]">
-                      022-66324854
+                    <a href="tel:02266394854" className="text-sm font-bold text-[#123467] hover:text-[#D71932]">
+                      022-66394854
                     </a>
                   </div>
                 </div>
@@ -457,8 +459,11 @@ export default function HomePage({ onOpenQuoteModal }) {
                   </div>
                   <div>
                     <p className="text-[11px] font-bold text-slate-400 uppercase">Mobile / WhatsApp</p>
-                    <a href="tel:9833416144" className="text-sm font-bold text-[#123467] hover:text-emerald-600">
-                      +91 9833416144
+                    <a href="tel:09850789923" className="text-sm font-bold text-[#123467] hover:text-emerald-600 block">
+                      09850789923
+                    </a>
+                    <a href="tel:09833416144" className="text-xs font-medium text-slate-500 hover:text-emerald-600 block mt-0.5">
+                      Alt: 09833416144
                     </a>
                   </div>
                 </div>
@@ -481,8 +486,8 @@ export default function HomePage({ onOpenQuoteModal }) {
                   </div>
                   <div>
                     <p className="text-[11px] font-bold text-slate-400 uppercase">Location</p>
-                    <p className="text-xs font-semibold text-slate-700">
-                      Gulalwadi, Girgaon, Mumbai - 400004, Maharashtra, India
+                    <p className="text-xs font-semibold text-slate-700 leading-snug">
+                      {COMPANY_INFO.address.full}
                     </p>
                   </div>
                 </div>

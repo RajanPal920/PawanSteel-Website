@@ -74,7 +74,7 @@ export default function ContactPage() {
               <div className="flex-1">
                 <p className="text-xs font-semibold text-slate-400 uppercase">Office Telephone</p>
                 <a
-                  href="tel:02266324854"
+                  href="tel:02266394854"
                   className="text-lg font-bold text-[#123467] hover:text-[#D71932] transition-colors block mt-0.5"
                 >
                   {COMPANY_INFO.phone}
@@ -91,12 +91,21 @@ export default function ContactPage() {
               <div className="flex-1">
                 <p className="text-xs font-semibold text-slate-400 uppercase">Mobile & WhatsApp</p>
                 <a
-                  href="tel:9833416144"
+                  href="tel:09850789923"
                   className="text-lg font-bold text-[#123467] hover:text-emerald-600 transition-colors block mt-0.5"
                 >
-                  +91 {COMPANY_INFO.mobile}
+                  {COMPANY_INFO.mobile}
                 </a>
-                <div className="mt-2">
+                <div className="mt-1.5 pt-1.5 border-t border-slate-100 flex items-center gap-2">
+                  <span className="text-xs text-slate-500 font-medium">Additional Contact:</span>
+                  <a
+                    href="tel:09833416144"
+                    className="text-sm font-bold text-[#123467] hover:text-emerald-600 transition-colors"
+                  >
+                    {COMPANY_INFO.additionalMobile}
+                  </a>
+                </div>
+                <div className="mt-2.5">
                   <a
                     href="https://wa.me/919833416144"
                     target="_blank"
@@ -186,12 +195,12 @@ export default function ContactPage() {
                 <span>Strategic Location in Mumbai Metal Market</span>
               </h3>
               <p className="text-xs text-slate-500 mt-1">
-                Situated in Gulalwadi, Girgaon — India's premier trading zone for industrial raw materials and ferrous alloys.
+                {COMPANY_INFO.address.full}
               </p>
             </div>
 
             <a
-              href="https://maps.google.com/?q=Gulalwadi+Girgaon+Mumbai+400004"
+              href={`https://maps.google.com/?q=${encodeURIComponent('Office No. 107, 1st Floor, 13/21 Seth Virchand Umarsi Building, 3rd Panjrapole, Gulalwadi, Mumbai – 400004, Maharashtra, India')}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-[#123467] text-xs font-bold rounded-md transition"
@@ -205,7 +214,7 @@ export default function ContactPage() {
           <div className="w-full h-72 sm:h-80 rounded-xl overflow-hidden border border-slate-200 bg-slate-100 relative">
             <iframe
               title="Pawan Steel Alloys Location Map"
-              src="https://maps.google.com/maps?q=Gulalwadi,Girgaon,Mumbai,Maharashtra+400004&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              src={`https://maps.google.com/maps?q=${encodeURIComponent('Office No. 107, 1st Floor, 13/21 Seth Virchand Umarsi Building, 3rd Panjrapole, Gulalwadi, Mumbai – 400004, Maharashtra, India')}&t=&z=16&ie=UTF8&iwloc=&output=embed`}
               className="w-full h-full border-0"
               loading="lazy"
             />

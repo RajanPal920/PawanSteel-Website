@@ -330,7 +330,7 @@ Inquiry sent via Pawan Steel Alloys Web Portal.`;
         </div>
 
         <p className="text-[11px] text-slate-500 text-center pt-1">
-          Inquiries are sent directly to <strong className="text-slate-700">{COMPANY_INFO.email}</strong> and WhatsApp <strong className="text-slate-700">9833416144</strong>. Please confirm sending in your email/messaging app.
+          Inquiries are sent directly to <strong className="text-slate-700">{COMPANY_INFO.email}</strong> and WhatsApp <strong className="text-slate-700">{COMPANY_INFO.whatsapp}</strong>. Please confirm sending in your email/messaging app.
         </p>
       </form>
     </div>

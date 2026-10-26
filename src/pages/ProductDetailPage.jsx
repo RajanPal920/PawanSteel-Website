@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect, useCallback } from 'react';
-import { useParams, Link, useSearchParams, useNavigate } from 'react-router-dom';
+import { useParams, Link, useSearchParams, useNavigate, Navigate } from 'react-router-dom';
 import { 
   ChevronRight, 
   ArrowLeft, 
@@ -23,6 +23,7 @@ import {
   MATERIALS, 
   findProduct, 
   findCategory,
+  findMaterial,
   parseProductAndGradeSlug,
   makeGradeSlug,
   matchGradeFromSlug
@@ -43,7 +44,7 @@ export default function ProductDetailPage({ onOpenQuoteModal }) {
     return parseProductAndGradeSlug(slug);
   }, [slug]);
 
-  // Intelligent resolution: Check if slug is a product or a category
+  // Intelligent resolution: Check if slug is a product, category, or material
   const product = useMemo(() => {
     return findProduct(slug);
   }, [slug]);
@@ -52,6 +53,16 @@ export default function ProductDetailPage({ onOpenQuoteModal }) {
     if (product) return null;
     return findCategory(slug);
   }, [slug, product]);
+
+  const material = useMemo(() => {
+    if (product || category) return null;
+    return findMaterial(slug);
+  }, [slug, product, category]);
+
+  // If a material slug was entered under /products/, seamlessly redirect to /materials/
+  if (material) {
+    return <Navigate to={`/materials/${material.slug}${urlGradeSlug ? `-grade-${urlGradeSlug}` : ''}`} replace />;
+  }
 
   // Function to resolve active grade based on URL slug or query param
   const resolveActiveGrade = useCallback(() => {
@@ -143,19 +154,32 @@ export default function ProductDetailPage({ onOpenQuoteModal }) {
   if (category) {
     return (
       <div className="w-full bg-[#F3F7FB] pb-16 min-h-screen">
-        {/* Category Header Banner */}
-        <section className="bg-[#123467] text-white py-14 relative overflow-hidden border-b-4 border-[#D71932]">
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0A1F3D] via-[#123467] to-[#1B478A] opacity-90" />
+        {/* Category Header Banner with Hero Photographic Image */}
+        <section className="relative text-white py-16 md:py-20 overflow-hidden border-b-4 border-[#D71932] bg-[#0A1F3D]">
+          {/* Photographic Hero Image with Dark Metallic Gradient Overlay */}
+          <div className="absolute inset-0">
+            <img
+              src={category.image}
+              alt={category.title}
+              className="w-full h-full object-cover object-center filter brightness-[0.25] contrast-125 transform scale-105 transition-transform duration-1000"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0A1F3D] via-[#123467]/90 to-[#0A1F3D]/80" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/30 via-transparent to-black/60" />
+          </div>
+
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl space-y-3">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-red-600/90 text-white text-xs font-bold uppercase tracking-wider rounded-sm backdrop-blur-sm">
+            <div className="max-w-4xl space-y-3">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#D71932] text-white text-xs font-bold uppercase tracking-wider rounded shadow-sm">
                 <Layers className="w-3.5 h-3.5" />
                 <span>Product Category Showcase</span>
               </span>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
-                {category.title} Manufacturer & Stockist in India
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
+                {category.title}
               </h1>
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
+              <p className="text-base sm:text-lg text-slate-200 font-medium">
+                Manufacturer, Stockist & Supplier in India
+              </p>
+              <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-3xl">
                 {category.shortDesc}
               </p>
             </div>
@@ -329,6 +353,77 @@ export default function ProductDetailPage({ onOpenQuoteModal }) {
         currentProduct={product}
         onOpenQuoteModal={onOpenQuoteModal}
       />
+
+      {/* Product Hero Banner with Background Image & Clear Title */}
+      <section className="relative text-white py-16 md:py-20 overflow-hidden border-b-4 border-[#D71932] bg-[#0A1F3D]">
+        {/* Photographic Hero Image with Dark Metallic Gradient Overlay */}
+        <div className="absolute inset-0">
+          <img
+            src={product.image}
+            alt={`${product.name} industrial supply`}
+            className="w-full h-full object-cover object-center filter brightness-[0.25] contrast-125 transform scale-105 transition-transform duration-1000"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0A1F3D] via-[#123467]/90 to-[#0A1F3D]/80" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/30 via-transparent to-black/60" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl space-y-4">
+            {/* Category & Verified Scope Badge */}
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#D71932] text-white text-xs font-bold uppercase tracking-wider rounded shadow-sm">
+                <Layers className="w-3.5 h-3.5" />
+                <span>{product.categoryName}</span>
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 text-white/90 border border-white/20 text-xs font-semibold rounded backdrop-blur-sm">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                <span>ISO 9001:2015 Scope • Direct Mill Stock</span>
+              </span>
+            </div>
+
+            {/* Exact Product Name Title - Prominent, Bold, Beautiful */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
+              {selectedGrade ? (
+                <>
+                  <span>{product.name}</span>
+                  <span className="block sm:inline text-amber-300 sm:ml-3 text-2xl sm:text-3xl md:text-4xl font-extrabold font-mono">
+                    (Grade {selectedGrade})
+                  </span>
+                </>
+              ) : (
+                product.name
+              )}
+            </h1>
+
+            {/* Subtitle / Short Description */}
+            <p className="text-sm sm:text-base md:text-lg text-slate-200 leading-relaxed max-w-3xl font-normal">
+              {product.shortDesc}
+            </p>
+
+            {/* Quick Spec Highlights */}
+            <div className="pt-2 flex flex-wrap items-center gap-3 text-xs text-white/80">
+              <span className="px-2.5 py-1 bg-white/10 rounded border border-white/15">
+                {product.inStockStatus}
+              </span>
+              {product.specifications?.["Standard Specifications"] && (
+                <span className="px-2.5 py-1 bg-white/10 rounded border border-white/15 font-mono">
+                  {product.specifications["Standard Specifications"].split(',')[0]}
+                </span>
+              )}
+              {product.specifications?.["Diameter Range"] && (
+                <span className="px-2.5 py-1 bg-white/10 rounded border border-white/15">
+                  Dia: {product.specifications["Diameter Range"]}
+                </span>
+              )}
+              {product.specifications?.["Nominal Pipe Size (NPS)"] && (
+                <span className="px-2.5 py-1 bg-white/10 rounded border border-white/15">
+                  Size: {product.specifications["Nominal Pipe Size (NPS)"]}
+                </span>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Breadcrumb Bar */}
       <div className="bg-white border-b border-slate-200 py-3">
@@ -624,14 +719,16 @@ export default function ProductDetailPage({ onOpenQuoteModal }) {
               <div className="space-y-2 text-xs">
                 <p className="flex items-center gap-2 text-slate-200">
                   <span className="text-red-400 font-bold">Landline:</span>
-                  <a href="tel:02266324854" className="hover:underline">{COMPANY_INFO.phone}</a>
+                  <a href="tel:02266394854" className="hover:underline">{COMPANY_INFO.phone}</a>
                 </p>
                 <p className="flex items-center gap-2 text-slate-200">
                   <span className="text-emerald-400 font-bold flex items-center gap-1.5">
                     <WhatsAppIcon className="w-3.5 h-3.5 text-emerald-400" />
-                    Mobile/WhatsApp:
+                    Mobile:
                   </span>
-                  <a href="https://wa.me/919833416144" target="_blank" rel="noopener noreferrer" className="hover:underline">+91 {COMPANY_INFO.mobile}</a>
+                  <a href="tel:09850789923" className="hover:underline">{COMPANY_INFO.mobile}</a>
+                  <span className="text-slate-400">|</span>
+                  <a href="https://wa.me/919833416144" target="_blank" rel="noopener noreferrer" className="hover:underline text-emerald-300">WhatsApp</a>
                 </p>
                 <p className="flex items-center gap-2 text-slate-200">
                   <span className="text-blue-400 font-bold">Email:</span>

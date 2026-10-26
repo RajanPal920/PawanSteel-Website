@@ -34,15 +34,15 @@ export default function FloatingActions() {
 
       {/* 2. Floating Call Button */}
       <a
-        href="tel:9833416144"
+        href="tel:09850789923"
         className="group relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#123467] hover:bg-[#1B478A] text-white shadow-float transition-all duration-300 transform hover:scale-110 active:scale-95 border-2 border-white focus:outline-none focus:ring-4 focus:ring-blue-300"
-        aria-label="Call Pawan Steel Alloys on 9833416144"
+        aria-label="Call Pawan Steel Alloys on 09850789923"
       >
         <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
 
         {/* Tooltip on hover */}
         <span className="absolute right-16 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-slate-900 text-white text-xs font-bold rounded-lg shadow-md whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-200">
-          Call +91 9833416144
+          Call 09850789923
         </span>
       </a>
 

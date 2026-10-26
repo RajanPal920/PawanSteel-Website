@@ -3,6 +3,7 @@ export const CATEGORIES = [
     id: "rods-bars",
     slug: "rod-bars-manufacturer-india",
     oldSlug: "rods-bars",
+    aliases: ["round-bars", "round-bar", "roundbar", "roundbars", "rods-bars", "rod-bars", "bars", "rods", "round-rods", "bright-bars"],
     title: "Rods & Bars",
     image: "/images/cat-rods-bars.jpg",
     shortDesc: "Precision stainless steel and high-nickel alloy round bars, hex bars, square rods, and flat bars for precision machining and industrial fabrication.",
@@ -12,6 +13,7 @@ export const CATEGORIES = [
     id: "pipes-tubes",
     slug: "pipes-tubes-manufacturer-supplier-india",
     oldSlug: "pipes-tubes",
+    aliases: ["pipes-tubes", "pipe-tubes", "pipes", "tubes", "pipe", "tube", "seamless-pipes", "welded-pipes", "piping"],
     title: "Pipes & Tubes",
     image: "/images/cat-pipes-tubes.jpg",
     shortDesc: "Seamless and welded stainless steel, alloy steel, and carbon steel pipes and instrumentation tubes in standard schedules and custom lengths.",
@@ -21,6 +23,7 @@ export const CATEGORIES = [
     id: "sheets-plates",
     slug: "sheets-plates-supplier-india",
     oldSlug: "sheets-plates",
+    aliases: ["sheets-plates", "sheet-plates", "sheets", "plates", "sheet", "plate", "coils", "steel-plates", "chequered-plates"],
     title: "Sheets & Plates",
     image: "/images/cat-sheets-plates.jpg",
     shortDesc: "Cold rolled sheets, hot rolled plates, coils, strips, and chequered plates available in diverse thicknesses, widths, and surface finishes.",
@@ -30,6 +33,7 @@ export const CATEGORIES = [
     id: "flanges",
     slug: "industrial-flanges-manufacturer-india",
     oldSlug: "flanges",
+    aliases: ["flanges", "flange", "industrial-flanges", "pipe-flanges", "wnrf", "sorf", "blrf"],
     title: "Flanges",
     image: "/images/cat-flanges.jpg",
     shortDesc: "Forged industrial flanges including Slip-On, Weld Neck, Blind, Socket Weld, Lap Joint, and Threaded configurations in ASME/ANSI standards.",
@@ -39,6 +43,7 @@ export const CATEGORIES = [
     id: "fasteners",
     slug: "industrial-fasteners-bolts-nuts-india",
     oldSlug: "fasteners",
+    aliases: ["fasteners", "fastener", "bolts", "nuts", "studs", "stud-bolts", "washers", "industrial-fasteners"],
     title: "Fasteners",
     image: "/images/cat-fasteners.jpg",
     shortDesc: "High-tensile and corrosion-resistant industrial fasteners including heavy hex bolts, stud bolts, nuts, washers, and threaded rods.",
@@ -48,6 +53,7 @@ export const CATEGORIES = [
     id: "butt-weld-fittings",
     slug: "butt-weld-pipe-fittings-manufacturer-india",
     oldSlug: "butt-weld-fittings",
+    aliases: ["butt-weld-fittings", "buttweld", "butt-weld", "pipe-fittings", "elbows", "tees", "reducers", "stub-ends"],
     title: "Butt Weld Fittings",
     image: "/images/cat-buttweld.jpg",
     shortDesc: "Seamless and welded butt weld elbows (90° and 45°), equal and reducing tees, concentric and eccentric reducers, stub ends, and pipe caps.",
@@ -57,6 +63,7 @@ export const CATEGORIES = [
     id: "forged-fittings",
     slug: "forged-pipe-fittings-manufacturer-india",
     oldSlug: "forged-fittings",
+    aliases: ["forged-fittings", "forged", "forged-pipe-fittings", "socket-weld-fittings", "threaded-fittings", "high-pressure-fittings"],
     title: "Forged Fittings",
     image: "/images/cat-forged.jpg",
     shortDesc: "High-pressure Class 3000, 6000, and 9000 forged socket weld and threaded (NPT/BSPT) pipe fittings, unions, couplings, and hex nipples.",
@@ -66,6 +73,7 @@ export const CATEGORIES = [
     id: "ferrule-fittings",
     slug: "double-ferrule-tube-fittings-manufacturer-india",
     oldSlug: "ferrule-fittings",
+    aliases: ["ferrule-fittings", "ferrule", "double-ferrule", "twin-ferrule", "compression-fittings", "tube-fittings", "instrumentation-fittings"],
     title: "Ferrule Fittings",
     image: "/images/cat-ferrule.jpg",
     shortDesc: "Precision double-ferrule compression tube fittings for high-pressure instrumentation, chemical dosing, hydraulic, and pneumatic lines.",
@@ -77,6 +85,7 @@ export const MATERIALS = [
   {
     id: "stainless-steel",
     slug: "stainless-steel",
+    aliases: ["stainless-steel", "ss", "stainless", "304", "316", "316l", "304l", "904l", "stainless-steel-alloys"],
     name: "Stainless Steel",
     shortDesc: "Widely used austenitic and martensitic alloys offering excellent corrosion resistance, high tensile strength, and easy sanitization.",
     grades: ["304 / 304L", "316 / 316L", "316Ti", "321 / 321H", "310 / 310S", "347 / 347H", "410", "420", "904L"],
@@ -87,6 +96,7 @@ export const MATERIALS = [
   {
     id: "carbon-steel",
     slug: "carbon-steel",
+    aliases: ["carbon-steel", "cs", "carbon", "carbon-steel-alloys"],
     name: "Carbon Steel",
     shortDesc: "Heavy-duty structural and pressure-retaining steel grades valued for outstanding structural strength, impact resistance, and economy.",
     grades: ["ASTM A106 Gr. B", "ASTM A53 Gr. B", "API 5L Gr. B / X42 / X52", "ASTM A105", "ASTM A234 WPB"],
@@ -97,6 +107,7 @@ export const MATERIALS = [
   {
     id: "mild-steel",
     slug: "mild-steel",
+    aliases: ["mild-steel", "ms", "mild-steel-alloys"],
     name: "Mild Steel",
     shortDesc: "Versatile low-carbon steel ideal for general manufacturing, industrial fabrication, structural frames, and cost-effective piping.",
     grades: ["IS 2062 Gr. A/B", "ASTM A36", "EN8 / EN9", "SAE 1018", "SAE 1020"],
@@ -107,6 +118,7 @@ export const MATERIALS = [
   {
     id: "alloy-steel",
     slug: "alloy-steel",
+    aliases: ["alloy-steel", "as", "alloy-steels", "chrome-moly"],
     name: "Alloy Steel",
     shortDesc: "Chromium-Molybdenum enhanced steels formulated for elevated temperatures, creep strength, and high mechanical pressure.",
     grades: ["ASTM A335 P11 / P22 / P91", "ASTM A182 F11 / F22 / F91", "ASTM A234 WP11 / WP22 / WP91", "AISI 4140 / 4340"],
@@ -117,6 +129,7 @@ export const MATERIALS = [
   {
     id: "duplex",
     slug: "duplex",
+    aliases: ["duplex", "duplex-steel", "duplex-stainless-steel", "2205", "uns-s31803", "uns-s32205", "f51"],
     name: "Duplex Stainless Steel",
     shortDesc: "Dual-phase austenitic-ferritic microstructure offering twice the yield strength of standard austenitic steel and supreme chloride pitting resistance.",
     grades: ["UNS S31803", "UNS S32205", "F51", "1.4462", "ASTM A790 / A182 / A815"],
@@ -127,6 +140,7 @@ export const MATERIALS = [
   {
     id: "super-duplex",
     slug: "super-duplex",
+    aliases: ["super-duplex", "super-duplex-steel", "super-duplex-stainless-steel", "2507", "uns-s32750", "f53"],
     name: "Super Duplex Stainless Steel",
     shortDesc: "Advanced 25% chromium duplex alloy with high molybdenum and nitrogen, delivering PREN > 40 for severe marine and acidic service.",
     grades: ["UNS S32750 (2507)", "UNS S32760 (Zeron 100)", "F53 / F55", "ASTM A790 / A182 F53"],
@@ -137,6 +151,7 @@ export const MATERIALS = [
   {
     id: "monel",
     slug: "monel",
+    aliases: ["monel", "monel-400", "monel-k500", "nickel-copper"],
     name: "Monel",
     shortDesc: "Nickel-copper solid-solution alloy known for exceptional corrosion resistance in rapid seawater, hydrofluoric acid, and sulfuric environments.",
     grades: ["Monel 400 (UNS N04400)", "Monel K-500 (UNS N05500)", "ASTM B164 / B127 / B366"],
@@ -147,6 +162,7 @@ export const MATERIALS = [
   {
     id: "inconel",
     slug: "inconel",
+    aliases: ["inconel", "inconel-600", "inconel-625", "inconel-718", "nickel-chromium"],
     name: "Inconel",
     shortDesc: "High-temperature nickel-chromium-molybdenum superalloy engineered to maintain structural integrity and oxidation resistance beyond 1000°C.",
     grades: ["Inconel 600 (UNS N06600)", "Inconel 625 (UNS N06625)", "Inconel 718 (UNS N07718)", "ASTM B444 / B446 / B564"],
@@ -157,6 +173,7 @@ export const MATERIALS = [
   {
     id: "hastelloy",
     slug: "hastelloy",
+    aliases: ["hastelloy", "hastelloy-c276", "c276", "hastelloy-c22"],
     name: "Hastelloy",
     shortDesc: "Premier nickel-molybdenum-chromium alloy with added tungsten, engineered for universal resistance in aggressive chemical reducing and oxidizing media.",
     grades: ["Hastelloy C-276 (UNS N10276)", "Hastelloy C-22 (UNS N06022)", "Hastelloy B-2 / B-3", "ASTM B574 / B575 / B622"],
@@ -167,6 +184,7 @@ export const MATERIALS = [
   {
     id: "titanium",
     slug: "titanium",
+    aliases: ["titanium", "ti", "titanium-gr2", "titanium-gr5"],
     name: "Titanium",
     shortDesc: "High strength-to-weight ratio metallic element providing complete immunity to ambient seawater corrosion and outstanding biological inertness.",
     grades: ["Grade 2 (Commercially Pure)", "Grade 5 (Ti-6Al-4V)", "Grade 7 (Ti-0.15Pd)", "ASTM B348 / B338 / B265"],
@@ -177,6 +195,7 @@ export const MATERIALS = [
   {
     id: "copper-nickel",
     slug: "copper-nickel",
+    aliases: ["copper-nickel", "cupro-nickel", "cu-ni", "cu-ni-90-10", "cu-ni-70-30", "c70600", "c71500"],
     name: "Copper Nickel",
     shortDesc: "Cupro-nickel alloys (90/10 & 70/30) featuring natural resistance to marine biofouling, macro-algae attachment, and seawater erosion.",
     grades: ["Cu-Ni 90/10 (C70600)", "Cu-Ni 70/30 (C71500)", "ASTM B466 / B111 / B151"],
@@ -187,6 +206,7 @@ export const MATERIALS = [
   {
     id: "brass",
     slug: "brass",
+    aliases: ["brass", "naval-brass", "c36000"],
     name: "Brass",
     shortDesc: "Copper-zinc alloy combining low friction, pleasing aesthetic finish, high electrical and thermal conductivity, and machinability.",
     grades: ["CZ121 / CW614N (Free Machining)", "Naval Brass (C46400)", "C36000", "IS 319 Gr. 1/2"],
@@ -197,6 +217,7 @@ export const MATERIALS = [
   {
     id: "aluminium",
     slug: "aluminium",
+    aliases: ["aluminium", "aluminum", "6061-t6", "5083"],
     name: "Aluminium",
     shortDesc: "Lightweight non-ferrous alloy providing excellent electrical conductivity, thermal dissipation, and corrosion-resistant oxide film.",
     grades: ["6061-T6", "6082-T6", "5083 (Marine Grade)", "5052", "7075-T6"],
@@ -212,6 +233,22 @@ export const PRODUCTS = [
     id: "ss-round-bars",
     slug: "stainless-steel-round-bars-manufactures-india",
     oldSlug: "stainless-steel-round-bars",
+    aliases: [
+      "round-bar", 
+      "round-bars", 
+      "roundbar", 
+      "roundbars", 
+      "round", 
+      "round-rod", 
+      "round-rods", 
+      "ss-round-bar", 
+      "ss-round-bars", 
+      "stainless-steel-round-bar", 
+      "stainless-steel-round-bars", 
+      "ss-round", 
+      "bright-bars", 
+      "bright-round-bars"
+    ],
     name: "Stainless Steel Round Bars",
     categorySlug: "rod-bars-manufacturer-india",
     categoryName: "Rods & Bars",
@@ -234,6 +271,15 @@ export const PRODUCTS = [
     id: "nickel-alloy-round-bars",
     slug: "nickel-alloy-round-bars-supplier-india",
     oldSlug: "nickel-alloy-round-bars",
+    aliases: [
+      "nickel-round-bars", 
+      "nickel-alloy-round-bars", 
+      "nickel-round-bar", 
+      "inconel-round-bars", 
+      "monel-round-bars", 
+      "hastelloy-round-bars", 
+      "titanium-round-bars"
+    ],
     name: "Nickel Alloy Round Bars",
     categorySlug: "rod-bars-manufacturer-india",
     categoryName: "Rods & Bars",
@@ -255,6 +301,17 @@ export const PRODUCTS = [
     id: "carbon-alloy-steel-bars",
     slug: "carbon-alloy-steel-round-hex-bars-india",
     oldSlug: "carbon-and-alloy-steel-bars",
+    aliases: [
+      "carbon-alloy-steel-bars", 
+      "carbon-steel-round-bars", 
+      "carbon-steel-bars", 
+      "hex-bars", 
+      "hex-bar", 
+      "square-bars", 
+      "alloy-steel-bars", 
+      "en8-bars", 
+      "en24-bars"
+    ],
     name: "Carbon & Alloy Steel Round & Hex Bars",
     categorySlug: "rod-bars-manufacturer-india",
     categoryName: "Rods & Bars",
@@ -278,6 +335,21 @@ export const PRODUCTS = [
     id: "ss-pipes-tubes",
     slug: "stainless-steel-pipes-tubes-manufacturer-india",
     oldSlug: "stainless-steel-pipes-tubes",
+    aliases: [
+      "pipes", 
+      "tubes", 
+      "pipe", 
+      "tube", 
+      "pipes-tubes", 
+      "ss-pipes", 
+      "ss-tubes", 
+      "ss-pipes-tubes", 
+      "stainless-steel-pipes", 
+      "stainless-steel-tubes", 
+      "seamless-pipes", 
+      "welded-pipes", 
+      "stainless-pipes"
+    ],
     name: "Stainless Steel Pipes & Tubes",
     categorySlug: "pipes-tubes-manufacturer-supplier-india",
     categoryName: "Pipes & Tubes",
@@ -300,6 +372,16 @@ export const PRODUCTS = [
     id: "carbon-alloy-steel-pipes",
     slug: "carbon-alloy-steel-seamless-pipes-india",
     oldSlug: "carbon-alloy-steel-pipes",
+    aliases: [
+      "carbon-steel-pipes", 
+      "alloy-steel-pipes", 
+      "carbon-pipes", 
+      "carbon-alloy-steel-pipes", 
+      "boiler-pipes", 
+      "a106-pipes", 
+      "seamless-carbon-pipes", 
+      "heavy-wall-pipes"
+    ],
     name: "Carbon & Alloy Steel High Pressure Pipes",
     categorySlug: "pipes-tubes-manufacturer-supplier-india",
     categoryName: "Pipes & Tubes",
@@ -321,6 +403,16 @@ export const PRODUCTS = [
     id: "nickel-cupro-tubes",
     slug: "nickel-copper-nickel-tubes-supplier-india",
     oldSlug: "nickel-copper-nickel-tubes",
+    aliases: [
+      "nickel-cupro-tubes", 
+      "cupro-tubes", 
+      "copper-nickel-tubes", 
+      "copper-nickel-pipes", 
+      "inconel-tubes", 
+      "monel-tubes", 
+      "heat-exchanger-tubes", 
+      "condenser-tubes"
+    ],
     name: "Nickel Alloy & Copper Nickel Pipes & Tubes",
     categorySlug: "pipes-tubes-manufacturer-supplier-india",
     categoryName: "Pipes & Tubes",
@@ -344,6 +436,21 @@ export const PRODUCTS = [
     id: "ss-sheets-plates",
     slug: "stainless-steel-sheets-plates-supplier-india",
     oldSlug: "stainless-steel-sheets-plates",
+    aliases: [
+      "sheets", 
+      "plates", 
+      "sheet", 
+      "plate", 
+      "coils", 
+      "coil", 
+      "sheets-plates", 
+      "ss-sheets", 
+      "ss-plates", 
+      "stainless-steel-sheets", 
+      "stainless-steel-plates", 
+      "chequered-plates", 
+      "mirror-sheets"
+    ],
     name: "Stainless Steel Sheets, Plates & Coils",
     categorySlug: "sheets-plates-supplier-india",
     categoryName: "Sheets & Plates",
@@ -366,6 +473,15 @@ export const PRODUCTS = [
     id: "alloy-carbon-plates",
     slug: "boiler-quality-alloy-carbon-steel-plates-india",
     oldSlug: "alloy-carbon-nickel-plates",
+    aliases: [
+      "boiler-plates", 
+      "alloy-plates", 
+      "carbon-steel-plates", 
+      "boiler-quality-plates", 
+      "alloy-carbon-plates", 
+      "pressure-vessel-plates", 
+      "astm-a516-plates"
+    ],
     name: "Alloy Steel, Carbon Steel & Nickel Alloy Plates",
     categorySlug: "sheets-plates-supplier-india",
     categoryName: "Sheets & Plates",
@@ -389,6 +505,19 @@ export const PRODUCTS = [
     id: "industrial-flanges",
     slug: "industrial-pipe-flanges-manufacturer-india",
     oldSlug: "industrial-pipe-flanges",
+    aliases: [
+      "flange", 
+      "flanges", 
+      "industrial-flanges", 
+      "pipe-flanges", 
+      "wnrf", 
+      "sorf", 
+      "blrf", 
+      "weld-neck-flanges", 
+      "slip-on-flanges", 
+      "blind-flanges", 
+      "socket-weld-flanges"
+    ],
     name: "Industrial Pipe Flanges (WNRF, SORF, BLRF)",
     categorySlug: "industrial-flanges-manufacturer-india",
     categoryName: "Flanges",
@@ -413,6 +542,18 @@ export const PRODUCTS = [
     id: "industrial-fasteners",
     slug: "industrial-fasteners-bolts-nuts-manufacturer-india",
     oldSlug: "industrial-fasteners-bolts-nuts",
+    aliases: [
+      "fasteners", 
+      "fastener", 
+      "bolts", 
+      "nuts", 
+      "studs", 
+      "stud-bolts", 
+      "washers", 
+      "hex-bolts", 
+      "industrial-fasteners", 
+      "heavy-hex-nuts"
+    ],
     name: "Industrial Fasteners (Bolts, Nuts, Studs, Washers)",
     categorySlug: "industrial-fasteners-bolts-nuts-india",
     categoryName: "Fasteners",
@@ -437,6 +578,18 @@ export const PRODUCTS = [
     id: "butt-weld-fittings",
     slug: "butt-weld-pipe-fittings-manufacturer-india",
     oldSlug: "butt-weld-pipe-fittings",
+    aliases: [
+      "buttweld", 
+      "butt-weld", 
+      "butt-weld-fittings", 
+      "pipe-fittings", 
+      "elbows", 
+      "pipe-elbows", 
+      "tees", 
+      "reducers", 
+      "stub-ends", 
+      "pipe-caps"
+    ],
     name: "Butt Weld Fittings (Elbows, Tees, Reducers, Caps)",
     categorySlug: "butt-weld-pipe-fittings-manufacturer-india",
     categoryName: "Butt Weld Fittings",
@@ -461,6 +614,17 @@ export const PRODUCTS = [
     id: "forged-fittings",
     slug: "high-pressure-forged-fittings-manufacturer-india",
     oldSlug: "high-pressure-forged-fittings",
+    aliases: [
+      "forged", 
+      "forged-fittings", 
+      "socket-weld", 
+      "socket-weld-fittings", 
+      "threaded-fittings", 
+      "forged-pipe-fittings", 
+      "high-pressure-fittings", 
+      "hex-nipples", 
+      "unions"
+    ],
     name: "High Pressure Forged Fittings (Socket Weld & Screwed)",
     categorySlug: "forged-pipe-fittings-manufacturer-india",
     categoryName: "Forged Fittings",
@@ -485,6 +649,18 @@ export const PRODUCTS = [
     id: "ferrule-fittings",
     slug: "double-ferrule-instrumentation-fittings-india",
     oldSlug: "double-ferrule-tube-fittings",
+    aliases: [
+      "ferrule", 
+      "ferrules", 
+      "ferrule-fittings", 
+      "double-ferrule", 
+      "twin-ferrule", 
+      "compression-fittings", 
+      "tube-fittings", 
+      "instrumentation-fittings", 
+      "tube-elbows", 
+      "bulkhead-unions"
+    ],
     name: "Double Ferrule Instrumentation Fittings",
     categorySlug: "double-ferrule-tube-fittings-manufacturer-india",
     categoryName: "Ferrule Fittings",
@@ -684,19 +860,30 @@ export function parseProductAndGradeSlug(slug) {
   return { productSlug: clean, gradeSlug: null };
 }
 
-// Helper: Intelligent Product Lookup supporting SEO slugs, legacy slugs, IDs, and -grade- suffixes
+// Helper: Normalize string by lowercasing and stripping non-alphanumeric characters
+export function normalizeSlug(str) {
+  if (!str) return '';
+  return String(str)
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, '');
+}
+
+// Helper: Intelligent Product Lookup supporting SEO slugs, legacy slugs, IDs, aliases, and -grade- suffixes
 export function findProduct(identifier) {
   if (!identifier) return null;
   const clean = String(identifier).toLowerCase().trim();
   const { productSlug } = parseProductAndGradeSlug(clean);
+  const normClean = normalizeSlug(clean);
+  const normBase = normalizeSlug(productSlug);
 
-  return PRODUCTS.find((p) => {
+  // 1. Direct exact match on slug, oldSlug, id, name, or aliases
+  const directMatch = PRODUCTS.find((p) => {
     const pSlug = p.slug.toLowerCase();
     const pOld = p.oldSlug ? p.oldSlug.toLowerCase() : '';
     const pId = p.id.toLowerCase();
     const pName = p.name.toLowerCase();
+    const pAliases = p.aliases ? p.aliases.map((a) => a.toLowerCase()) : [];
 
-    // Check direct match or base slug match
     return (
       pSlug === clean ||
       pSlug === productSlug ||
@@ -705,46 +892,288 @@ export function findProduct(identifier) {
       pId === clean ||
       pId === productSlug ||
       pName === clean ||
-      // Support alternate spelling "manufactures" vs "manufacturer"
+      pName === productSlug ||
+      pAliases.includes(clean) ||
+      pAliases.includes(productSlug) ||
       pSlug.replace('manufacturer', 'manufactures') === clean ||
       pSlug.replace('manufacturer', 'manufactures') === productSlug ||
       pSlug.replace('manufactures', 'manufacturer') === clean ||
       pSlug.replace('manufactures', 'manufacturer') === productSlug
     );
-  }) || null;
+  });
+  if (directMatch) return directMatch;
+
+  // 2. Normalized match (stripping all punctuation and spaces)
+  const normMatch = PRODUCTS.find((p) => {
+    const normSlug = normalizeSlug(p.slug);
+    const normOld = normalizeSlug(p.oldSlug);
+    const normId = normalizeSlug(p.id);
+    const normName = normalizeSlug(p.name);
+    const normAliases = p.aliases ? p.aliases.map((a) => normalizeSlug(a)) : [];
+
+    return (
+      normSlug === normClean ||
+      normSlug === normBase ||
+      normOld === normClean ||
+      normOld === normBase ||
+      normId === normClean ||
+      normId === normBase ||
+      normName === normClean ||
+      normName === normBase ||
+      normAliases.includes(normClean) ||
+      normAliases.includes(normBase)
+    );
+  });
+  if (normMatch) return normMatch;
+
+  // Check if identifier is purely a material to avoid hijacking material lookups
+  const isMaterialIdentifier = MATERIALS.some((m) => {
+    const mSlugNorm = normalizeSlug(m.slug);
+    const mIdNorm = normalizeSlug(m.id);
+    const mAliasesNorm = m.aliases ? m.aliases.map((a) => normalizeSlug(a)) : [];
+    return (
+      mSlugNorm === normClean ||
+      mSlugNorm === normBase ||
+      mIdNorm === normClean ||
+      mIdNorm === normBase ||
+      mAliasesNorm.includes(normClean) ||
+      mAliasesNorm.includes(normBase)
+    );
+  });
+  if (isMaterialIdentifier) return null;
+
+  // 3. Smart semantic keyword mapping
+  if (normBase.includes('roundbar') || normBase === 'round' || normBase === 'roundbars' || normBase === 'roundrod') {
+    return PRODUCTS.find((p) => p.id === 'ss-round-bars') || null;
+  }
+  if (normBase.includes('pipe') || normBase.includes('tube')) {
+    if (normBase.includes('carbon') || normBase.includes('alloy')) {
+      return PRODUCTS.find((p) => p.id === 'carbon-alloy-steel-pipes') || null;
+    }
+    if (normBase.includes('cupro') || normBase.includes('copper')) {
+      return PRODUCTS.find((p) => p.id === 'nickel-cupro-tubes') || null;
+    }
+    return PRODUCTS.find((p) => p.id === 'ss-pipes-tubes') || null;
+  }
+  if (normBase.includes('flange')) {
+    return PRODUCTS.find((p) => p.id === 'industrial-flanges') || null;
+  }
+  if (normBase.includes('fastener') || normBase.includes('bolt') || normBase.includes('nut') || normBase.includes('stud')) {
+    return PRODUCTS.find((p) => p.id === 'industrial-fasteners') || null;
+  }
+  if (normBase.includes('sheet') || normBase.includes('plate') || normBase.includes('coil')) {
+    if (normBase.includes('boiler') || normBase.includes('carbon')) {
+      return PRODUCTS.find((p) => p.id === 'alloy-carbon-plates') || null;
+    }
+    return PRODUCTS.find((p) => p.id === 'ss-sheets-plates') || null;
+  }
+  if (
+    normBase.includes('buttweld') ||
+    normBase.includes('elbow') ||
+    normBase.includes('stubend') ||
+    normBase.includes('pipecap') ||
+    normBase.includes('equaltee') ||
+    normBase.includes('reducingtee') ||
+    normBase === 'tee' ||
+    normBase === 'tees' ||
+    normBase === 'fitting' ||
+    normBase === 'fittings'
+  ) {
+    return PRODUCTS.find((p) => p.id === 'butt-weld-fittings') || null;
+  }
+  if (normBase.includes('forged') || normBase.includes('socketweld')) {
+    return PRODUCTS.find((p) => p.id === 'forged-fittings') || null;
+  }
+  if (normBase.includes('ferrule') || normBase.includes('compression')) {
+    return PRODUCTS.find((p) => p.id === 'ferrule-fittings') || null;
+  }
+
+  return null;
 }
 
-// Helper: Intelligent Category Lookup supporting SEO slugs, legacy slugs, and IDs
+// Helper: Intelligent Category Lookup supporting SEO slugs, legacy slugs, IDs, and aliases
 export function findCategory(identifier) {
   if (!identifier) return null;
   const clean = String(identifier).toLowerCase().trim();
-  return CATEGORIES.find(
-    (c) =>
-      c.slug.toLowerCase() === clean ||
-      (c.oldSlug && c.oldSlug.toLowerCase() === clean) ||
-      c.id.toLowerCase() === clean ||
-      c.title.toLowerCase() === clean ||
-      c.slug.toLowerCase().replace('manufacturer', 'manufactures') === clean ||
-      c.slug.toLowerCase().replace('manufactures', 'manufacturer') === clean
-  ) || null;
+  const { productSlug: catSlug } = parseProductAndGradeSlug(clean);
+  const normClean = normalizeSlug(clean);
+  const normBase = normalizeSlug(catSlug);
+
+  // 1. Direct exact match
+  const directMatch = CATEGORIES.find((c) => {
+    const cSlug = c.slug.toLowerCase();
+    const cOld = c.oldSlug ? c.oldSlug.toLowerCase() : '';
+    const cId = c.id.toLowerCase();
+    const cTitle = c.title.toLowerCase();
+    const cAliases = c.aliases ? c.aliases.map((a) => a.toLowerCase()) : [];
+
+    return (
+      cSlug === clean ||
+      cSlug === catSlug ||
+      cOld === clean ||
+      cOld === catSlug ||
+      cId === clean ||
+      cId === catSlug ||
+      cTitle === clean ||
+      cTitle === catSlug ||
+      cAliases.includes(clean) ||
+      cAliases.includes(catSlug) ||
+      cSlug.replace('manufacturer', 'manufactures') === clean ||
+      cSlug.replace('manufacturer', 'manufactures') === catSlug ||
+      cSlug.replace('manufactures', 'manufacturer') === clean ||
+      cSlug.replace('manufactures', 'manufacturer') === catSlug
+    );
+  });
+  if (directMatch) return directMatch;
+
+  // 2. Normalized match
+  const normMatch = CATEGORIES.find((c) => {
+    const normSlug = normalizeSlug(c.slug);
+    const normOld = normalizeSlug(c.oldSlug);
+    const normId = normalizeSlug(c.id);
+    const normTitle = normalizeSlug(c.title);
+    const normAliases = c.aliases ? c.aliases.map((a) => normalizeSlug(a)) : [];
+
+    return (
+      normSlug === normClean ||
+      normSlug === normBase ||
+      normOld === normClean ||
+      normOld === normBase ||
+      normId === normClean ||
+      normId === normBase ||
+      normTitle === normClean ||
+      normTitle === normBase ||
+      normAliases.includes(normClean) ||
+      normAliases.includes(normBase)
+    );
+  });
+  if (normMatch) return normMatch;
+
+  // 3. Keyword fallback
+  if (normBase.includes('rod') || normBase.includes('bar')) {
+    return CATEGORIES.find((c) => c.id === 'rods-bars') || null;
+  }
+  if (normBase.includes('pipe') || normBase.includes('tube')) {
+    return CATEGORIES.find((c) => c.id === 'pipes-tubes') || null;
+  }
+  if (normBase.includes('sheet') || normBase.includes('plate')) {
+    return CATEGORIES.find((c) => c.id === 'sheets-plates') || null;
+  }
+  if (normBase.includes('flange')) {
+    return CATEGORIES.find((c) => c.id === 'flanges') || null;
+  }
+  if (normBase.includes('fastener') || normBase.includes('bolt') || normBase.includes('nut')) {
+    return CATEGORIES.find((c) => c.id === 'fasteners') || null;
+  }
+  if (normBase.includes('buttweld') || normBase.includes('butt')) {
+    return CATEGORIES.find((c) => c.id === 'butt-weld-fittings') || null;
+  }
+  if (normBase.includes('forged')) {
+    return CATEGORIES.find((c) => c.id === 'forged-fittings') || null;
+  }
+  if (normBase.includes('ferrule')) {
+    return CATEGORIES.find((c) => c.id === 'ferrule-fittings') || null;
+  }
+
+  return null;
 }
 
-// Helper: Intelligent Material Lookup supporting SEO slugs, legacy slugs, IDs, and -grade- suffixes
+// Helper: Intelligent Material Lookup supporting SEO slugs, legacy slugs, IDs, aliases, and -grade- suffixes
 export function findMaterial(identifier) {
   if (!identifier) return null;
   const clean = String(identifier).toLowerCase().trim();
   const { productSlug: materialSlug } = parseProductAndGradeSlug(clean);
+  const normClean = normalizeSlug(clean);
+  const normBase = normalizeSlug(materialSlug);
 
-  return MATERIALS.find(
-    (m) =>
-      m.slug.toLowerCase() === clean ||
-      m.slug.toLowerCase() === materialSlug ||
-      (m.oldSlug && (m.oldSlug.toLowerCase() === clean || m.oldSlug.toLowerCase() === materialSlug)) ||
-      m.id.toLowerCase() === clean ||
-      m.id.toLowerCase() === materialSlug ||
-      m.name.toLowerCase() === clean ||
-      m.name.toLowerCase() === materialSlug
-  ) || null;
+  // 1. Direct exact match
+  const directMatch = MATERIALS.find((m) => {
+    const mSlug = m.slug.toLowerCase();
+    const mOld = m.oldSlug ? m.oldSlug.toLowerCase() : '';
+    const mId = m.id.toLowerCase();
+    const mName = m.name.toLowerCase();
+    const mAliases = m.aliases ? m.aliases.map((a) => a.toLowerCase()) : [];
+
+    return (
+      mSlug === clean ||
+      mSlug === materialSlug ||
+      mOld === clean ||
+      mOld === materialSlug ||
+      mId === clean ||
+      mId === materialSlug ||
+      mName === clean ||
+      mName === materialSlug ||
+      mAliases.includes(clean) ||
+      mAliases.includes(materialSlug)
+    );
+  });
+  if (directMatch) return directMatch;
+
+  // 2. Normalized match
+  const normMatch = MATERIALS.find((m) => {
+    const normSlug = normalizeSlug(m.slug);
+    const normOld = normalizeSlug(m.oldSlug);
+    const normId = normalizeSlug(m.id);
+    const normName = normalizeSlug(m.name);
+    const normAliases = m.aliases ? m.aliases.map((a) => normalizeSlug(a)) : [];
+
+    return (
+      normSlug === normClean ||
+      normSlug === normBase ||
+      normOld === normClean ||
+      normOld === normBase ||
+      normId === normClean ||
+      normId === normBase ||
+      normName === normClean ||
+      normName === normBase ||
+      normAliases.includes(normClean) ||
+      normAliases.includes(normBase)
+    );
+  });
+  if (normMatch) return normMatch;
+
+  // 3. Material keywords
+  if (normBase === 'ss' || normBase.includes('stainless')) {
+    return MATERIALS.find((m) => m.id === 'stainless-steel') || null;
+  }
+  if (normBase === 'cs' || normBase.includes('carbonsteel')) {
+    return MATERIALS.find((m) => m.id === 'carbon-steel') || null;
+  }
+  if (normBase === 'ms' || normBase.includes('mildsteel')) {
+    return MATERIALS.find((m) => m.id === 'mild-steel') || null;
+  }
+  if (normBase === 'as' || normBase.includes('alloysteel')) {
+    return MATERIALS.find((m) => m.id === 'alloy-steel') || null;
+  }
+  if (normBase.includes('superduplex') || normBase === '2507') {
+    return MATERIALS.find((m) => m.id === 'super-duplex') || null;
+  }
+  if (normBase.includes('duplex') || normBase === '2205') {
+    return MATERIALS.find((m) => m.id === 'duplex') || null;
+  }
+  if (normBase.includes('monel')) {
+    return MATERIALS.find((m) => m.id === 'monel') || null;
+  }
+  if (normBase.includes('inconel')) {
+    return MATERIALS.find((m) => m.id === 'inconel') || null;
+  }
+  if (normBase.includes('hastelloy') || normBase.includes('c276')) {
+    return MATERIALS.find((m) => m.id === 'hastelloy') || null;
+  }
+  if (normBase.includes('titanium') || normBase === 'ti') {
+    return MATERIALS.find((m) => m.id === 'titanium') || null;
+  }
+  if (normBase.includes('cupro') || normBase.includes('coppernickel') || normBase === 'cuni') {
+    return MATERIALS.find((m) => m.id === 'copper-nickel') || null;
+  }
+  if (normBase.includes('brass')) {
+    return MATERIALS.find((m) => m.id === 'brass') || null;
+  }
+  if (normBase.includes('alumin')) {
+    return MATERIALS.find((m) => m.id === 'aluminium') || null;
+  }
+
+  return null;
 }
 
 

@@ -72,11 +72,11 @@ export default function Footer() {
             </a>
 
             <a
-              href="tel:02266324854"
+              href="tel:02266394854"
               className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-[#D71932] hover:bg-[#B51226] text-white text-xs sm:text-sm font-bold shadow-lg transition-transform transform hover:-translate-y-0.5"
             >
               <Phone className="w-4 h-4" />
-              <span>022-66324854</span>
+              <span>022-66394854</span>
             </a>
           </div>
         </div>
@@ -129,7 +129,7 @@ export default function Footer() {
                 <span>WhatsApp Instant</span>
               </a>
               <a 
-                href="tel:02266324854" 
+                href="tel:09850789923" 
                 className="inline-flex items-center gap-2 px-3.5 py-2 bg-[#D71932] hover:bg-[#B51226] text-white text-xs font-bold rounded-md shadow transition-colors"
               >
                 <Phone className="w-3.5 h-3.5" />
@@ -225,14 +225,20 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-[#D71932] flex-shrink-0" />
-                <a href="tel:02266324854" className="text-slate-300 hover:text-white text-xs font-semibold">
+                <a href="tel:02266394854" className="text-slate-300 hover:text-white text-xs font-semibold">
                   {COMPANY_INFO.phone} (Office)
                 </a>
               </li>
               <li className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                <a href="tel:9833416144" className="text-slate-300 hover:text-white text-xs font-semibold">
-                  +91 {COMPANY_INFO.mobile} (Mobile)
+                <a href="tel:09850789923" className="text-slate-300 hover:text-white text-xs font-semibold">
+                  {COMPANY_INFO.mobile} (Mobile)
+                </a>
+              </li>
+              <li className="flex items-center gap-2.5">
+                <Phone className="w-4 h-4 text-blue-400 flex-shrink-0" />
+                <a href="tel:09833416144" className="text-slate-300 hover:text-white text-xs font-semibold">
+                  {COMPANY_INFO.additionalMobile} (Alt. Contact)
                 </a>
               </li>
               <li className="flex items-center gap-2.5">

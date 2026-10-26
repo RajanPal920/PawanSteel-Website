@@ -146,7 +146,11 @@ export default function AboutPage({ onOpenQuoteModal }) {
             {CATEGORIES.map((cat) => (
               <div key={cat.id} className="p-5 bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
                 <div>
-                  <h3 className="text-base font-bold text-[#123467] mb-2">{cat.title}</h3>
+                  <h3 className="text-base font-bold text-[#123467] mb-2">
+                    <Link to={`/products/${cat.slug}`} className="hover:text-[#D71932] transition-colors">
+                      {cat.title}
+                    </Link>
+                  </h3>
                   <p className="text-xs text-slate-500 leading-relaxed mb-4">{cat.shortDesc}</p>
                 </div>
                 <Link

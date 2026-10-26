@@ -27,7 +27,7 @@ export default function CertificatePage() {
       accreditation: 'IAF (International Accreditation Forum) & EGAC Accredited',
       accreditationCode: 'QMS Certification CAB# 119012',
       registeredTo: 'PAWAN STEEL ALLOYS',
-      registeredAddress: '1st Floor, Office No. 107, 13/21, Seth Virchand Umarsi Building, Panjarapole 3rd Lane, Gulalwadi Girgaon, Mumbai, Maharashtra - 400004 INDIA',
+      registeredAddress: 'Office No. 107, 1st Floor, 13/21 Seth Virchand Umarsi Building, 3rd Panjrapole, Gulalwadi, Mumbai – 400004, Maharashtra, India',
       scope: 'TRADING OF ROD & BAR, PIPE & TUBE, SHEET & PLATE, FLANGES, FASTENERS, BUTTWELD FITTINGS & FORGED FITTINGS, FERRULE FITTINGS IN GRADES: STAINLESS STEEL, CARBON STEEL, MILD STEEL, ALLOY STEEL, DUPLEX, SUPER DUPLEX, MONEL, INCONEL, HASTELLOY, TITANIUM, COPPER NICKEL, BRASS & ALUMINUM.',
       badgeText: 'ISO 9001:2015'
     },
@@ -39,7 +39,7 @@ export default function CertificatePage() {
       issuer: 'Ministry of Micro, Small and Medium Enterprises, Government of India',
       number: 'UDYAM-MH-19-0449426',
       registeredTo: 'PAWAN STEEL ALLOYS',
-      registeredAddress: 'Office No. 107, 1st Floor, 13/21 Seth Virchand Umarsi Building, Panjarapole 3rd Lane, Gulalwadi, Girgaon, Mumbai, Maharashtra - 400004',
+      registeredAddress: 'Office No. 107, 1st Floor, 13/21 Seth Virchand Umarsi Building, 3rd Panjrapole, Gulalwadi, Mumbai – 400004, Maharashtra, India',
       nicCode: '4662 / 46620 - Wholesale of metals and metal ores',
       activity: 'Trading / Wholesale trade of metals and metal ores',
       badgeText: 'MSME Registered'
