@@ -726,7 +726,7 @@ export default function ProductDetailPage({ onOpenQuoteModal }) {
                     <WhatsAppIcon className="w-3.5 h-3.5 text-emerald-400" />
                     Mobile:
                   </span>
-                  <a href="tel:09850789923" className="hover:underline">{COMPANY_INFO.mobile}</a>
+                  <a href="tel:09950789923" className="hover:underline">{COMPANY_INFO.mobile}</a>
                   <span className="text-slate-400">|</span>
                   <a href="https://wa.me/919833416144" target="_blank" rel="noopener noreferrer" className="hover:underline text-emerald-300">WhatsApp</a>
                 </p>

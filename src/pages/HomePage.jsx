@@ -459,8 +459,8 @@ export default function HomePage({ onOpenQuoteModal }) {
                   </div>
                   <div>
                     <p className="text-[11px] font-bold text-slate-400 uppercase">Mobile / WhatsApp</p>
-                    <a href="tel:09850789923" className="text-sm font-bold text-[#123467] hover:text-emerald-600 block">
-                      09850789923
+                    <a href="tel:09950789923" className="text-sm font-bold text-[#123467] hover:text-emerald-600 block">
+                      09950789923
                     </a>
                     <a href="tel:09833416144" className="text-xs font-medium text-slate-500 hover:text-emerald-600 block mt-0.5">
                       Alt: 09833416144

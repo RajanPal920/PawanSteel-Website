@@ -129,7 +129,7 @@ export default function Footer() {
                 <span>WhatsApp Instant</span>
               </a>
               <a 
-                href="tel:09850789923" 
+                href="tel:09950789923" 
                 className="inline-flex items-center gap-2 px-3.5 py-2 bg-[#D71932] hover:bg-[#B51226] text-white text-xs font-bold rounded-md shadow transition-colors"
               >
                 <Phone className="w-3.5 h-3.5" />
@@ -231,7 +231,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                <a href="tel:09850789923" className="text-slate-300 hover:text-white text-xs font-semibold">
+                <a href="tel:09950789923" className="text-slate-300 hover:text-white text-xs font-semibold">
                   {COMPANY_INFO.mobile} (Mobile)
                 </a>
               </li>

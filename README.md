@@ -55,7 +55,7 @@
 7. **Connecting with Customers Across Global Markets**:
    - Responsive grid of 22 target inquiry destinations with ISO country codes and regions.
 8. **Fixed Floating Call and WhatsApp Buttons**:
-   - Bottom-right action buttons with official WhatsApp vector SVG, pre-filled message, direct calling to `09850789923`, and accessible tooltips.
+   - Bottom-right action buttons with official WhatsApp vector SVG, pre-filled message, direct calling to `09950789923`, and accessible tooltips.
 9. **Footer with Exact Sunmarg India Credit**:
    - Clickable credit: `Designed & SEO by Sunmarg India` linking to `https://sunmargindia.com/`.
 10. **Technical SEO**:
