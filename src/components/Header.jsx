@@ -78,7 +78,7 @@ export default function Header({ onOpenQuoteModal }) {
               title="Office Landline"
             >
               <Phone className="w-3.5 h-3.5 text-[#D71932] flex-shrink-0" />
-              <span><span className="text-slate-400 font-normal">Office:</span> <strong className="font-semibold text-white">+91 (022) 6639 4854</strong></span>
+              <span><span className="text-slate-400 font-normal">Office:</span> <strong className="font-semibold text-white">+91 22 6639 4854</strong></span>
             </a>
             <span className="text-slate-600">|</span>
             <a

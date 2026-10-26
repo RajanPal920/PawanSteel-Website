@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  ArrowUp, 
-  ChevronRight, 
-  FileCheck, 
+import {
+  Phone,
+  Mail,
+  MapPin,
+  ArrowUp,
+  ChevronRight,
+  FileCheck,
   ShieldCheck,
   Send,
   Sparkles,
@@ -21,7 +21,7 @@ import SocialLinksGroup from './SocialIcons';
 function WhatsAppIcon({ className = "w-4 h-4 text-white" }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12.031 2C6.496 2 2 6.494 2 12.029c0 1.93.551 3.731 1.508 5.257L2 22l4.872-1.464a9.983 9.983 0 005.159 1.493h.004c5.535 0 10.031-4.495 10.031-10.029C22.066 6.494 17.569 2 12.031 2zm0 18.286h-.003a8.273 8.273 0 01-4.223-1.157l-.303-.18-2.89.868.883-2.818-.198-.314A8.252 8.252 0 013.76 12.03c0-4.561 3.712-8.273 8.274-8.273 4.561 0 8.273 3.712 8.273 8.273 0 4.561-3.712 8.256-8.276 8.256zm4.536-6.19c-.248-.124-1.47-.725-1.698-.808-.228-.083-.394-.124-.56.124-.166.248-.643.808-.788.974-.145.166-.29.186-.539.062-.248-.124-1.047-.386-1.996-1.231-.739-.658-1.238-1.472-1.383-1.72-.145-.248-.016-.383.109-.506.111-.111.248-.29.373-.435.124-.145.166-.248.248-.415.083-.166.041-.31-.02-.435-.062-.124-.56-1.348-.767-1.846-.202-.486-.407-.42-.56-.428l-.477-.008c-.166 0-.435.062-.663.31-.228.248-.871.85-.871 2.073s.892 2.404 1.016 2.57c.124.166 1.755 2.68 4.252 3.757.594.256 1.058.41 1.42.525.597.189 1.141.162 1.57.098.479-.071 1.47-.601 1.678-1.182.207-.58.207-1.077.145-1.182-.062-.104-.228-.166-.477-.29z"/>
+      <path d="M12.031 2C6.496 2 2 6.494 2 12.029c0 1.93.551 3.731 1.508 5.257L2 22l4.872-1.464a9.983 9.983 0 005.159 1.493h.004c5.535 0 10.031-4.495 10.031-10.029C22.066 6.494 17.569 2 12.031 2zm0 18.286h-.003a8.273 8.273 0 01-4.223-1.157l-.303-.18-2.89.868.883-2.818-.198-.314A8.252 8.252 0 013.76 12.03c0-4.561 3.712-8.273 8.274-8.273 4.561 0 8.273 3.712 8.273 8.273 0 4.561-3.712 8.256-8.276 8.256zm4.536-6.19c-.248-.124-1.47-.725-1.698-.808-.228-.083-.394-.124-.56.124-.166.248-.643.808-.788.974-.145.166-.29.186-.539.062-.248-.124-1.047-.386-1.996-1.231-.739-.658-1.238-1.472-1.383-1.72-.145-.248-.016-.383.109-.506.111-.111.248-.29.373-.435.124-.145.166-.248.248-.415.083-.166.041-.31-.02-.435-.062-.124-.56-1.348-.767-1.846-.202-.486-.407-.42-.56-.428l-.477-.008c-.166 0-.435.062-.663.31-.228.248-.871.85-.871 2.073s.892 2.404 1.016 2.57c.124.166 1.755 2.68 4.252 3.757.594.256 1.058.41 1.42.525.597.189 1.141.162 1.57.098.479-.071 1.47-.601 1.678-1.182.207-.58.207-1.077.145-1.182-.062-.104-.228-.166-.477-.29z" />
     </svg>
   );
 }
@@ -36,7 +36,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#071529] text-slate-300 pt-16 pb-8 border-t-4 border-[#D71932] relative overflow-hidden">
       {/* Background Subtle Geometric Pattern */}
-      <div 
+      <div
         className="absolute inset-0 opacity-5 pointer-events-none"
         style={{
           backgroundImage: `linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)`,
@@ -45,7 +45,7 @@ export default function Footer() {
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Pre-Footer Action Banner */}
         <div className="mb-14 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#0C2344] via-[#123467] to-[#1A4280] border border-[#1E4C8C] shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-1.5 text-center md:text-left">
@@ -77,20 +77,20 @@ export default function Footer() {
               className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-[#D71932] hover:bg-[#B51226] text-white text-xs sm:text-sm font-bold shadow-lg transition-transform transform hover:-translate-y-0.5"
             >
               <Phone className="w-4 h-4" />
-              <span>+91 (022) 6639 4854</span>
+              <span>+91 22 6639 4854</span>
             </a>
           </div>
         </div>
 
         {/* Main Footer Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800/80">
-          
+
           {/* Column 1: Company Profile & Larger Logo */}
           <div className="lg:col-span-2 space-y-4">
             <Link to="/" className="inline-block bg-white p-3.5 sm:p-4 rounded-xl shadow-lg border border-slate-200 group">
-              <img 
-                src="/logo.png" 
-                alt="PAWAN STEEL ALLOYS - Official Company Logo" 
+              <img
+                src="/logo.png"
+                alt="PAWAN STEEL ALLOYS - Official Company Logo"
                 className="h-14 sm:h-16 md:h-18 w-auto object-contain transition-transform group-hover:scale-[1.02]"
                 style={{ imageRendering: '-webkit-optimize-contrast' }}
               />
@@ -102,15 +102,15 @@ export default function Footer() {
 
             {/* Verified Certifications Badges */}
             <div className="flex flex-wrap gap-2 pt-1">
-              <Link 
-                to="/certificate" 
+              <Link
+                to="/certificate"
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#122A4E] border border-slate-700 hover:border-[#D71932] rounded-lg text-xs text-slate-200 transition-colors shadow-sm"
               >
                 <ShieldCheck className="w-4 h-4 text-[#D71932]" />
                 <span className="font-semibold">ISO 9001:2015 Certified</span>
               </Link>
-              <Link 
-                to="/certificate" 
+              <Link
+                to="/certificate"
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#122A4E] border border-slate-700 hover:border-blue-400 rounded-lg text-xs text-slate-200 transition-colors shadow-sm"
               >
                 <FileCheck className="w-4 h-4 text-blue-400" />
@@ -120,17 +120,17 @@ export default function Footer() {
 
             {/* Direct Connect Buttons */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
-              <a 
-                href="https://wa.me/919833416144?text=Hello%20Pawan%20Steel%20Alloys%2C%20I%20would%20like%20to%20enquire%20about%20your%20industrial%20metal%20products." 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://wa.me/919833416144?text=Hello%20Pawan%20Steel%20Alloys%2C%20I%20would%20like%20to%20enquire%20about%20your%20industrial%20metal%20products."
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-3.5 py-2 bg-[#25D366] hover:bg-[#20BD5A] text-white text-xs font-bold rounded-md shadow transition-colors"
               >
                 <WhatsAppIcon className="w-3.5 h-3.5" />
                 <span>WhatsApp Instant</span>
               </a>
-              <a 
-                href="tel:+919950789923" 
+              <a
+                href="tel:+919950789923"
                 className="inline-flex items-center gap-2 px-3.5 py-2 bg-[#D71932] hover:bg-[#B51226] text-white text-xs font-bold rounded-md shadow transition-colors"
               >
                 <Phone className="w-3.5 h-3.5" />
@@ -200,8 +200,8 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               {CATEGORIES.map((cat) => (
                 <li key={cat.id}>
-                  <Link 
-                    to={`/products/${cat.slug}`} 
+                  <Link
+                    to={`/products/${cat.slug}`}
                     className="text-slate-400 hover:text-white transition-colors block truncate"
                     title={cat.title}
                   >
@@ -218,18 +218,18 @@ export default function Footer() {
               Registered Office
             </h3>
             <ul className="space-y-3 text-sm">
+              <li className="flex items-start gap-2.5">
+                <MapPin className="w-4 h-4 text-[#D71932] flex-shrink-0 mt-1" />
+                <span className="text-slate-300 text-xs leading-relaxed font-normal">
+                  {COMPANY_INFO.address.full}
+                </span>
+              </li>
               <li className="flex items-center gap-2.5 pb-1.5 border-b border-slate-800/80">
                 <User className="w-4 h-4 text-[#D71932] flex-shrink-0" />
                 <div className="flex flex-col">
                   <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Contact Person</span>
                   <span className="text-white text-xs font-bold">{COMPANY_INFO.contactPerson || 'Mr. Babulal Dewasi'}</span>
                 </div>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-[#D71932] flex-shrink-0 mt-1" />
-                <span className="text-slate-300 text-xs leading-relaxed font-normal">
-                  {COMPANY_INFO.address.full}
-                </span>
               </li>
               <li className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-[#D71932] flex-shrink-0" />
@@ -262,8 +262,8 @@ export default function Footer() {
               <span className="text-[11px] uppercase font-bold text-slate-400 block mb-1.5 tracking-wider">Key Materials</span>
               <div className="flex flex-wrap gap-1 text-[11px]">
                 {MATERIALS.slice(0, 6).map((m) => (
-                  <Link 
-                    key={m.id} 
+                  <Link
+                    key={m.id}
                     to={`/materials/${m.slug}`}
                     className="px-2 py-0.5 bg-[#122A4E] hover:bg-[#D71932] text-slate-300 hover:text-white rounded text-[10px] font-semibold transition-colors"
                   >
@@ -278,7 +278,7 @@ export default function Footer() {
 
         {/* Bottom Bar: Copyright, Back to Top, and Exact Sunmarg India Credit */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          
+
           <div className="text-center sm:text-left space-y-1">
             <p className="text-slate-300 font-medium">© {currentYear} {COMPANY_INFO.legalName}. All rights reserved.</p>
             <p className="text-slate-500 text-[11px]">
@@ -290,16 +290,16 @@ export default function Footer() {
           <div className="text-center sm:text-right flex flex-col sm:items-end gap-1">
             <p className="text-xs text-slate-300 font-medium">
               Designed & SEO by{' '}
-              <a 
-                href="https://sunmargindia.com/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://sunmargindia.com/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-[#D71932] hover:text-red-400 font-black hover:underline transition-colors tracking-wide"
               >
                 Sunmarg India
               </a>
             </p>
-            
+
             <button
               onClick={scrollToTop}
               type="button"

@@ -461,7 +461,7 @@ export default function HomePage({ onOpenQuoteModal }) {
                   <div>
                     <p className="text-[11px] font-bold text-slate-400 uppercase">Office Landline (Mumbai STD)</p>
                     <a href="tel:+912266394854" className="text-sm font-bold text-[#123467] hover:text-[#D71932]">
-                      +91 (022) 6639 4854
+                      +91 22 6639 4854
                     </a>
                   </div>
                 </div>
