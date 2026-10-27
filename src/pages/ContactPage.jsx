@@ -92,7 +92,7 @@ export default function ContactPage() {
                       <span>{COMPANY_INFO.workingHours}</span>
                     </span>
                     <a
-                      href={`https://maps.google.com/?q=${encodeURIComponent(COMPANY_INFO.address.full)}`}
+                      href={COMPANY_INFO.address.googleMapsUrl || `https://maps.google.com/?q=${encodeURIComponent(COMPANY_INFO.address.full)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1 font-bold text-[#D71932] hover:underline text-[11px]"
@@ -323,7 +323,7 @@ export default function ContactPage() {
             </div>
 
             <a
-              href={`https://maps.google.com/?q=${encodeURIComponent(COMPANY_INFO.address.full)}`}
+              href={COMPANY_INFO.address.googleMapsUrl || `https://maps.google.com/?q=${encodeURIComponent(COMPANY_INFO.address.full)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-[#123467] text-xs font-bold rounded-lg transition self-start md:self-auto"
@@ -334,12 +334,14 @@ export default function ContactPage() {
           </div>
 
           {/* Interactive Google Map Embed */}
-          <div className="w-full h-72 sm:h-80 rounded-xl overflow-hidden border border-slate-200 bg-slate-100 relative shadow-inner">
+          <div className="w-full h-80 sm:h-96 rounded-xl overflow-hidden border border-slate-200 bg-slate-100 relative shadow-inner">
             <iframe
               title="Pawan Steel Alloys Location Map"
-              src={`https://maps.google.com/maps?q=${encodeURIComponent(COMPANY_INFO.address.full)}&t=&z=16&ie=UTF8&iwloc=&output=embed`}
+              src={COMPANY_INFO.address.googleMapsEmbed || "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3414.767905261212!2d72.82811319999999!3d18.956100400000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cfa4d022189d%3A0xdfde8a8af975920e!2sPAWAN%20STEEL%20ALLOYS!5e1!3m2!1sen!2sin!4v1793083048299!5m2!1sen!2sin"}
               className="w-full h-full border-0"
+              allowFullScreen=""
               loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
             />
           </div>
         </div>

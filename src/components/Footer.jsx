@@ -220,9 +220,15 @@ export default function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#D71932] flex-shrink-0 mt-1" />
-                <span className="text-slate-300 text-xs leading-relaxed font-normal">
+                <a
+                  href={COMPANY_INFO.address.googleMapsUrl || `https://maps.google.com/?q=${encodeURIComponent(COMPANY_INFO.address.full)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-300 hover:text-white hover:underline text-xs leading-relaxed font-normal transition-colors"
+                  title="View PAWAN STEEL ALLOYS on Google Maps"
+                >
                   {COMPANY_INFO.address.full}
-                </span>
+                </a>
               </li>
               <li className="flex items-center gap-2.5 pb-1.5 border-b border-slate-800/80">
                 <User className="w-4 h-4 text-[#D71932] flex-shrink-0" />

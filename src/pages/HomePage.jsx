@@ -499,9 +499,15 @@ export default function HomePage({ onOpenQuoteModal }) {
                   </div>
                   <div>
                     <p className="text-[11px] font-bold text-slate-400 uppercase">Location</p>
-                    <p className="text-xs font-semibold text-slate-700 leading-snug">
+                    <a
+                      href={COMPANY_INFO.address.googleMapsUrl || `https://maps.google.com/?q=${encodeURIComponent(COMPANY_INFO.address.full)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-semibold text-slate-700 hover:text-[#D71932] leading-snug block transition-colors"
+                      title="View on Google Maps"
+                    >
                       {COMPANY_INFO.address.full}
-                    </p>
+                    </a>
                   </div>
                 </div>
               </div>

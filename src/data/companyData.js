@@ -35,7 +35,13 @@ export const COMPANY_INFO = {
     state: "Maharashtra",
     pincode: "400004",
     country: "India",
-    full: "Office No. 107, 1st Floor, 13/21 Seth Virchand Umarsi Building, 3rd Panjrapole, Gulalwadi, Mumbai – 400004, Maharashtra, India."
+    full: "Office No. 107, 1st Floor, 13/21 Seth Virchand Umarsi Building, 3rd Panjrapole, Gulalwadi, Mumbai – 400004, Maharashtra, India.",
+    googleMapsEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3414.767905261212!2d72.82811319999999!3d18.956100400000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cfa4d022189d%3A0xdfde8a8af975920e!2sPAWAN%20STEEL%20ALLOYS!5e1!3m2!1sen!2sin!4v1793083048299!5m2!1sen!2sin",
+    googleMapsUrl: "https://www.google.com/maps/place/PAWAN+STEEL+ALLOYS/@18.9561004,72.8281132,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7cfa4d022189d:0xdfde8a8af975920e!8m2!3d18.9561004!4d72.8281132",
+    coordinates: {
+      lat: 18.9561004,
+      lng: 72.8281132
+    }
   },
   certifications: [
     {
