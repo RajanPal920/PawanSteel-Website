@@ -95,15 +95,15 @@ export default function HomePage({ onOpenQuoteModal }) {
               </div>
 
               <h2 className="text-3xl sm:text-4xl font-extrabold text-[#123467] leading-tight tracking-tight">
-                Your Trusted Partner in Industrial Metals
+                Your Trusted Partner in Steel Industries
               </h2>
 
               <p className="text-base text-slate-600 leading-relaxed font-normal">
-                <strong className="text-[#123467] font-bold">PAWAN STEEL ALLOYS</strong> is an established industrial raw material stockist and supplier based in the historic metals trading district of Gulalwadi, Mumbai. We specialize in the distribution of high-grade stainless steel, carbon steel, mild steel, alloy steel, duplex, and specialty nickel alloys to engineering, refinery, and manufacturing sectors.
+                <strong className="text-[#123467] font-bold">PAWAN STEEL ALLOYS</strong> is a trusted stockist and supplier of quality steel and alloy products, based in Gulalwadi, Mumbai.
               </p>
 
               <p className="text-base text-slate-600 leading-relaxed font-normal">
-                Our inventory encompasses seamless and welded pipes & tubes, cut-to-size sheets & heavy plates, precision centerless ground round bars, forged flanges (ASME B16.5), butt weld fittings, forged socket-weld & threaded fittings, and twin-ferrule compression fittings.
+                We supply stainless steel, carbon steel, mild steel, alloy steel, duplex and nickel alloys for engineering, refinery and manufacturing industries. Our product range includes pipes and tubes, sheets and plates, round bars, flanges, butt weld fittings, socket-weld and threaded fittings, and compression fittings.
               </p>
 
               {/* Factual Credential Cards */}
